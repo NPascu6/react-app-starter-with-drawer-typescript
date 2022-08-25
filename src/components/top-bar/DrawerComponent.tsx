@@ -10,15 +10,13 @@ import React from 'react';
 import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import {useNavigate} from 'react-router-dom';
-
-const drawerWidth = 240;
-
+import {_defaultDrawerWidth} from '../../_constant';
 
 const routes = [{key: 'Home', url: '/'},
     {key: 'About', url: '/about'}];
 
 const openedMixin = (theme: Theme): CSSObject => ({
-    width: drawerWidth,
+    width: _defaultDrawerWidth,
     transition: theme.transitions.create('width', {
         easing: theme.transitions.easing.sharp,
         duration: theme.transitions.duration.enteringScreen,
@@ -49,7 +47,7 @@ const DrawerHeader = styled('div')(({theme}) => ({
 
 const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})(
     ({theme, open}) => ({
-        width: drawerWidth,
+        width: _defaultDrawerWidth,
         flexShrink: 0,
         whiteSpace: 'nowrap',
         boxSizing: 'border-box',

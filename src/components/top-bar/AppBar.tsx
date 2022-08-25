@@ -6,13 +6,11 @@ import IconButton from '@mui/material/IconButton';
 import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import React from 'react';
+import {_defaultDrawerWidth} from '../../_constant';
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
 }
-
-const drawerWidth = 240;
-
 
 const AppBar = styled(MuiAppBar, {
     shouldForwardProp: (prop) => prop !== 'open',
@@ -23,8 +21,8 @@ const AppBar = styled(MuiAppBar, {
         duration: theme.transitions.duration.leavingScreen,
     }),
     ...(open && {
-        marginLeft: drawerWidth,
-        width: `calc(100% - ${drawerWidth}px)`,
+        marginLeft: _defaultDrawerWidth,
+        width: `calc(100% - ${_defaultDrawerWidth}px)`,
         transition: theme.transitions.create(['width', 'margin'], {
             easing: theme.transitions.easing.sharp,
             duration: theme.transitions.duration.enteringScreen,
