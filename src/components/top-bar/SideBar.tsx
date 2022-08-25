@@ -11,6 +11,10 @@ import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import {useNavigate} from 'react-router-dom';
 import {_defaultDrawerWidth} from '../../_constant';
+import {useAppDispatch} from '../../store/store';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/rootReducer';
+import {handleDrawerChange} from '../../store/appReducer';
 
 const routes = [{key: 'Home', url: '/'},
     {key: 'About', url: '/about'}];
@@ -62,19 +66,18 @@ const Drawer = styled(MuiDrawer, {shouldForwardProp: (prop) => prop !== 'open'})
     }),
 );
 
-interface DrawerComponentProps {
-    open: any,
-    handleDrawerClose: any
-}
-
-const DrawerComponent = ({open, handleDrawerClose}: DrawerComponentProps) => {
+const SideBar = () => {
     const theme = useTheme();
     const navigate = useNavigate();
+    const dispatch = useAppDispatch();
+    const {
+        drawerOpen,
+    } = useSelector((state: RootState) => state.app);
 
     return <>
-        <Drawer variant="permanent" open={open}>
+        <Drawer variant="permanent" open={drawerOpen}>
             <DrawerHeader>
-                <IconButton onClick={handleDrawerClose}>
+                <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
                     {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                 </IconButton>
             </DrawerHeader>
@@ -87,21 +90,21 @@ const DrawerComponent = ({open, handleDrawerClose}: DrawerComponentProps) => {
                         <ListItemButton
                             sx={{
                                 minHeight: 48,
-                                justifyContent: open ? 'initial' : 'center',
+                                justifyContent: drawerOpen ? 'initial' : 'center',
                                 px: 2.5,
                             }}
                         >
                             <ListItemIcon
                                 sx={{
                                     minWidth: 0,
-                                    mr: open ? 3 : 'auto',
+                                    mr: drawerOpen ? 3 : 'auto',
                                     justifyContent: 'center',
                                 }}
                             >
                                 {index % 2 === 0 ? <InboxIcon/> :
                                     <MailIcon/>}
                             </ListItemIcon>
-                            <ListItemText primary={route.key} sx={{opacity: open ? 1 : 0}}/>
+                            <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
                         </ListItemButton>
                     </ListItem>
                 ))}
@@ -110,4 +113,4 @@ const DrawerComponent = ({open, handleDrawerClose}: DrawerComponentProps) => {
     </>;
 };
 
-export default DrawerComponent;
+export default SideBar;

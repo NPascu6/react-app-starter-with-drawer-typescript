@@ -7,6 +7,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import {_defaultDrawerWidth} from '../../_constant';
+import {useAppDispatch} from '../../store/store';
+import {handleDrawerChange} from '../../store/appReducer';
+import {useSelector} from 'react-redux';
+import {RootState} from '../../store/rootReducer';
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -30,22 +34,22 @@ const AppBar = styled(MuiAppBar, {
     }),
 }));
 
-interface AppBarComponentProps {
-    open: any,
-    handleDrawerOpen: any
-}
+const AppBarComponent = () => {
+    const dispatch = useAppDispatch();
+    const {
+        drawerOpen,
+    } = useSelector((state: RootState) => state.app);
 
-const AppBarComponent = ({open, handleDrawerOpen}: AppBarComponentProps) => {
-    return <AppBar position="fixed" open={open}>
+    return <AppBar position="fixed" open={drawerOpen}>
         <Toolbar>
             <IconButton
                 color="inherit"
                 aria-label="open drawer"
-                onClick={handleDrawerOpen}
+                onClick={() => dispatch(handleDrawerChange(!drawerOpen))}
                 edge="start"
                 sx={{
                     marginRight: 5,
-                    ...(open && {display: 'none'}),
+                    ...(drawerOpen && {display: 'none'}),
                 }}
             >
                 <MenuIcon/>
