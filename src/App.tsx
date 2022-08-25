@@ -1,26 +1,29 @@
 import React from 'react';
-import logo from './logo.svg';
 import './App.css';
+import {RoutesSwitch} from './router/Routes';
+import CssBaseline from '@mui/material/CssBaseline';
+import DrawerComponent from './components/top-bar/DrawerComponent';
+import AppBarComponent from './components/top-bar/AppBar';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.tsx</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
+    const [open, setOpen] = React.useState(false);
+
+    const handleDrawerOpen = () => {
+        setOpen(true);
+    };
+
+    const handleDrawerClose = () => {
+        setOpen(false);
+    };
+
+    return (
+        <div className="App">
+            <CssBaseline/>
+            <AppBarComponent open={open} handleDrawerOpen={handleDrawerOpen}/>
+            <DrawerComponent open={open} handleDrawerClose={handleDrawerClose}/>
+            <RoutesSwitch/>
+        </div>
+    );
 }
 
 export default App;

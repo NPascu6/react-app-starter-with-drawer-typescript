@@ -1,4 +1,4 @@
-import {CircularProgress, LinearProgress, Typography} from "@mui/material";
+import {CircularProgress, LinearProgress, Typography} from '@mui/material';
 
 const LoaderPage = () => {
     return (
@@ -12,7 +12,7 @@ const LoaderPage = () => {
                                   sx={{marginTop: '0.2em', color: 'orange', height: '1em', width: '1em'}}/>
             </div>
         </div>
-    )
-}
+    );
+};
 
 export default LoaderPage;
