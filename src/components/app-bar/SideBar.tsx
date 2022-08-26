@@ -74,43 +74,41 @@ const SideBar = () => {
         drawerOpen,
     } = useSelector((state: RootState) => state.app);
 
-    return <>
-        <Drawer variant="permanent" open={drawerOpen}>
-            <DrawerHeader>
-                <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
-                    {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
-                </IconButton>
-            </DrawerHeader>
-            <Divider/>
-            <List>
-                {routes?.map((route, index) => (
-                    <ListItem key={route.key} disablePadding sx={{display: 'block'}}
-                              onClick={() => navigate(`${route.url}`)}
-                    >
-                        <ListItemButton
+    return <Drawer variant="permanent"
+                   open={drawerOpen}>
+        <DrawerHeader>
+            <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
+                {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+            </IconButton>
+        </DrawerHeader>
+        <Divider/>
+        <List>
+            {routes?.map((route, index) => (
+                <ListItem key={route.key} disablePadding sx={{display: 'block'}}
+                          onClick={() => navigate(`${route.url}`)}>
+                    <ListItemButton
+                        sx={{
+                            minHeight: 48,
+                            justifyContent: drawerOpen ? 'initial' : 'center',
+                            px: 2.5,
+                        }}>
+                        <ListItemIcon
                             sx={{
-                                minHeight: 48,
-                                justifyContent: drawerOpen ? 'initial' : 'center',
-                                px: 2.5,
-                            }}
-                        >
-                            <ListItemIcon
-                                sx={{
-                                    minWidth: 0,
-                                    mr: drawerOpen ? 3 : 'auto',
-                                    justifyContent: 'center',
-                                }}
-                            >
-                                {index % 2 === 0 ? <InboxIcon/> :
-                                    <MailIcon/>}
-                            </ListItemIcon>
-                            <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
-                        </ListItemButton>
-                    </ListItem>
-                ))}
-            </List>
-        </Drawer>
-    </>;
+                                color: theme.palette.secondary.main,
+                                minWidth: 0,
+                                mr: drawerOpen ? 3 : 'auto',
+                                justifyContent: 'center',
+                            }}>
+                            {
+                                index % 2 === 0 ? <InboxIcon/> : <MailIcon/>
+                            }
+                        </ListItemIcon>
+                        <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
+                    </ListItemButton>
+                </ListItem>
+            ))}
+        </List>
+    </Drawer>;
 };
 
 export default SideBar;

@@ -1,9 +1,22 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
-
+import {useAppDispatch} from '../store/store';
+import {useEffect} from 'react';
+import {fetchGithubProfile} from '../store/thunks/appThunk';
+import {useSelector} from 'react-redux';
+import {RootState} from '../store/rootReducer';
 
 export default function DashboardPage() {
+    const dispatch = useAppDispatch();
+    const {githubProfiles} = useSelector((state: RootState) => state.app);
+
+
+    useEffect(() => {
+        if (githubProfiles.length === 0)
+            dispatch(fetchGithubProfile());
+    }, [dispatch, githubProfiles]);
+
     return (
         <Box sx={{display: 'flex'}}>
             <Box component="main" sx={{flexGrow: 1, p: 3}}>

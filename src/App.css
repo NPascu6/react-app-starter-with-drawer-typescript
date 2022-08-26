@@ -1,5 +1,9 @@
 .App {
     text-align: center;
+    flex: 1;
+    display: flex;
+    height: calc(100vh - 4em);
+    margin-top: 4em;
 }
 
 .App-logo {
@@ -7,14 +11,7 @@
     pointer-events: none;
 }
 
-@media (prefers-reduced-motion: no-preference) {
-    .App-logo {
-        animation: App-logo-spin infinite 20s linear;
-    }
-}
-
 .App-header {
-    background-color: #282c34;
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -34,5 +31,11 @@
     }
     to {
         transform: rotate(360deg);
+    }
+}
+
+@media (prefers-reduced-motion: no-preference) {
+    .App-logo {
+        animation: App-logo-spin infinite 20s linear;
     }
 }

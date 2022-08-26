@@ -12,9 +12,3 @@ code {
     font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
     monospace;
 }
-
-.App {
-    flex: 1;
-    display: flex;
-    margin-top: 4em;
-}

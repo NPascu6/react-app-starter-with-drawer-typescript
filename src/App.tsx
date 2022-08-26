@@ -1,18 +1,18 @@
 import React from 'react';
 import './App.css';
-import {RoutesSwitch} from './router/Routes';
-import CssBaseline from '@mui/material/CssBaseline';
-import SideBar from './components/top-bar/SideBar';
-import AppBarComponent from './components/top-bar/AppBar';
+import {ThemeProvider} from '@mui/material/styles';
+import {useSelector} from 'react-redux';
+import {RootState} from './store/rootReducer';
+import {darkTheme, lightTheme} from './theme/theme';
+import MainPage from './pages/MainPage';
 
 function App() {
+    const {isDarkTheme} = useSelector((state: RootState) => state.app);
+
     return (
-        <div className="App">
-            <CssBaseline/>
-            <AppBarComponent/>
-            <SideBar/>
-            <RoutesSwitch/>
-        </div>
+        <ThemeProvider theme={isDarkTheme ? darkTheme : lightTheme}>
+            <MainPage/>
+        </ThemeProvider>
     );
 }
 
