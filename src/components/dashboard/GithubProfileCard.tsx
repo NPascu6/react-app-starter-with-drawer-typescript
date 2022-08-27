@@ -17,7 +17,8 @@ const GithubProfileCard = () => {
         backgroundColor: theme.palette.secondary.main,
         display: 'flex',
         justifyContent: 'center',
-        width: '20em'
+        width: '20em',
+        padding: '1em'
     }}>
         <Grid container sx={{display: 'flex', flexDirection: 'column'}}>
             <Grid container className={'Flex-Container-Center'}>
@@ -41,25 +42,13 @@ const GithubProfileCard = () => {
                 <Typography variant={"body2"}>{githubProfile?.bio}{githubProfile?.location}</Typography>
             </Grid>
             <Divider/>
-
-            <Grid container className={'Flex-Container-Center'}>
-                <Link href={"https://www.facebook.com/norbi.pascu"} target={"_blank"}
-                      rel={"noopener noreferrer"}>
-                    <FacebookOutlined/>
-                </Link>
-                <Link href={"https://www.instagram.com/norbipascu/?hl=en"} target={"_blank"}
-                      rel={"noopener noreferrer"}>
-                    <Instagram/>
-                </Link>
-            </Grid>
-            <Divider/>
-            <Grid container className={'Flex-Container-Center'}>
+            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
                 <Link sx={{cursor: 'pointer'}} href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
                       target={"_blank"}
                       rel={"noopener noreferrer"}> https://www.linkedin.com/in/norbert-pascu-5b1857116/</Link>
             </Grid>
             <Divider/>
-            <Grid container className={'Flex-Container-Center'}>
+            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
                 <Link sx={{cursor: 'pointer'}} href={githubProfile?.html_url} target={"_blank"}
                       rel={"noopener noreferrer"}>{githubProfile?.html_url}</Link>
             </Grid>
@@ -81,12 +70,23 @@ const GithubProfileCard = () => {
             <Divider/>
             <Grid container className={'Flex-Container-Center'}>
                 <Grid item xs={12}>
-                    <Typography variant={"h6"}>Github repo links:</Typography>
+                    <Typography variant={"h6"}>Some Github repo links:</Typography>
                 </Grid>
                 <Divider/>
                 {githubProfiles ? githubProfiles.map(repo => <div key={repo.id}> | <Link
                     href={repo.html_url} target={"_blank"}
                     rel={"noopener noreferrer"}>{repo.name}</Link> | </div>) : <LoaderPage/>}
+            </Grid>
+            <Divider/>
+            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
+                <Link href={"https://www.facebook.com/norbi.pascu"} target={"_blank"}
+                      rel={"noopener noreferrer"}>
+                    <FacebookOutlined/>
+                </Link>
+                <Link href={"https://www.instagram.com/norbipascu/?hl=en"} target={"_blank"}
+                      rel={"noopener noreferrer"}>
+                    <Instagram/>
+                </Link>
             </Grid>
         </Grid>
     </Paper>

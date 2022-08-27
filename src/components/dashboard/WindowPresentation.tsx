@@ -1,18 +1,21 @@
-import {Paper} from "@mui/material";
-import Carousel from "react-material-ui-carousel";
+import {useTheme} from "@mui/material/styles";
+import img1 from "../../assets/images/windows/example1.png";
+import img2 from "../../assets/images/windows/example2.png";
+import img3 from "../../assets/images/windows/example3.png";
+import img4 from "../../assets/images/windows/example4.png";
+import img6 from "../../assets/images/windows/example6.png";
+import img7 from "../../assets/images/windows/example7.png";
+import img8 from "../../assets/images/windows/example8.png";
+import img9 from "../../assets/images/windows/example9.png";
+
 import * as React from "react";
 import {useEffect, useState} from "react";
-import img1 from '../../assets/images/TradingApp1.png'
-import img2 from '../../assets/images/TradingApp2.png'
-import img3 from '../../assets/images/TradingApp3.png'
-import img4 from '../../assets/images/TradingApp4.png'
-import img5 from '../../assets/images/TradingApp5.png'
-import img6 from '../../assets/images/TradingApp6.png'
-import {useTheme} from "@mui/material/styles";
+import {Paper} from "@mui/material";
+import Carousel from "react-material-ui-carousel";
 
-const TradingAppPresentation = () => {
+const WindowPresentation = () => {
     const theme = useTheme()
-    const images = [img1, img2, img3, img4, img5, img6]
+    const images = [img1, img2, img3, img4, img6, img7, img8, img9]
     const [windowSize, setWindowSize] = useState(getWindowSize());
 
     function getWindowSize() {
@@ -51,4 +54,4 @@ const TradingAppPresentation = () => {
     </Paper>
 }
 
-export default TradingAppPresentation
+export default WindowPresentation

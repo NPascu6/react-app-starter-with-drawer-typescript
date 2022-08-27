@@ -3,7 +3,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
-import {ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material';
+import {ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import React from 'react';
@@ -104,7 +104,7 @@ const SideBar = () => {
                                 justifyContent: 'center',
                             }}>
                             {
-                                index % 2 === 0 ? <InboxIcon/> : <MailIcon/>
+                                index % 2 === 0 ? <Tooltip title={'Home'}><InboxIcon/></Tooltip> : <Tooltip title={"Short bio"}><MailIcon/></Tooltip>
                             }
                         </ListItemIcon>
                         <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
