@@ -1,12 +1,14 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import Typography from '@mui/material/Typography';
+import {Avatar} from "@mui/material";
 
 export default function DashboardPage() {
 
     return (
         <Box sx={{display: 'flex'}}>
             <Box component="main" sx={{flexGrow: 1, p: 3}}>
+                <Avatar alt="Remy Sharp" src="/static/images/avatar/1.jpg" />
                 <Typography paragraph>
                     Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod
                     tempor incididunt ut labore et dolore magna aliqua. Rhoncus dolor purus non
