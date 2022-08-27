@@ -1,30 +1,40 @@
 //test
 import {createTheme} from '@mui/material';
+import {
+    _darkThemeBackgroundColor,
+    _darkThemePrimaryColor,
+    _darkThemeSecondaryColor,
+    _darkThemeTextColor,
+    _lightThemeBackgroundColor,
+    _lightThemePrimaryColor,
+    _lightThemeSecondaryColor,
+    _lightThemeTextColor
+} from "../_colors";
 
 export const darkTheme = createTheme({
     palette: {
         primary: {
-            main: '#8F6593'
+            main: _darkThemePrimaryColor
         },
         secondary: {
-            main: '#CDCDCD'
+            main: _darkThemeSecondaryColor
         }
     },
-    textColor: '#3B252C',
-    backgroundColor: '#E3E4DB'
+    textColor: _darkThemeTextColor,
+    backgroundColor: _darkThemeBackgroundColor
 });
 
 export const lightTheme = createTheme({
     palette: {
         primary: {
-            main: '#CDCDCD'
+            main: _lightThemePrimaryColor
         },
         secondary: {
-            main: '#8F6593'
+            main: _lightThemeSecondaryColor
         }
     },
-    textColor: '#F9EBE0',
-    backgroundColor: '#463F1A'
+    textColor: _lightThemeTextColor,
+    backgroundColor: _lightThemeBackgroundColor
 });
 
 declare module '@mui/material/styles' {

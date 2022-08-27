@@ -51,7 +51,12 @@ const AppBarComponent = () => {
     };
 
     return <TopBar position="fixed" open={drawerOpen}
-                   sx={{backgroundColor: theme.backgroundColor, color: theme.textColor}}>
+                   sx={{
+                       backgroundColor: theme.backgroundColor, color: theme.textColor, '& .MuiDrawer-paper': {
+                           backgroundColor: theme.textColor,
+                           color: theme.backgroundColor,
+                       }
+                   }}>
         <Toolbar>
             <Grid container>
                 <IconButton

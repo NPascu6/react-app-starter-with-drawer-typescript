@@ -1,9 +1,8 @@
 .App {
-    text-align: center;
     flex: 1;
     display: flex;
-    height: calc(100vh - 4em);
     margin-top: 4em;
+    font-family: SansSerif;
 }
 
 .App-logo {
@@ -17,8 +16,18 @@
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    justify-content: center;
     font-size: calc(10px + 2vmin);
     color: white;
+}
+
+.Flex-Container-Center {
+    padding: 0.2em;
+    display: flex;
+    flex: 1;
+    align-items: center;
+    justify-content: center;
+    user-select: none;
 }
 
 .App-link {

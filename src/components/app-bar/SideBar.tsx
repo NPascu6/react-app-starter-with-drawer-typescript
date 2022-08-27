@@ -75,7 +75,11 @@ const SideBar = () => {
     } = useSelector((state: RootState) => state.app);
 
     return <Drawer variant="permanent"
-                   open={drawerOpen}>
+                   open={drawerOpen}
+    sx={{ '& .MuiDrawer-paper': {
+            backgroundColor: theme.textColor,
+            color: theme.backgroundColor,
+        }}}>
         <DrawerHeader>
             <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
