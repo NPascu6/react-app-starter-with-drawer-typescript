@@ -2,6 +2,22 @@ import {Divider, Grid, Paper, Typography} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import * as React from "react";
 import YoutubeVideoLink from "../components/about/YoutubeVideoLink";
+import CommentsForm from "../components/about/CommentsForm";
+import RegisterForm from "../components/about/RegisterForm";
+import LoginForm from "../components/about/LoginForm";
+
+interface UserInfoFriend {
+    name: string,
+    email: string
+}
+
+export interface UserInfo {
+    title: string,
+    comments: string,
+    email: string,
+    completed: boolean,
+    friends: UserInfoFriend[]
+}
 
 const AboutPage = () => {
     const theme = useTheme()
@@ -55,6 +71,13 @@ const AboutPage = () => {
                 mentoring juniors, setting up interview questions, discussing project direction, involved in discussing
                 system architecture(mostly learning).</Typography>
             <Divider/>
+            <Typography variant={'h6'}>Example simple add form connected to Firebase API</Typography>
+            <CommentsForm/>
+            <Typography variant={'h6'}>Example register form connected to Firebase API</Typography>
+            <RegisterForm/>
+            <Typography variant={'h6'}>Example login form connected to Firebase API</Typography>
+            <LoginForm/>
+            <Typography variant={'h6'}>I also do this:</Typography>
             <YoutubeVideoLink/>
         </Paper>
     </Grid>

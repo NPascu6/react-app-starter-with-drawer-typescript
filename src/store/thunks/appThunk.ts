@@ -2,10 +2,6 @@ import {AppService} from '../../services/AppService';
 import {setGithubProfile, setGithubProfiles} from '../appReducer';
 import {_githubRepoTitles} from '../../_constant';
 
-/**
- * Fetch recent otc orders for the selected account
- * @param accountId
- */
 export const fetchGithubProfile = () => async (dispatch: any) => {
     console.log('Fetching github profile');
     const service = new AppService();
