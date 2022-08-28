@@ -10,7 +10,6 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
-import {useAppDispatch} from "../../store/store";
 
 const googleProvider = new GoogleAuthProvider();
 const auth = getAuth(app);
@@ -105,7 +104,7 @@ export const signInWithGoogle = async () => {
 //---------------------------------------------------------------------------------------------------
 
 export const logout = async () => {
-   await signOut(auth);
+    await signOut(auth);
 };
 
 //---------------------------------------------------------------------------------------------------

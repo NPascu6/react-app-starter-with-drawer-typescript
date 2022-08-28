@@ -2,7 +2,7 @@ import {Button, Grid, Paper, TextField} from "@mui/material";
 import * as React from "react";
 import {useState} from "react";
 import {useTheme} from "@mui/material/styles";
-import {loginWithFirebase, registerWithFirebase} from "../../store/thunks/authThunk";
+import {loginWithFirebase} from "../../store/thunks/authThunk";
 import {useAppDispatch} from "../../store/store";
 
 
