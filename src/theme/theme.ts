@@ -1,6 +1,14 @@
 //test
 import {createTheme} from '@mui/material';
 import {
+    _businessDarkThemeBackgroundColor,
+    _businessDarkThemePrimaryColor,
+    _businessDarkThemeSecondaryColor,
+    _businessDarkThemeTextColor,
+    _businessLightThemeBackgroundColor,
+    _businessLightThemePrimaryColor,
+    _businessLightThemeSecondaryColor,
+    _businessLightThemeTextColor,
     _darkThemeBackgroundColor,
     _darkThemePrimaryColor,
     _darkThemeSecondaryColor,
@@ -20,6 +28,9 @@ import {
 } from "../_colors";
 
 export const darkTheme = createTheme({
+    typography: {
+        fontFamily: '"Times New Roman", Times, serif;'
+    },
     palette: {
         primary: {
             main: _darkThemePrimaryColor
@@ -29,10 +40,22 @@ export const darkTheme = createTheme({
         }
     },
     textColor: _darkThemeTextColor,
-    backgroundColor: _darkThemeBackgroundColor
+    backgroundColor: _darkThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: '"Times New Roman", Times, serif;';
+        }
+      `,
+        },
+    }
 });
 
 export const lightTheme = createTheme({
+    typography: {
+        fontFamily: 'Arial, Helvetica, sans-serif'
+    },
     palette: {
         primary: {
             main: _lightThemePrimaryColor
@@ -42,10 +65,22 @@ export const lightTheme = createTheme({
         }
     },
     textColor: _lightThemeTextColor,
-    backgroundColor: _lightThemeBackgroundColor
+    backgroundColor: _lightThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: 'Arial, Helvetica, sans-serif';
+        }
+      `,
+        },
+    }
 });
 
 export const pinkDarkTheme = createTheme({
+    typography: {
+        fontFamily: 'Lucida Console", "Courier New", monospace'
+    },
     palette: {
         primary: {
             main: _pinkDarkThemePrimaryColor
@@ -55,10 +90,22 @@ export const pinkDarkTheme = createTheme({
         }
     },
     textColor: _pinkDarkThemeTextColor,
-    backgroundColor: _pinkDarkThemeBackgroundColor
+    backgroundColor: _pinkDarkThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: 'Lucida Console", "Courier New", monospace';
+        }
+      `,
+        },
+    }
 });
 
 export const pinkLightTheme = createTheme({
+    typography: {
+        fontFamily: 'fantasy'
+    },
     palette: {
         primary: {
             main: _pinkLightThemePrimaryColor
@@ -68,7 +115,66 @@ export const pinkLightTheme = createTheme({
         }
     },
     textColor: _pinkLightThemeTextColor,
-    backgroundColor: _pinkLightThemeBackgroundColor
+    backgroundColor: _pinkLightThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: 'fantasy';
+        }
+      `,
+        },
+    }
+});
+
+export const businessDarkTheme = createTheme({
+    typography: {
+        fontFamily: 'fangsong'
+    },
+    palette: {
+        primary: {
+            main: _businessDarkThemePrimaryColor
+        },
+        secondary: {
+            main: _businessDarkThemeSecondaryColor
+        }
+    },
+    textColor: _businessDarkThemeTextColor,
+    backgroundColor: _businessDarkThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: 'fangsong';
+        }
+      `,
+        },
+    }
+});
+
+export const businessLightTheme = createTheme({
+    typography: {
+        fontFamily: 'Times, "Times New Roman", Georgia, serif'
+    },
+    palette: {
+        primary: {
+            main: _businessLightThemePrimaryColor
+        },
+        secondary: {
+            main: _businessLightThemeSecondaryColor
+        }
+    },
+    textColor: _businessLightThemeTextColor,
+    backgroundColor: _businessLightThemeBackgroundColor,
+    components: {
+        MuiCssBaseline: {
+            styleOverrides: `
+        @font-face {
+          font-family: 'Times, "Times New Roman", Georgia, serif';
+        }
+      `,
+        },
+    }
 });
 
 declare module '@mui/material/styles' {

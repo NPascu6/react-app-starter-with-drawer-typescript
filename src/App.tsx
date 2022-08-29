@@ -3,7 +3,14 @@ import './App.css';
 import {ThemeProvider} from '@mui/material/styles';
 import {useSelector} from 'react-redux';
 import {RootState} from './store/rootReducer';
-import {darkTheme, lightTheme, pinkDarkTheme, pinkLightTheme} from './theme/theme';
+import {
+    businessDarkTheme,
+    businessLightTheme,
+    darkTheme,
+    lightTheme,
+    pinkDarkTheme,
+    pinkLightTheme
+} from './theme/theme';
 import MainPage from './pages/MainPage';
 import {useAppDispatch} from "./store/store";
 import {fetchGithubProfile, fetchGithubUserProfile} from "./store/thunks/appThunk";
@@ -18,7 +25,7 @@ function App() {
     const dispatch = useAppDispatch();
     const [user, loading, error] = useAuthState(auth);
     const [localTheme, setLocalTheme] = useState(lightTheme)
-debugger
+
     useEffect(() => {
         switch (theme) {
             case 'lightTheme':
@@ -32,6 +39,12 @@ debugger
                 break
             case 'pinkDarkTheme':
                 setLocalTheme(pinkDarkTheme)
+                break
+            case 'businessDarkTheme':
+                setLocalTheme(businessDarkTheme)
+                break
+            case 'businessLightTheme':
+                setLocalTheme(businessLightTheme)
                 break
             default:
                 return

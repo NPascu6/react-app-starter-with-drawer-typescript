@@ -41,6 +41,7 @@ const appSlice = createSlice({
             console.log('Set github profile:', action.payload)
         },
         setTheme(state, action: PayloadAction<string>){
+            console.log('setTheme:', action.payload)
             state.theme = action.payload
         }
     },

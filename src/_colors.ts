@@ -17,3 +17,13 @@ export const _pinkDarkThemeBackgroundColor = '#87255B'
 export const _pinkDarkThemeTextColor = '#D1C8E1'
 export const _pinkDarkThemePrimaryColor = '#C3C3E6'
 export const _pinkDarkThemeSecondaryColor = '#B370B0'
+
+export const _businessLightThemeBackgroundColor = '#747274'
+export const _businessLightThemeTextColor = '#B9B7A7'
+export const _businessLightThemePrimaryColor = '#4E5166'
+export const _businessLightThemeSecondaryColor = '#7C90A0'
+
+export const _businessDarkThemeBackgroundColor = '#B9B7A7'
+export const _businessDarkThemeTextColor = '#7C90A0'
+export const _businessDarkThemePrimaryColor = '#7C90A0'
+export const _businessDarkThemeSecondaryColor = '#4E5166'
