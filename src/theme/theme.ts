@@ -8,7 +8,15 @@ import {
     _lightThemeBackgroundColor,
     _lightThemePrimaryColor,
     _lightThemeSecondaryColor,
-    _lightThemeTextColor
+    _lightThemeTextColor,
+    _pinkDarkThemeBackgroundColor,
+    _pinkDarkThemePrimaryColor,
+    _pinkDarkThemeSecondaryColor,
+    _pinkDarkThemeTextColor,
+    _pinkLightThemeBackgroundColor,
+    _pinkLightThemePrimaryColor,
+    _pinkLightThemeSecondaryColor,
+    _pinkLightThemeTextColor
 } from "../_colors";
 
 export const darkTheme = createTheme({
@@ -35,6 +43,32 @@ export const lightTheme = createTheme({
     },
     textColor: _lightThemeTextColor,
     backgroundColor: _lightThemeBackgroundColor
+});
+
+export const pinkDarkTheme = createTheme({
+    palette: {
+        primary: {
+            main: _pinkDarkThemePrimaryColor
+        },
+        secondary: {
+            main: _pinkDarkThemeSecondaryColor
+        }
+    },
+    textColor: _pinkDarkThemeTextColor,
+    backgroundColor: _pinkDarkThemeBackgroundColor
+});
+
+export const pinkLightTheme = createTheme({
+    palette: {
+        primary: {
+            main: _pinkLightThemePrimaryColor
+        },
+        secondary: {
+            main: _pinkLightThemeSecondaryColor
+        }
+    },
+    textColor: _pinkLightThemeTextColor,
+    backgroundColor: _pinkLightThemeBackgroundColor
 });
 
 declare module '@mui/material/styles' {

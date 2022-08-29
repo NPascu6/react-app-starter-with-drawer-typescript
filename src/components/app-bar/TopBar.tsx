@@ -3,21 +3,19 @@ import MuiAppBar from '@mui/material/AppBar';
 import {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import MenuIcon from '@mui/icons-material/Menu';
 import Typography from '@mui/material/Typography';
 import React from 'react';
 import {_appTitle, _defaultDrawerWidth} from '../../_constant';
 import {useAppDispatch} from '../../store/store';
-import {handleDrawerChange, handleThemeChange} from '../../store/appReducer';
+import {handleDrawerChange} from '../../store/appReducer';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/rootReducer';
-import ToggleOnIcon from '@mui/icons-material/ToggleOn';
-import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import {Grid} from '@mui/material';
 import LoginDialog from "./AccountDialog";
 import useWindowSize from "../../hooks/useWindowSize";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
+import ThemeMenuList from "./ThemeMenuList";
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -46,13 +44,9 @@ const AppBarComponent = () => {
     const dispatch = useAppDispatch();
     const {
         drawerOpen,
-        isDarkTheme
     } = useSelector((state: RootState) => state.app);
     const windowSize = useWindowSize()
 
-    const handleThemeChangeAction = () => {
-        dispatch(handleThemeChange(!isDarkTheme));
-    };
 
     return <TopBar position="fixed" open={drawerOpen}
                    sx={{
@@ -75,19 +69,17 @@ const AppBarComponent = () => {
                             ...(drawerOpen && {display: 'inherit'}),
                         }}
                     >
-                        {!drawerOpen ?<ChevronRightIcon/> : <ChevronLeftIcon/>}
+                        {!drawerOpen ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                     </IconButton>
                     <Typography variant="h6" noWrap component="div">
                         {_appTitle}
                     </Typography>
                 </Grid>
                 <Grid item xs={2}>
-                    <IconButton onClick={handleThemeChangeAction} sx={{alignSelf: 'flex-end'}}>
-                        {!isDarkTheme ? <ToggleOnIcon color="primary"/> : <ToggleOffIcon color="primary"/>}
-                    </IconButton>
                     <IconButton>
                         <LoginDialog/>
                     </IconButton>
+                    <ThemeMenuList/>
                 </Grid>
             </Grid>
         </Toolbar>

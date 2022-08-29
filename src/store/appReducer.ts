@@ -1,10 +1,15 @@
 import {createSlice, PayloadAction} from '@reduxjs/toolkit';
+import {lightTheme} from "../theme/theme";
+import {Theme} from "@mui/material/styles";
+
+
 
 interface AppSliceState {
     drawerOpen: boolean;
     isDarkTheme: boolean;
     githubProfiles: any[];
-    githubProfile: any
+    githubProfile: any;
+    theme: string
 }
 
 const initialState: AppSliceState = {
@@ -12,7 +17,7 @@ const initialState: AppSliceState = {
     isDarkTheme: false,
     githubProfiles: [],
     githubProfile: null,
-
+    theme: "lightTheme"
 };
 
 const appSlice = createSlice({
@@ -34,6 +39,9 @@ const appSlice = createSlice({
         setGithubProfile(state, action: PayloadAction<any[]>){
             state.githubProfile = action.payload
             console.log('Set github profile:', action.payload)
+        },
+        setTheme(state, action: PayloadAction<string>){
+            state.theme = action.payload
         }
     },
 });
@@ -42,7 +50,8 @@ export const {
     handleDrawerChange,
     handleThemeChange,
     setGithubProfiles,
-    setGithubProfile
+    setGithubProfile,
+    setTheme
 } = appSlice.actions;
 
 export default appSlice.reducer;
