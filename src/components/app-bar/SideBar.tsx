@@ -79,6 +79,7 @@ const SideBar = () => {
     sx={{ '& .MuiDrawer-paper': {
             backgroundColor: theme.textColor,
             color: theme.backgroundColor,
+
         }}}>
         <DrawerHeader>
             <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
@@ -86,7 +87,7 @@ const SideBar = () => {
             </IconButton>
         </DrawerHeader>
         <Divider/>
-        <List>
+        <List sx={{marginTop:'1em'}}>
             {routes?.map((route, index) => (
                 <ListItem key={route.key} disablePadding sx={{display: 'block'}}
                           onClick={() => navigate(`${route.url}`)}>

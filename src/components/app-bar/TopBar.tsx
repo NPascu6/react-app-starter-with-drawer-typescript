@@ -15,6 +15,9 @@ import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import {Grid} from '@mui/material';
 import LoginDialog from "./AccountDialog";
+import useWindowSize from "../../hooks/useWindowSize";
+import ChevronRightIcon from "@mui/icons-material/ChevronRight";
+import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -45,7 +48,7 @@ const AppBarComponent = () => {
         drawerOpen,
         isDarkTheme
     } = useSelector((state: RootState) => state.app);
-
+    const windowSize = useWindowSize()
 
     const handleThemeChangeAction = () => {
         dispatch(handleThemeChange(!isDarkTheme));
@@ -53,35 +56,40 @@ const AppBarComponent = () => {
 
     return <TopBar position="fixed" open={drawerOpen}
                    sx={{
+                       width: windowSize.innerWidth <= 500 ? '100%' : '100%',
                        backgroundColor: theme.backgroundColor, color: theme.textColor, '& .MuiDrawer-paper': {
                            backgroundColor: theme.textColor,
                            color: theme.backgroundColor,
                        }
                    }}>
         <Toolbar>
-            <Grid container className={'Center'}>
-                <IconButton
-                    color="primary"
-                    aria-label="open drawer"
-                    onClick={() => dispatch(handleDrawerChange(!drawerOpen))}
-                    edge="start"
-                    sx={{
-                        marginRight: 5,
-                        ...(drawerOpen && {display: 'none'}),
-                    }}
-                >
-                    <MenuIcon/>
-                </IconButton>
-                <Typography variant="h6" noWrap component="div">
-                    {_appTitle}
-                </Typography>
+            <Grid container>
+                <Grid item xs={10}>
+                    <IconButton
+                        color="primary"
+                        aria-label="open drawer"
+                        onClick={() => dispatch(handleDrawerChange(!drawerOpen))}
+                        edge="start"
+                        sx={{
+                            marginRight: 5,
+                            ...(drawerOpen && {display: 'inherit'}),
+                        }}
+                    >
+                        {!drawerOpen ?<ChevronRightIcon/> : <ChevronLeftIcon/>}
+                    </IconButton>
+                    <Typography variant="h6" noWrap component="div">
+                        {_appTitle}
+                    </Typography>
+                </Grid>
+                <Grid item xs={2}>
+                    <IconButton onClick={handleThemeChangeAction} sx={{alignSelf: 'flex-end'}}>
+                        {!isDarkTheme ? <ToggleOnIcon color="primary"/> : <ToggleOffIcon color="primary"/>}
+                    </IconButton>
+                    <IconButton>
+                        <LoginDialog/>
+                    </IconButton>
+                </Grid>
             </Grid>
-            <IconButton onClick={handleThemeChangeAction}>
-                {!isDarkTheme ? <ToggleOnIcon color="primary"/> : <ToggleOffIcon color="primary"/>}
-            </IconButton>
-            <IconButton>
-                <LoginDialog/>
-            </IconButton>
         </Toolbar>
     </TopBar>;
 };

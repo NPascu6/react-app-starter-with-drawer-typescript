@@ -1,7 +1,6 @@
 import {Paper} from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import * as React from "react";
-import {useEffect, useState} from "react";
 import img1 from '../../assets/images/TradingApp1.png'
 import img2 from '../../assets/images/TradingApp2.png'
 import img3 from '../../assets/images/TradingApp3.png'
@@ -9,28 +8,12 @@ import img4 from '../../assets/images/TradingApp4.png'
 import img5 from '../../assets/images/TradingApp5.png'
 import img6 from '../../assets/images/TradingApp6.png'
 import {useTheme} from "@mui/material/styles";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const TradingAppPresentation = () => {
     const theme = useTheme()
     const images = [img1, img2, img3, img4, img5, img6]
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-
-    function getWindowSize() {
-        const {innerWidth, innerHeight} = window;
-        return {innerWidth, innerHeight};
-    }
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     return <Paper sx={{
         margin: '0.2em',

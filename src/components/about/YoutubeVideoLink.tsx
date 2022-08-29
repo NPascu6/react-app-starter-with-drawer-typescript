@@ -35,7 +35,7 @@ const YoutubeVideoLink = () => {
         <iframe
             title={'Youtube'}
             style={{
-                minWidth: windowSize.innerWidth < 500 ? '18em' : '30em'
+                minWidth: windowSize.innerWidth < 500 ? '18em' : '20em'
             }}
             width="100%" height="250" src="https://www.youtube.com/embed/sZAjLrzEOOQ"
             frameBorder="0"

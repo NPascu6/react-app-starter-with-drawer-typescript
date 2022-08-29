@@ -3,32 +3,15 @@ import img1 from "../../assets/images/portal/portal1.png";
 import img2 from "../../assets/images/portal/portal2.png";
 import img3 from "../../assets/images/portal/portal3.png";
 import img4 from "../../assets/images/portal/portal4.png";
-import {useEffect, useState} from "react";
+import * as React from "react";
 import {Paper} from "@mui/material";
 import Carousel from "react-material-ui-carousel";
-import * as React from "react";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const PortalPresentation = () => {
     const theme = useTheme()
     const images = [img1, img2, img3, img4]
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-
-    function getWindowSize() {
-        const {innerWidth, innerHeight} = window;
-        return {innerWidth, innerHeight};
-    }
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     return <Paper sx={{
         border: '1px solid',

@@ -5,6 +5,7 @@ import YoutubeVideoLink from "../components/about/YoutubeVideoLink";
 import CommentsForm from "../components/about/CommentsForm";
 import RegisterForm from "../components/about/RegisterForm";
 import LoginForm from "../components/about/LoginForm";
+import useWindowSize from "../hooks/useWindowSize";
 
 interface UserInfoFriend {
     name: string,
@@ -21,6 +22,7 @@ export interface UserInfo {
 
 const AboutPage = () => {
     const theme = useTheme()
+    const windowSize = useWindowSize()
 
     return <Grid container className={'Center'}>
         <Paper
@@ -30,7 +32,7 @@ const AboutPage = () => {
                 color: theme.textColor,
                 flexDirection: 'column',
                 flex: 1,
-                maxWidth: '40em',
+                maxWidth: windowSize.innerWidth >= 500 ? '40em' : '20em',
                 padding: '1.5em',
                 userSelect: 'none',
             }}>

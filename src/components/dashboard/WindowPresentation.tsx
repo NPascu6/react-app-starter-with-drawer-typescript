@@ -9,31 +9,14 @@ import img8 from "../../assets/images/windows/example8.png";
 import img9 from "../../assets/images/windows/example9.png";
 
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {Paper} from "@mui/material";
 import Carousel from "react-material-ui-carousel";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const WindowPresentation = () => {
     const theme = useTheme()
     const images = [img1, img2, img3, img4, img6, img7, img8, img9]
-    const [windowSize, setWindowSize] = useState(getWindowSize());
-
-    function getWindowSize() {
-        const {innerWidth, innerHeight} = window;
-        return {innerWidth, innerHeight};
-    }
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     return <Paper sx={{
         margin: '0.2em',
