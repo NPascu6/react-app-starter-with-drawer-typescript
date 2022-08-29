@@ -4,6 +4,7 @@ import {useState} from "react";
 import {useTheme} from "@mui/material/styles";
 import {registerWithFirebase} from "../../store/thunks/authThunk";
 import {useAppDispatch} from "../../store/store";
+import {validateEmail} from "../../helpers/helpers";
 
 
 export interface UserRegisterModel {
@@ -20,6 +21,7 @@ const CommentsForm = () => {
         email: "",
     })
     const dispatch = useAppDispatch()
+    const [validEmail, setValidEmail] = useState<boolean>(false)
 
     const handleChangeUserInfo = (val: string, type: string) => {
         switch (type) {
@@ -38,6 +40,9 @@ const CommentsForm = () => {
                 break;
             }
             case 'email': {
+                let valid = validateEmail(userInfo)
+                valid ? setValidEmail(true) : setValidEmail(false)
+
                 setUserInfo(prevState => ({
                     ...prevState,
                     email: val
@@ -93,6 +98,7 @@ const CommentsForm = () => {
             </Grid>
             <Grid item>
                 <TextField label={'Email to be reached at'}
+                           error={!validEmail && userInfo.email !== ""}
                            sx={{
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
@@ -107,7 +113,7 @@ const CommentsForm = () => {
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'email')}/>
             </Grid>
         </Grid>
-        <Button onClick={async (e) => {
+        <Button disabled={!userInfo.email || !userInfo.password || !userInfo.name} onClick={async (e) => {
             dispatch(registerWithFirebase(userInfo))
             //await registerWithEmailAndPassword(userInfo.name, userInfo.email, userInfo.password)
             setUserInfo({

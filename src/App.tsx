@@ -9,11 +9,27 @@ import {useAppDispatch} from "./store/store";
 import {fetchGithubProfile, fetchGithubUserProfile} from "./store/thunks/appThunk";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "./firebase/firebase";
+import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
+import {sendFirebaseEmailVerification} from "./store/thunks/authThunk";
 
 function App() {
     const {isDarkTheme, githubProfiles, githubProfile} = useSelector((state: RootState) => state.app);
     const dispatch = useAppDispatch();
     const [user, loading, error] = useAuthState(auth);
+
+    useEffect(() => {
+        if(user?.emailVerified || !user) return
+        dispatch(sendFirebaseEmailVerification())
+    }, [user, dispatch])
+
+    useEffect(() => {
+        if(!user) return
+        dispatch(setFirebaseUser(user.email))
+        if(!loading) return
+        dispatch(setFirebaseLoading(loading))
+        if(!error) return
+        dispatch(setFirebaseError(error))
+    }, [user, loading, error, dispatch])
 
     useEffect(() => {
         if(githubProfiles.length !== 0) return

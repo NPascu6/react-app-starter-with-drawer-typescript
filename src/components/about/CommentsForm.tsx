@@ -1,5 +1,5 @@
 import {Button, Checkbox, Grid, Paper, TextField} from "@mui/material";
-import {handleSubmit} from "../../firebase/firestore/AddTask";
+import {handleSubmit} from "../../firebase/firestore/firestore";
 import * as React from "react";
 import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material/styles";

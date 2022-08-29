@@ -14,6 +14,7 @@ import {RootState} from '../../store/rootReducer';
 import ToggleOnIcon from '@mui/icons-material/ToggleOn';
 import ToggleOffIcon from '@mui/icons-material/ToggleOff';
 import {Grid} from '@mui/material';
+import LoginDialog from "./AccountDialog";
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -58,7 +59,7 @@ const AppBarComponent = () => {
                        }
                    }}>
         <Toolbar>
-            <Grid container>
+            <Grid container className={'Center'}>
                 <IconButton
                     color="primary"
                     aria-label="open drawer"
@@ -77,6 +78,9 @@ const AppBarComponent = () => {
             </Grid>
             <IconButton onClick={handleThemeChangeAction}>
                 {!isDarkTheme ? <ToggleOnIcon color="primary"/> : <ToggleOffIcon color="primary"/>}
+            </IconButton>
+            <IconButton>
+                <LoginDialog/>
             </IconButton>
         </Toolbar>
     </TopBar>;
