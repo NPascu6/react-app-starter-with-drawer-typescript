@@ -1,5 +1,5 @@
 export const _defaultDrawerWidth = 180;
-export const _appTitle = 'Welcome to my demo web app (alpha V/0.0.1)';
+export const _appTitle = 'Welcome to my demo web app (alpha V/0.0.1) / Created with React 18 using Redux / Contains example register and auth with Firebase Api';
 export const _githubAvatarUrl = 'https://avatars.githubusercontent.com/u/58431719?v=4'
 export const _githubRepoTitles = [
     'react-app-starter-with-drawer-typescript',

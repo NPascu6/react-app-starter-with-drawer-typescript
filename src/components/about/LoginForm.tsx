@@ -88,7 +88,12 @@ const CommentsForm = () => {
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'password')}/>
             </Grid>
         </Grid>
-        <Button disabled={!userInfo.password || !userInfo.email} sx={{border: '1px solid', padding: '0.2em', margin: '0.5em'}} onClick={async (e) => {
+        <Button
+            disabled={!userInfo.password || !userInfo.email}
+            sx={{border: '1px solid',
+                borderRadius: 0,
+                padding: '0.2em',
+                margin: '0.5em'}} onClick={async (e) => {
             dispatch(loginWithFirebase(userInfo))
             //await registerWithEmailAndPassword(userInfo.name, userInfo.email, userInfo.password)
             setUserInfo({

@@ -65,7 +65,7 @@ const CommentsForm = () => {
                   }}
                   className={'Center'}>
         <Grid container spacing={2} className={'Center'} sx={{flexDirection: 'column'}}>
-            <Grid item>
+            <Grid item xs={12}>
                 <TextField label={'Name'}
                            sx={{
                                '& .MuiFormLabel-root': {
@@ -81,7 +81,7 @@ const CommentsForm = () => {
                            size={"small"}
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'name')}/>
             </Grid>
-            <Grid item>
+            <Grid item xs={12}>
                 <TextField label={'Password'}
                            sx={{
                                '& .MuiFormLabel-root': {
@@ -96,8 +96,8 @@ const CommentsForm = () => {
                            size={"small"}
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'password')}/>
             </Grid>
-            <Grid item>
-                <TextField label={'Email to be reached at'}
+            <Grid item xs={12}>
+                <TextField label={'Email'}
                            error={!validEmail && userInfo.email !== ""}
                            sx={{
                                '& .MuiFormLabel-root': {
@@ -113,7 +113,9 @@ const CommentsForm = () => {
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'email')}/>
             </Grid>
         </Grid>
-        <Button disabled={!userInfo.email || !userInfo.password || !userInfo.name} onClick={async (e) => {
+        <Button
+            sx={{borderRadius: 0}}
+            disabled={!userInfo.email || !userInfo.password || !userInfo.name} onClick={async (e) => {
             dispatch(registerWithFirebase(userInfo))
             //await registerWithEmailAndPassword(userInfo.name, userInfo.email, userInfo.password)
             setUserInfo({

@@ -1,4 +1,4 @@
-import {Paper} from "@mui/material";
+import {Grid, Paper, Typography} from "@mui/material";
 import Carousel from "react-material-ui-carousel";
 import * as React from "react";
 import img1 from '../../assets/images/TradingApp1.png'
@@ -25,12 +25,19 @@ const TradingAppPresentation = () => {
         padding: '0.1em',
         height: '15em'
     }}>
-        <Carousel sx={{minWidth: windowSize.innerWidth < 500 ? '18.7em' : '29em'}}>
-            {
-                images.map((item, i) => <img alt={i.toString()} key={i} src={item}
-                                             style={{height: '12em', width: '100%'}}/>)
-            }
-        </Carousel>
+        <Grid container>
+            <Typography variant={"h6"}>Sample images from trading application:</Typography>
+            <Carousel
+                interval={2000}
+                sx={{minWidth: windowSize.innerWidth < 500 ? '18.7em' : '29em'}}>
+                {
+                    images.map((item, i) => <img alt={i.toString()} key={i} src={item}
+                                                 style={{height: '12em', width: '100%'}}/>)
+                }
+            </Carousel>
+            <Typography variant={"body2"}>Created with Openfin api(Electron container) and React 18 using SignalR ws.</Typography>
+        </Grid>
+
     </Paper>
 }
 

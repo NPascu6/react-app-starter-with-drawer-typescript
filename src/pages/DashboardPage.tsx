@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Grid, Paper} from "@mui/material";
 import GithubProfileCard from "../components/dashboard/GithubProfileCard";
-
 import TradingAppPresentation from "../components/dashboard/TradingAppPresentation";
 import PortalPresentation from "../components/dashboard/PortalPresentation";
 import WindowPresentation from "../components/dashboard/WindowPresentation";
@@ -24,6 +23,14 @@ export default function DashboardPage() {
             }}>
                 <TradingAppPresentation/>
                 <WindowPresentation/>
+            </Paper>
+            <Paper elevation={3} sx={{
+                backgroundColor: theme.palette.primary.main,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                width: windowSize.innerWidth < 500 ? '20em' : '30em',
+            }}>
                 <PortalPresentation/>
             </Paper>
         </Grid>

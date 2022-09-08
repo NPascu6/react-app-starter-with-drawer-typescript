@@ -8,6 +8,7 @@ import {useSelector} from "react-redux";
 import {RootState} from "../../store/rootReducer";
 import {Dialog, Divider, Grid} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
+import AppsIcon from '@mui/icons-material/Apps';
 
 const ThemeMenuList = () => {
     const [anchorEl, setAnchorEl] = React.useState<null | HTMLElement>(null);
@@ -30,29 +31,42 @@ const ThemeMenuList = () => {
             handleClose()
             dispatch(setTheme(selectedTheme))
         }
-    }, [selectedTheme])
+    }, [selectedTheme, dispatch, theme])
 
     return (
         <div>
             <Button
+                sx={{
+                    height: '1.5em',
+                    width: '1em',
+                    borderRadius: 0,
+                    padding: '0.5em',
+                    backgroundColor: themeObj.textColor,
+                    color: themeObj.backgroundColor
+                }}
                 id="demo-positioned-button"
                 aria-controls={open ? 'demo-positioned-menu' : undefined}
                 aria-haspopup="true"
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                Themes
+                <AppsIcon/>
             </Button>
             <Dialog open={open} onClose={() => setAnchorEl(null)}>
                 <Grid
-                      sx={{
-                          width: '30em',
-                          padding: '0.2em',
-                          backgroundColor: themeObj.palette.primary.main,
-                          color: themeObj.palette.secondary.main,
-                          flexDirection: 'column'
-                      }}
-                      className={'Center'}
+                    sx={{
+                        flex: 1,
+                        display: 'flex',
+                        width: '20em',
+                        height: '20em',
+                        padding: '0.2em',
+                        backgroundColor: themeObj.palette.primary.main,
+                        color: themeObj.palette.secondary.main,
+                        flexDirection: 'column',
+                        justifyContent: 'center',
+                        alignItems: 'center'
+                    }}
+                    className={'Center'}
                 >
                     <MenuItem selected={selectedTheme === 'lightTheme'}
                               onClick={() => setSelectedTheme('lightTheme')}

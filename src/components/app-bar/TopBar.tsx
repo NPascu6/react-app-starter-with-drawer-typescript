@@ -75,7 +75,7 @@ const AppBarComponent = () => {
                         {_appTitle}
                     </Typography>
                 </Grid>
-                <Grid item xs={2}>
+                <Grid item xs={2} sx={{display:'flex'}} className={'Center'}>
                     <IconButton>
                         <LoginDialog/>
                     </IconButton>

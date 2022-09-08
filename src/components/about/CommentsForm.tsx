@@ -138,7 +138,7 @@ const CommentsForm = () => {
                            onChange={(v) => handleChangeUserInfo(v.target.value, 'comments')}/>
             </Grid>
             <Grid item>
-                <TextField label={'Email to be reached at'}
+                <TextField label={'Email'}
                            sx={{
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
@@ -160,18 +160,19 @@ const CommentsForm = () => {
                 />
             </Grid>
         </Grid>
-        <Button onClick={async (e) => {
-
-            await handleSubmit(e, userInfo)
-            setUserInfo({
-                title: "",
-                comments: "",
-                email: "",
-                completed: false,
-                friends: []
-            })
-        }
-        }>Send</Button>
+        <Button
+            sx={{borderRadius: 0}}
+            onClick={async (e) => {
+                await handleSubmit(e, userInfo)
+                setUserInfo({
+                    title: "",
+                    comments: "",
+                    email: "",
+                    completed: false,
+                    friends: []
+                })
+            }
+            }>Send</Button>
     </Paper>
 }
 

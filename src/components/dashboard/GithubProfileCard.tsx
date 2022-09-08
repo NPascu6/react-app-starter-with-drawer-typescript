@@ -25,7 +25,7 @@ const GithubProfileCard = () => {
                 <Avatar alt={'Profile'} src={_githubAvatarUrl}
                         sx={{width: theme.spacing(12), height: theme.spacing(12)}}/>
             </Grid>
-            <Button>
+            <Button sx={{      borderRadius: 0}}>
                 <a style={{
                     borderRadius: '10px',
                     padding: '0.4em',

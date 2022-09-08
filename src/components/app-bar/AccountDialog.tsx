@@ -43,7 +43,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                     checked={user.emailVerified}
                     inputProps={{'aria-label': 'controlled'}}/>
                 </ListItem>}
-                {!props.firebaseUser && <ListItem autoFocus button onClick={() => handleClose()}>
+                {(!props.firebaseUser && formType === 'login') && <ListItem autoFocus button onClick={() => handleClose()}>
                     <Typography variant={"h5"}>Don't have an account? Register here:</Typography>
                 </ListItem>}
                 {!props.firebaseUser && <ListItem autoFocus button
@@ -51,10 +51,10 @@ function SimpleDialog(props: SimpleDialogProps) {
                     {formType === 'login' ? "Register with firebase..." : "Back to login form..."}
                 </ListItem>}
                 {props.firebaseUser ? <ListItem button onClick={() => dispatch(logoutFirebase())}>
-                    <Button>Logout</Button>
+                    <Button sx={{      borderRadius: 0}}>Logout</Button>
                 </ListItem> : formType === 'login' ? <LoginForm/> : <RegisterForm/>}
                 <ListItem autoFocus button onClick={() => handleClose()}>
-                    <Button>Close</Button>
+                    <Button sx={{      borderRadius: 0}}>Close</Button>
                 </ListItem>
             </List>
         </Dialog>
