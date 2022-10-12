@@ -12,6 +12,13 @@ const GithubProfileCard = () => {
     const {githubProfiles, githubProfile} = useSelector((state: RootState) => state.app);
     const theme = useTheme();
 
+    const onDownload = () => {
+        const link = document.createElement("a");
+        link.download = `PascuNorbertResumeEN.txt`;
+        link.href = "./PascuNorbertresumeEN.pdf";
+        link.click();
+    };
+
     return <Paper elevation={3} sx={{
         border: '1px solid',
         backgroundColor: theme.palette.secondary.main,
@@ -25,15 +32,12 @@ const GithubProfileCard = () => {
                 <Avatar alt={'Profile'} src={_githubAvatarUrl}
                         sx={{width: theme.spacing(12), height: theme.spacing(12)}}/>
             </Grid>
-            <Button sx={{      borderRadius: 0}}>
-                <a style={{
-                    borderRadius: '10px',
-                    padding: '0.4em',
-                    backgroundColor: theme.palette.primary.main,
-                    color: theme.palette.secondary.main,
-                    textDecoration: 'none'
-                }}
-                   href="./PascuNorbertresumeEN.pdf" download>Curriculum Vitae</a>
+            <Button sx={{
+                borderRadius: 0,
+                backgroundColor: theme.textColor,
+                color: theme.backgroundColor,
+                '&:hover': {backgroundColor: theme.backgroundColor, color: theme.textColor}
+            }} onClick={onDownload}>Download CV
             </Button>
             <Divider/>
             <Grid container className={'Flex-Container-Center'}>
@@ -73,9 +77,9 @@ const GithubProfileCard = () => {
                     <Typography variant={"h6"}>Some Github repo links:</Typography>
                 </Grid>
                 <Divider/>
-                {githubProfiles ? githubProfiles.map(repo => <div key={repo.id}> | <Link
-                    href={repo.html_url} target={"_blank"}
-                    rel={"noopener noreferrer"}>{repo.name}</Link> | </div>) : <LoaderPage/>}
+                {githubProfiles ? githubProfiles.map(repo => <div key={repo?.id}> | <Link
+                    href={repo?.html_url} target={"_blank"}
+                    rel={"noopener noreferrer"}>{repo?.name}</Link> | </div>) : <LoaderPage/>}
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
