@@ -1,10 +1,12 @@
-import {Grid, TextField} from "@mui/material";
+import {Grid, IconButton, TextField} from "@mui/material";
 import * as React from "react";
+import {useEffect, useState} from "react";
 import {UserRegisterModel} from "../about/RegisterForm";
 import {validateEmail} from "../../helpers/helpers";
-import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material/styles";
 import {UserLoginModel} from "../about/LoginForm";
+import {signInWithGoogle} from "../../firebase/firestore/firestore";
+import GoogleIcon from '@mui/icons-material/Google';
 
 interface Props {
     user: UserRegisterModel | UserLoginModel,
@@ -22,7 +24,7 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
     const theme = useTheme()
 
     useEffect(() => {
-        if(!userInfo) return
+        if (!userInfo) return
         setUser(userInfo)
     }, [userInfo, setUser])
 
@@ -56,7 +58,7 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
     }
 
     return <Grid container spacing={1} className={'Center'} sx={{flexDirection: 'column', display: 'contents'}}>
-        {type === 'register' && <Grid item xs={12}>
+        {type === 'register' ? <Grid item xs={12}>
             <TextField label={'Name'}
                        sx={{
                            width: '14em',
@@ -72,7 +74,16 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
                        multiline={true}
                        size={"small"}
                        onChange={(v) => handleChangeUserInfo(v.target.value, 'name')}/>
-        </Grid>}
+        </Grid> : <Grid item xs={12} sx={{display: 'flex'}} className={'Center'}>
+            <IconButton sx={{borderRadius: 0}} onClick={async (v) => await signInWithGoogle()}>
+                <span>
+                    Sign in with google |
+                </span>
+                <GoogleIcon/>
+            </IconButton>
+        </Grid>
+
+        }
         <Grid item xs={12}>
             <TextField label={'Password'}
                        sx={{
