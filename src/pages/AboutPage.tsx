@@ -85,18 +85,6 @@ const AboutPage = () => {
                 <LoginForm/>
                 <Typography variant={'h6'}>I also do this:</Typography>
                 <YoutubeVideoLink/>
-                {/*<video src='/Videos/Ski.mp4'*/}
-                {/*       style={{*/}
-                {/*           position: 'absolute',*/}
-                {/*           top: 69,*/}
-                {/*           overflow: "hidden",*/}
-                {/*           opacity: 0.3,*/}
-                {/*           height: '92.5%',*/}
-                {/*       }}*/}
-                {/*       autoPlay={true}*/}
-                {/*       controls={false}*/}
-                {/*       muted={true}*/}
-                {/*       loop={true}/>*/}
             </Paper>
         </Grid>
 };

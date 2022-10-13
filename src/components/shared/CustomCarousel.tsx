@@ -14,8 +14,9 @@ const CustomCarousel = ({images, description}: Props) => {
     const [fullScreen, setFullScreen] = useState<boolean>(false)
 
     return <Grid container sx={{
-        width:  windowSize.innerWidth < 600 ? '100%' : '90%',
+        width: windowSize.innerWidth < 600 ? '100%' : '90%',
         minWidth: windowSize.innerWidth < 600 ? '18em' : '29em',
+
         '& .image-gallery-thumbnails-container': {
             height: '4em',
             width: windowSize.innerWidth < 600 ? '18em' : '29em',
@@ -23,6 +24,9 @@ const CustomCarousel = ({images, description}: Props) => {
         '& .image-gallery-svg': {
             height: '30px',
             width: '20px'
+        },
+        '& .image-gallery-content.fullscreen' : {
+            marginLeft: 8,
         }
     }}>
         <ImageGallery items={images}
@@ -37,8 +41,9 @@ const CustomCarousel = ({images, description}: Props) => {
                                                         }}>
                           <img alt={item.original}
                                src={item.original}
-                               height={!fullScreen ? 200 : 'auto'}
-                               width={!fullScreen ? 300 : '100%'}>
+                               height={!fullScreen ? 200 : windowSize.innerHeight - 100}
+                               width={!fullScreen ? 300 : windowSize.innerWidth - 100}
+                          >
                           </img>
                       </Paper>}/>
         <Typography variant={"body2"}>{description}</Typography>

@@ -34,7 +34,7 @@ const ThemeMenuList = () => {
     }, [selectedTheme, dispatch, theme])
 
     return (
-        <div>
+        <>
             <Button
                 sx={{
                     height: '1.5em',
@@ -102,7 +102,7 @@ const ThemeMenuList = () => {
                     </MenuItem>
                 </Grid>
             </Dialog>
-        </div>
+        </>
     );
 }
 

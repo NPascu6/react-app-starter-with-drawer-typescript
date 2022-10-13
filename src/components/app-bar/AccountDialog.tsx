@@ -16,6 +16,7 @@ import {Checkbox, Typography} from "@mui/material";
 import RegisterForm from "../about/RegisterForm";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../../firebase/firebase";
+import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -35,26 +36,35 @@ function SimpleDialog(props: SimpleDialogProps) {
     };
 
     return (
-        <Dialog onClose={handleClose} open={open}>
+        <Dialog onClose={handleClose} open={open} sx={{}}>
             {props.firebaseUser && <DialogTitle>{props.firebaseUser}</DialogTitle>}
-            <List sx={{backgroundColor: theme.backgroundColor, color: theme.textColor}}>
-                {user && <ListItem sx={{color: user.emailVerified ? 'green' : 'red', pointerEvents: 'none'}}>
+            <List sx={{
+                backgroundColor: theme.backgroundColor,
+                color: theme.textColor,
+                height: '26em',
+                width: '20em',
+                padding: '0.2em'
+            }}>
+                {user && <ListItem sx={{color: user.emailVerified ? 'green' : 'red', pointerEvents: 'none', padding: '0.2em'}}>
                     Email Verified: <Checkbox
                     checked={user.emailVerified}
                     inputProps={{'aria-label': 'controlled'}}/>
                 </ListItem>}
-                {(!props.firebaseUser && formType === 'login') && <ListItem autoFocus button onClick={() => handleClose()}>
+                {(!props.firebaseUser && formType === 'login') ? <ListItem autoFocus button onClick={() => handleClose()}>
                     <Typography variant={"h5"}>Don't have an account? Register here:</Typography>
+                </ListItem> : <ListItem autoFocus button onClick={() => handleClose()}>
+                    <Typography variant={"body2"}>You are registering to a demo(personal) firebase database, you can also verify your email(check spam folder):</Typography>
                 </ListItem>}
                 {!props.firebaseUser && <ListItem autoFocus button
                                                   onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
+                    <LocalFireDepartmentIcon/>
                     {formType === 'login' ? "Register with firebase..." : "Back to login form..."}
                 </ListItem>}
                 {props.firebaseUser ? <ListItem button onClick={() => dispatch(logoutFirebase())}>
                     <Button sx={{      borderRadius: 0}}>Logout</Button>
                 </ListItem> : formType === 'login' ? <LoginForm/> : <RegisterForm/>}
                 <ListItem autoFocus button onClick={() => handleClose()}>
-                    <Button sx={{      borderRadius: 0}}>Close</Button>
+                    <Button sx={{borderRadius: 0}}>Close</Button>
                 </ListItem>
             </List>
         </Dialog>

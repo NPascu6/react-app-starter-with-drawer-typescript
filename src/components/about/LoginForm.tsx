@@ -46,20 +46,20 @@ const CommentsForm = () => {
 
     return <Paper elevation={4}
                   sx={{
-                      flex: 1,
                       backgroundColor: theme.backgroundColor,
-                      display: 'flex',
-                      flexDirection: 'column',
+
                       border: '1px solid',
-                      margin: '1em',
-                      padding: '0.5em'
+                      padding: '0.2em',
+                      height: '15em',
+                      borderRadius: 0,
                   }}
                   className={'Center'}>
-        <Grid container spacing={2} className={'Center'} sx={{flexDirection: 'column'}}>
+        <Grid container spacing={1} className={'Center'} sx={{flexDirection: 'column',        display: 'contents',}}>
             <Grid item>
                 <TextField label={'Email'}
                            error={!validEmail && userInfo.email !== ""}
                            sx={{
+                               width: '14em',
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
                                },
@@ -75,6 +75,7 @@ const CommentsForm = () => {
             <Grid item>
                 <TextField label={'Password'}
                            sx={{
+                               width: '14em',
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
                                },

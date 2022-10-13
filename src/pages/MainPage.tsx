@@ -31,7 +31,6 @@ const MainPage = () => {
             <SideBar/>
         </div>
         <RoutesSwitch/>
-
     </div>;
 
 };

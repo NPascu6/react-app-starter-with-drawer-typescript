@@ -55,19 +55,18 @@ const CommentsForm = () => {
 
     return <Paper elevation={4}
                   sx={{
-                      flex: 1,
                       backgroundColor: theme.backgroundColor,
-                      display: 'flex',
-                      flexDirection: 'column',
                       border: '1px solid',
-                      margin: '1em',
-                      padding: '0.5em'
+                      padding: '0.2em',
+                      borderRadius: 0,
+                      height: '15em'
                   }}
                   className={'Center'}>
-        <Grid container spacing={2} className={'Center'} sx={{flexDirection: 'column'}}>
+        <Grid container spacing={1} className={'Center'} sx={{flexDirection: 'column',        display: 'contents'}}>
             <Grid item xs={12}>
                 <TextField label={'Name'}
                            sx={{
+                               width: '14em',
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
                                },
@@ -84,6 +83,7 @@ const CommentsForm = () => {
             <Grid item xs={12}>
                 <TextField label={'Password'}
                            sx={{
+                               width: '14em',
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
                                },
@@ -100,6 +100,7 @@ const CommentsForm = () => {
                 <TextField label={'Email'}
                            error={!validEmail && userInfo.email !== ""}
                            sx={{
+                               width: '14em',
                                '& .MuiFormLabel-root': {
                                    color: theme.textColor
                                },
@@ -114,7 +115,10 @@ const CommentsForm = () => {
             </Grid>
         </Grid>
         <Button
-            sx={{borderRadius: 0}}
+            sx={{border: '1px solid',
+                borderRadius: 0,
+                padding: '0.2em',
+                margin: '0.5em'}}
             disabled={!userInfo.email || !userInfo.password || !userInfo.name} onClick={async (e) => {
             dispatch(registerWithFirebase(userInfo))
             //await registerWithEmailAndPassword(userInfo.name, userInfo.email, userInfo.password)
