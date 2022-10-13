@@ -19,6 +19,7 @@ import {auth} from "./firebase/firebase";
 import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
 import {sendFirebaseEmailVerification} from "./store/thunks/authThunk";
 import LoaderPage from "./pages/LoaderPage";
+import "react-image-gallery/styles/css/image-gallery.css";
 
 function App() {
     const {githubProfiles, githubProfile, theme} = useSelector((state: RootState) => state.app);

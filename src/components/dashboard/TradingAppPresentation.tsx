@@ -1,5 +1,4 @@
-import {Grid, Paper, Typography} from "@mui/material";
-import Carousel from "react-material-ui-carousel";
+import {Paper} from "@mui/material";
 import * as React from "react";
 import img1 from '../../assets/images/TradingApp1.png'
 import img2 from '../../assets/images/TradingApp2.png'
@@ -8,35 +7,31 @@ import img4 from '../../assets/images/TradingApp4.png'
 import img5 from '../../assets/images/TradingApp5.png'
 import img6 from '../../assets/images/TradingApp6.png'
 import {useTheme} from "@mui/material/styles";
-import useWindowSize from "../../hooks/useWindowSize";
+import "react-image-gallery/styles/css/image-gallery.css";
+import CustomCarousel from "../shared/CustomCarousel";
 
 const TradingAppPresentation = () => {
     const theme = useTheme()
-    const images = [img1, img2, img3, img4, img5, img6]
-    const windowSize = useWindowSize()
+    const images = [
+        {original: img1, thumbnail: img1, thumbnailHeight : 60},
+        {original: img2, thumbnail: img2, thumbnailHeight : 60},
+        {original: img3, thumbnail: img3, thumbnailHeight : 60},
+        {original: img4, thumbnail: img4, thumbnailHeight : 60},
+        {original: img5, thumbnail: img5, thumbnailHeight : 60},
+        {original: img6, thumbnail: img6, thumbnailHeight : 60}
+    ]
 
     return <Paper sx={{
-        margin: '0.2em',
         border: '1px solid',
         backgroundColor: theme.palette.secondary.main,
         display: 'flex',
         flex: 1,
         justifyContent: 'center',
         padding: '0.1em',
-        height: '15em'
+        height: '17em',
     }}>
-        <Grid container>
-            <Typography variant={"h6"}>Sample images from trading application:</Typography>
-            <Carousel
-                interval={2000}
-                sx={{minWidth: windowSize.innerWidth < 500 ? '18.7em' : '29em'}}>
-                {
-                    images.map((item, i) => <img alt={i.toString()} key={i} src={item}
-                                                 style={{height: '12em', width: '100%'}}/>)
-                }
-            </Carousel>
-            <Typography variant={"body2"}>Created with Openfin api(Electron container) and React 18 using SignalR ws.</Typography>
-        </Grid>
+        <CustomCarousel images={images}
+                        description={'Created with Openfin api(Electron container) and React 18 using SignalR.'}/>
 
     </Paper>
 }

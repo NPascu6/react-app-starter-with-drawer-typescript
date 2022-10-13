@@ -3,9 +3,8 @@ import MuiAppBar from '@mui/material/AppBar';
 import {AppBarProps as MuiAppBarProps} from '@mui/material/AppBar/AppBar';
 import Toolbar from '@mui/material/Toolbar';
 import IconButton from '@mui/material/IconButton';
-import Typography from '@mui/material/Typography';
 import React from 'react';
-import {_appTitle, _defaultDrawerWidth} from '../../_constant';
+import {_defaultDrawerWidth} from '../../_constant';
 import {useAppDispatch} from '../../store/store';
 import {handleDrawerChange} from '../../store/appReducer';
 import {useSelector} from 'react-redux';
@@ -71,11 +70,8 @@ const AppBarComponent = () => {
                     >
                         {!drawerOpen ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
                     </IconButton>
-                    <Typography variant="h6" noWrap component="div">
-                        {_appTitle}
-                    </Typography>
                 </Grid>
-                <Grid item xs={2} sx={{display:'flex'}} className={'Center'}>
+                <Grid item xs={2} sx={{display: 'flex'}} className={'Center'}>
                     <IconButton>
                         <LoginDialog/>
                     </IconButton>

@@ -25,7 +25,7 @@ import {
     _pinkLightThemePrimaryColor,
     _pinkLightThemeSecondaryColor,
     _pinkLightThemeTextColor
-} from "../_colors";
+} from "../assets/_colors";
 
 export const darkTheme = createTheme({
     typography: {

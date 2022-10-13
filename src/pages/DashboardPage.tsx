@@ -19,7 +19,7 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '20em' : '30em',
+                width: windowSize.innerWidth < 500 ? '19em' : '30em',
             }}>
                 <TradingAppPresentation/>
                 <WindowPresentation/>
@@ -29,7 +29,7 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '20em' : '30em',
+                width: windowSize.innerWidth < 500 ? '19em' : '30em',
             }}>
                 <PortalPresentation/>
             </Paper>

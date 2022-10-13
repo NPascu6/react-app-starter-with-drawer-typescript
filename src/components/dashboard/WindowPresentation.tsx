@@ -9,38 +9,35 @@ import img8 from "../../assets/images/windows/example8.png";
 import img9 from "../../assets/images/windows/example9.png";
 
 import * as React from "react";
-import {Grid, Paper, Typography} from "@mui/material";
-import Carousel from "react-material-ui-carousel";
-import useWindowSize from "../../hooks/useWindowSize";
+import {Paper} from "@mui/material";
+import img5 from "../../assets/images/TradingApp5.png";
+import CustomCarousel from "../shared/CustomCarousel";
 
 const WindowPresentation = () => {
     const theme = useTheme()
-    const images = [img1, img2, img3, img4, img6, img7, img8, img9]
-    const windowSize = useWindowSize()
+    const images = [
+        {original: img1, thumbnail: img1, thumbnailHeight : 60},
+        {original: img2, thumbnail: img2, thumbnailHeight : 60},
+        {original: img3, thumbnail: img3, thumbnailHeight : 60},
+        {original: img4, thumbnail: img4, thumbnailHeight : 60},
+        {original: img5, thumbnail: img5, thumbnailHeight : 60},
+        {original: img6, thumbnail: img6, thumbnailHeight : 60},
+        {original: img7, thumbnail: img7, thumbnailHeight : 60},
+        {original: img8, thumbnail: img8, thumbnailHeight : 60},
+        {original: img9, thumbnail: img9, thumbnailHeight : 60}
+    ]
 
     return <Paper sx={{
-        margin: '0.2em',
         border: '1px solid',
         backgroundColor: theme.palette.secondary.main,
         display: 'flex',
         flex: 1,
         justifyContent: 'center',
         padding: '0.1em',
-        height: '15em'
+        height: '17em'
     }}>
-        <Grid container>
-            <Typography variant={"h6"}>Sample windows:</Typography>
-            <Carousel
-                interval={2200}
-                sx={{minWidth: windowSize.innerWidth < 500 ? '18.7em' : '29em'}}>
-                {
-                    images.map((item, i) => <img alt={i.toString()} key={i} src={item}
-                                                 style={{height: '12em', width: '100%'}}/>)
-                }
-            </Carousel>
-            <Typography variant={"body2"}>Order book, depth char L2 cumulative using Highcharts React.
-                ws.</Typography>
-        </Grid>
+        <CustomCarousel images={images}
+                        description={'Order book, depth char L2 cumulative using Highcharts React.'}/>
     </Paper>
 }
 

@@ -30,8 +30,8 @@ const MainPage = () => {
             <AppBarComponent/>
             <SideBar/>
         </div>
-
         <RoutesSwitch/>
+
     </div>;
 
 };
