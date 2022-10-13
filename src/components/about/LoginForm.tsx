@@ -1,48 +1,23 @@
-import {Button, Grid, Paper, TextField} from "@mui/material";
+import {Button, Paper} from "@mui/material";
 import * as React from "react";
 import {useState} from "react";
 import {useTheme} from "@mui/material/styles";
 import {loginWithFirebase} from "../../store/thunks/authThunk";
 import {useAppDispatch} from "../../store/store";
-import {validateEmail} from "../../helpers/helpers";
-
+import UserInfoGrid from "../shared/UserInfoGrid";
 
 export interface UserLoginModel {
     password: string,
     email: string,
 }
 
-const CommentsForm = () => {
+const LoginForm = () => {
     const theme = useTheme()
-    const [userInfo, setUserInfo] = useState<UserLoginModel>({
+    const [user, setUser] = useState<UserLoginModel>({
         password: "",
         email: "",
     })
     const dispatch = useAppDispatch()
-    const [validEmail, setValidEmail] = useState<boolean>(false)
-
-    const handleChangeUserInfo = (val: string, type: string) => {
-        switch (type) {
-            case 'password' : {
-                setUserInfo(prevState => ({
-                    ...prevState,
-                    password: val
-                }));
-                break;
-            }
-            case 'email': {
-                let valid = validateEmail(userInfo)
-                valid ? setValidEmail(true) : setValidEmail(false)
-
-                setUserInfo(prevState => ({
-                    ...prevState,
-                    email: val
-                }));
-                break;
-            }
-        }
-    }
-
 
     return <Paper elevation={4}
                   sx={{
@@ -54,56 +29,20 @@ const CommentsForm = () => {
                       borderRadius: 0,
                   }}
                   className={'Center'}>
-        <Grid container spacing={1} className={'Center'} sx={{flexDirection: 'column',        display: 'contents',}}>
-            <Grid item>
-                <TextField label={'Email'}
-                           error={!validEmail && userInfo.email !== ""}
-                           sx={{
-                               width: '14em',
-                               '& .MuiFormLabel-root': {
-                                   color: theme.textColor
-                               },
-                               '& .MuiInputBase-root': {
-                                   color: theme.textColor
-                               }
-                           }}
-                           type={"email"}
-                           value={userInfo.email}
-                           size={"small"}
-                           onChange={(v) => handleChangeUserInfo(v.target.value, 'email')}/>
-            </Grid>
-            <Grid item>
-                <TextField label={'Password'}
-                           sx={{
-                               width: '14em',
-                               '& .MuiFormLabel-root': {
-                                   color: theme.textColor
-                               },
-                               '& .MuiInputBase-root': {
-                                   color: theme.textColor
-                               }
-                           }}
-                           type={"password"}
-                           value={userInfo.password}
-                           size={"small"}
-                           onChange={(v) => handleChangeUserInfo(v.target.value, 'password')}/>
-            </Grid>
-        </Grid>
+        <UserInfoGrid type={'login'} user={user} setUser={setUser}/>
         <Button
-            disabled={!userInfo.password || !userInfo.email}
-            sx={{border: '1px solid',
+            disabled={!user.password || !user.email}
+            sx={{
+                border: '1px solid',
                 borderRadius: 0,
                 padding: '0.2em',
-                margin: '0.5em'}} onClick={async (e) => {
-            dispatch(loginWithFirebase(userInfo))
+                margin: '0.5em'
+            }} onClick={async (e) => {
+            dispatch(loginWithFirebase(user))
             //await registerWithEmailAndPassword(userInfo.name, userInfo.email, userInfo.password)
-            setUserInfo({
-                password: "",
-                email: "",
-            })
         }
         }>Login</Button>
     </Paper>
 }
 
-export default CommentsForm
+export default LoginForm
