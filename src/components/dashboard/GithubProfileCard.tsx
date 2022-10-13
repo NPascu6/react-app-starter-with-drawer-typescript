@@ -34,9 +34,9 @@ const GithubProfileCard = () => {
             </Grid>
             <Button sx={{
                 borderRadius: 0,
-                backgroundColor: theme.textColor,
+                backgroundColor: theme.palette.background.paper,
                 color: theme.backgroundColor,
-                '&:hover': {backgroundColor: theme.backgroundColor, color: theme.textColor}
+                '&:hover': {backgroundColor: theme.backgroundColor, color: theme.palette.background.paper}
             }} onClick={onDownload}>Download CV
             </Button>
             <Divider/>

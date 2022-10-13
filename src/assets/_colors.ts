@@ -1,5 +1,5 @@
 export const _darkThemeBackgroundColor = '#30362F'
-export const _darkThemeTextColor = '#FFFCFF'
+export const _darkThemeTextColor = '#FFFBDB'
 export const _darkThemePrimaryColor = '#FFFBDB'
 export const _darkThemeSecondaryColor = '#625834'
 

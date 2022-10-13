@@ -50,7 +50,7 @@ const ThemeMenuList = () => {
                 aria-expanded={open ? 'true' : undefined}
                 onClick={handleClick}
             >
-                <AppsIcon/>
+                <AppsIcon sx={{height: '1em'}}/>
             </Button>
             <Dialog open={open} onClose={() => setAnchorEl(null)}>
                 <Grid
@@ -59,7 +59,7 @@ const ThemeMenuList = () => {
                         display: 'flex',
                         width: '20em',
                         height: '20em',
-                        padding: '0.2em',
+                        padding: '1em',
                         backgroundColor: themeObj.palette.primary.main,
                         color: themeObj.palette.secondary.main,
                         flexDirection: 'column',
@@ -68,35 +68,35 @@ const ThemeMenuList = () => {
                     }}
                     className={'Center'}
                 >
-                    <MenuItem selected={selectedTheme === 'lightTheme'}
+                    <MenuItem selected={selectedTheme === 'lightTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('lightTheme')}
                     >
                         Light Theme
                     </MenuItem>
                     <Divider/>
-                    <MenuItem selected={selectedTheme === 'darkTheme'}
+                    <MenuItem selected={selectedTheme === 'darkTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('darkTheme')}>
                         Dark Theme
                     </MenuItem>
                     <Divider/>
 
-                    <MenuItem selected={selectedTheme === 'pinkLightTheme'}
+                    <MenuItem selected={selectedTheme === 'pinkLightTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('pinkLightTheme')}>
                         Pink Light Theme
                     </MenuItem>
                     <Divider/>
-                    <MenuItem selected={selectedTheme === 'pinkDarkTheme'}
+                    <MenuItem selected={selectedTheme === 'pinkDarkTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('pinkDarkTheme')}>
                         Pink Dark Theme
                     </MenuItem>
                     <Divider/>
-                    <MenuItem selected={selectedTheme === 'businessLightTheme'}
+                    <MenuItem selected={selectedTheme === 'businessLightTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('businessLightTheme')}>
                         BS Light Theme
                     </MenuItem>
                     <Divider/>
 
-                    <MenuItem selected={selectedTheme === 'businessDarkTheme'}
+                    <MenuItem selected={selectedTheme === 'businessDarkTheme'} sx={{height: '2em'}}
                               onClick={() => setSelectedTheme('businessDarkTheme')}>
                         BS Dark Theme
                     </MenuItem>
