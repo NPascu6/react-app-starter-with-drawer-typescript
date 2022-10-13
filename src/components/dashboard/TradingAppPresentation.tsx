@@ -31,6 +31,7 @@ const TradingAppPresentation = () => {
         height: '17em',
     }}>
         <CustomCarousel images={images}
+                        type={'image'}
                         description={'Created with Openfin api(Electron container) and React 18 using SignalR.'}/>
 
     </Paper>

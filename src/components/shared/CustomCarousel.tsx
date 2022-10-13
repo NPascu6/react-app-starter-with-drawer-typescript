@@ -3,20 +3,21 @@ import {useState} from "react";
 import {Grid, Paper, Typography} from "@mui/material";
 import useWindowSize from "../../hooks/useWindowSize";
 import ImageGallery from 'react-image-gallery';
+import ReactPlayer from 'react-player/lazy'
 
 interface Props {
     images: any
     description: string
+    type: string
 }
 
-const CustomCarousel = ({images, description}: Props) => {
+const CustomCarousel = ({images, description, type}: Props) => {
     const windowSize = useWindowSize()
     const [fullScreen, setFullScreen] = useState<boolean>(false)
 
-    return <Grid container sx={{
+    return <Grid className={'Center'} container sx={{
         width: windowSize.innerWidth < 600 ? '100%' : '90%',
         minWidth: windowSize.innerWidth < 600 ? '18em' : '29em',
-
         '& .image-gallery-thumbnails-container': {
             height: '4em',
             width: windowSize.innerWidth < 600 ? '18em' : '29em',
@@ -25,7 +26,7 @@ const CustomCarousel = ({images, description}: Props) => {
             height: '30px',
             width: '20px'
         },
-        '& .image-gallery-content.fullscreen' : {
+        '& .image-gallery-content.fullscreen': {
             marginLeft: 8,
         }
     }}>
@@ -39,12 +40,23 @@ const CustomCarousel = ({images, description}: Props) => {
                                                             display: 'flex',
                                                             backgroundColor: 'black'
                                                         }}>
-                          <img alt={item.original}
-                               src={item.original}
-                               height={!fullScreen ? 200 : windowSize.innerHeight - 100}
-                               width={!fullScreen ? 300 : windowSize.innerWidth - 100}
+                          {type === 'image' ? <img alt={item.original}
+                                                   src={item.original}
+                                                   height={!fullScreen ? 200 : windowSize.innerHeight - 100}
+                                                   width={!fullScreen ? 300 : windowSize.innerWidth - 100}
                           >
-                          </img>
+                          </img> : <div className={'Center'} style={{
+                              height: !fullScreen ? 200 : windowSize.innerHeight - 100,
+                              width: !fullScreen ? 460 : windowSize.innerWidth - 100,
+                              display: 'flex'
+                          }}>
+                              <ReactPlayer muted={true}
+                                           controls={true}
+                                           progressInterval={20000}
+                                           loop={true}
+                                           playing={true}
+                                           url={item.original}/>
+                          </div>}
                       </Paper>}/>
         <Typography variant={"body2"}>{description}</Typography>
     </Grid>

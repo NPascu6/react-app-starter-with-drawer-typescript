@@ -26,6 +26,7 @@ const PortalPresentation = () => {
         height: '17em',
     }}>
         <CustomCarousel images={images}
+                        type={'image'}
                         description={'Ag grid used for tables ' +
                         'and rendering updates on dynamic data.'}/>
     </Paper>

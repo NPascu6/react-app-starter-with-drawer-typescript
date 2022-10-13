@@ -37,6 +37,7 @@ const WindowPresentation = () => {
         height: '17em'
     }}>
         <CustomCarousel images={images}
+                        type={'image'}
                         description={'Order book, depth char L2 cumulative using Highcharts React.'}/>
     </Paper>
 }
