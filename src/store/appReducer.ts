@@ -5,7 +5,8 @@ interface AppSliceState {
     isDarkTheme: boolean;
     githubProfiles: any[];
     githubProfile: any;
-    theme: string
+    theme: string,
+    finhubMessages: any[]
 }
 
 const initialState: AppSliceState = {
@@ -13,7 +14,8 @@ const initialState: AppSliceState = {
     isDarkTheme: false,
     githubProfiles: [],
     githubProfile: null,
-    theme: "lightTheme"
+    theme: "lightTheme",
+    finhubMessages:[]
 };
 
 const appSlice = createSlice({
@@ -39,6 +41,9 @@ const appSlice = createSlice({
         setTheme(state, action: PayloadAction<string>) {
             console.log('setTheme:', action.payload)
             state.theme = action.payload
+        },
+        setFinhubMessages(state, action: PayloadAction<any[]>) {
+            state.finhubMessages = action.payload
         }
     },
 });
@@ -48,7 +53,8 @@ export const {
     handleThemeChange,
     setGithubProfiles,
     setGithubProfile,
-    setTheme
+    setTheme,
+    setFinhubMessages
 } = appSlice.actions;
 
 export default appSlice.reducer;

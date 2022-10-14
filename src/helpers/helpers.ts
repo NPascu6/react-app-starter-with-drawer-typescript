@@ -14,3 +14,14 @@ export const validateEmail = (userInfo: UserRegisterModel | UserLoginModel) => {
     }
     return false
 }
+
+
+export const compareBySymbol = (a: any, b: any) => {
+    if (a.symbol < b.symbol) {
+        return -1;
+    }
+    if (a.symbol > b.symbol) {
+        return 1;
+    }
+    return 0;
+}
