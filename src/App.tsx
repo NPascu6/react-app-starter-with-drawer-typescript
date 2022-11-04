@@ -52,6 +52,7 @@ function App() {
         }
     }, [theme])
 
+
     useEffect(() => {
         if (user?.emailVerified || !user) return
         dispatch(sendFirebaseEmailVerification())
