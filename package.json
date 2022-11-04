@@ -10,7 +10,7 @@
     "@emotion/styled": "^11.10.0",
     "@mui/icons-material": "^5.10.2",
     "@mui/material": "^5.10.2",
-    "@mui/styles": "^5.10.9",
+    "@mui/styles": "^5.10.10",
     "@reduxjs/toolkit": "^1.8.5",
     "@testing-library/dom": "^8.17.1",
     "@testing-library/jest-dom": "^5.14.1",
