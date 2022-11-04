@@ -17,5 +17,5 @@ jobs:
           server: 160.153.133.159
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
-          ports: 21
+          port: 21
           server-dir: /public_html/
