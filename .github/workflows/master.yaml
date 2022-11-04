@@ -11,19 +11,13 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - name: Use Node.js 16
-        uses: actions/setup-node@v2
-        with:
-          node-version: '16'
-
       - name: 🔨 Build Project
         run: |
-          npm install yarn
-          yarn install
-          yarn run build
+          npm install
+          npm run build
 
       - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
+        uses: airvzxf/ftp-deployment-action@latest
         with:
           server: 160.153.133.159
           username: ${{ secrets.ftp_username }}
