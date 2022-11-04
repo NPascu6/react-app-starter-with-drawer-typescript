@@ -17,10 +17,10 @@ jobs:
           npm run build
 
       - name: 📂 Sync files
-        uses: airvzxf/ftp-deployment-action@latest
+        uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: 160.153.133.159
+          host: 160.153.133.159
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           port: 21
-          server-dir: /public_html/
+          local-dir: ./build
