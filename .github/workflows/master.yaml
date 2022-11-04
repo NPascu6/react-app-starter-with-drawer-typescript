@@ -14,7 +14,8 @@ jobs:
       - name: 📂 Sync files
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
-          server: https://ftp.npsoftware.net
+          server: 160.153.133.159
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
+          ports: 21
           server-dir: /public_html/
