@@ -33,4 +33,5 @@ jobs:
           username: ${{ secrets.ftp_username_1 }}
           password: ${{ secrets.ftp_password_1 }}
           port: 21
+          local-dir: ./build/
           server-dir: /public_html/
