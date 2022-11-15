@@ -23,14 +23,15 @@ jobs:
           username: ${{ secrets.ftp_username }}
           password: ${{ secrets.ftp_password }}
           port: 21
+          local-dir: ./build/
           server-dir: /public_html/
 
       - name: 📂 Sync files pascu.io
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
           server: 92.205.1.205
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
+          username: ${{ secrets.ftp_username_1 }}
+          password: ${{ secrets.ftp_password_1 }}
           port: 21
           local-dir: ./build/
           server-dir: /public_html/

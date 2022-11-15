@@ -3,14 +3,7 @@ import './App.css';
 import {ThemeProvider} from '@mui/material/styles';
 import {useSelector} from 'react-redux';
 import {RootState} from './store/rootReducer';
-import {
-    businessDarkTheme,
-    businessLightTheme,
-    darkTheme,
-    lightTheme,
-    pinkDarkTheme,
-    pinkLightTheme
-} from './theme/theme';
+import {darkTheme, lightTheme} from './theme/theme';
 import MainPage from './pages/MainPage';
 import {useAppDispatch} from "./store/store";
 import {fetchGithubProfile, fetchGithubUserProfile} from "./store/thunks/appThunk";
@@ -35,18 +28,18 @@ function App() {
             case 'darkTheme':
                 setLocalTheme(darkTheme)
                 break
-            case 'pinkLightTheme':
-                setLocalTheme(pinkLightTheme)
-                break
-            case 'pinkDarkTheme':
-                setLocalTheme(pinkDarkTheme)
-                break
-            case 'businessDarkTheme':
-                setLocalTheme(businessDarkTheme)
-                break
-            case 'businessLightTheme':
-                setLocalTheme(businessLightTheme)
-                break
+            /*            case 'pinkLightTheme':
+                            setLocalTheme(pinkLightTheme)
+                            break
+                        case 'pinkDarkTheme':
+                            setLocalTheme(pinkDarkTheme)
+                            break
+                        case 'businessDarkTheme':
+                            setLocalTheme(businessDarkTheme)
+                            break
+                        case 'businessLightTheme':
+                            setLocalTheme(businessLightTheme)
+                            break*/
             default:
                 return
         }

@@ -1,14 +1,6 @@
 //test
 import {createTheme} from '@mui/material';
 import {
-    _businessDarkThemeBackgroundColor,
-    _businessDarkThemePrimaryColor,
-    _businessDarkThemeSecondaryColor,
-    _businessDarkThemeTextColor,
-    _businessLightThemeBackgroundColor,
-    _businessLightThemePrimaryColor,
-    _businessLightThemeSecondaryColor,
-    _businessLightThemeTextColor,
     _darkThemeBackgroundColor,
     _darkThemePrimaryColor,
     _darkThemeSecondaryColor,
@@ -16,16 +8,8 @@ import {
     _lightThemeBackgroundColor,
     _lightThemePrimaryColor,
     _lightThemeSecondaryColor,
-    _lightThemeTextColor,
-    _pinkDarkThemeBackgroundColor,
-    _pinkDarkThemePrimaryColor,
-    _pinkDarkThemeSecondaryColor,
-    _pinkDarkThemeTextColor,
-    _pinkLightThemeBackgroundColor,
-    _pinkLightThemePrimaryColor,
-    _pinkLightThemeSecondaryColor,
-    _pinkLightThemeTextColor
-} from "../assets/_colors";
+    _lightThemeTextColor
+} from "./_colors";
 
 export const darkTheme = createTheme({
     typography: {
@@ -77,7 +61,7 @@ export const lightTheme = createTheme({
     }
 });
 
-export const pinkDarkTheme = createTheme({
+/*export const pinkDarkTheme = createTheme({
     typography: {
         fontFamily: 'Lucida Console", "Courier New", monospace'
     },
@@ -175,7 +159,7 @@ export const businessLightTheme = createTheme({
       `,
         },
     }
-});
+});*/
 
 declare module '@mui/material/styles' {
     interface Theme {
