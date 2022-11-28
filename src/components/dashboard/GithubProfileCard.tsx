@@ -14,7 +14,7 @@ const GithubProfileCard = () => {
 
     const onDownload = () => {
         const link = document.createElement("a");
-        link.download = `PascuNorbertResumeEN.txt`;
+        link.download = `PascuNorbertResumeEN.pdf`;
         link.href = "./PascuNorbertresumeEN.pdf";
         link.click();
     };
