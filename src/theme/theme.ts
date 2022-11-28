@@ -26,11 +26,39 @@ export const darkTheme = createTheme({
     backgroundColor: _darkThemeBackgroundColor,
     components: {
         MuiCssBaseline: {
-            styleOverrides: `
-        @font-face {
-          font-family: '"Times New Roman", Times, serif;';
-        }
-      `,
+            styleOverrides: {
+                '*': {
+                    scrollbarWidth: 'thin',
+                    scrollbarColor: '#B7B7B7 transparent',
+                    '&::-webkit-scrollbar': {
+                        width: `8px !important`,
+                        height: 6,
+                        backgroundColor: 'transparent',
+                    },
+                    '&::-webkit-scrollbar-track': {
+                        backgroundColor: 'darkgray'
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        borderRadius: 6,
+                        backgroundColor: '#30362F',
+                        minHeight: 2,
+                        minWidth: 2,
+                    },
+                    '&::-webkit-scrollbar-thumb:focus': {
+                        backgroundColor: '#adadad',
+                    },
+                    '&::-webkit-scrollbar-thumb:active': {
+                        backgroundColor: '#adadad',
+                    },
+                    '&::-webkit-scrollbar-thumb:hover': {
+                        backgroundColor: '#adadad',
+                        cursor: 'pointer !important'
+                    },
+                    '&::-webkit-scrollbar-corner': {
+                        backgroundColor: 'transparent',
+                    },
+                },
+            },
         },
     }
 });
@@ -51,11 +79,38 @@ export const lightTheme = createTheme({
     backgroundColor: _lightThemeBackgroundColor,
     components: {
         MuiCssBaseline: {
-            styleOverrides: `
-        @font-face {
-          font-family: 'Arial, Helvetica, sans-serif';
-        }
-      `,
+            styleOverrides: {
+                '*': {
+                    scrollbarWidth: '2px',
+                    scrollbarColor: '#B7B7B7 transparent',
+                    '&::-webkit-scrollbar': {
+                        width: `8px !important`,
+                        height: 6,
+                        backgroundColor: 'transparent !important',
+                    },
+                    '&::-webkit-scrollbar-track': {
+                        backgroundColor: 'lightgray',
+                    },
+                    '&::-webkit-scrollbar-thumb': {
+                        borderRadius: 6,
+                        backgroundColor: '#B7B7B7',
+                        minHeight: 2,
+                        minWidth: 2,
+                    },
+                    '&::-webkit-scrollbar-thumb:focus': {
+                        backgroundColor: '#adadad',
+                    },
+                    '&::-webkit-scrollbar-thumb:active': {
+                        backgroundColor: '#adadad',
+                    },
+                    '&::-webkit-scrollbar-thumb:hover': {
+                        backgroundColor: '#adadad',
+                    },
+                    '&::-webkit-scrollbar-corner': {
+                        backgroundColor: 'transparent',
+                    },
+                },
+            },
         },
     }
 });

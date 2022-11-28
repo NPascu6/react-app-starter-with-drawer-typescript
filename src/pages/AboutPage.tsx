@@ -1,9 +1,9 @@
 import {Divider, Grid, Paper, Typography} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import * as React from "react";
+import {useRef} from "react";
 import YoutubeVideoLink from "../components/about/YoutubeVideoLink";
 import useWindowSize from "../hooks/useWindowSize";
-import {useRef} from "react";
 import useWindowFocus from "../hooks/useFocusHook";
 
 interface UserInfoFriend {
@@ -25,7 +25,13 @@ const AboutPage = () => {
     const ref = useRef(null);
     useWindowFocus(ref)
 
-    return <Grid container className={'Center'}     ref={ref}>
+    return <Grid container className={'Center'}
+                 sx={{
+                     '&::-webkit-scrollbar': {
+                         width: '0.4em'
+                     },
+                 }}
+                 ref={ref}>
         <Paper
             className={'Center'}
             sx={{

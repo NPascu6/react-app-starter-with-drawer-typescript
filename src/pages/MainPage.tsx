@@ -6,12 +6,15 @@ import React from 'react';
 import {useTheme} from '@mui/material/styles';
 import background from "../assets/images/background.jpg";
 import AppFooter from "../components/app-bar/AppFooter";
+import {Grid} from "@mui/material";
 
 const MainPage = () => {
     const theme = useTheme();
 
     return <>
-        <div className={'App'}
+        <Grid sx={{  "&::-webkit-scrollbar": {
+                width: 20,
+            },}} className={'App'}
              style={{
                  overflow: 'auto',
                  height: `calc('100% - '5.5em')`,
@@ -25,7 +28,7 @@ const MainPage = () => {
                 <SideBar/>
             </div>
             <RoutesSwitch/>
-        </div>
+        </Grid>
         <AppFooter/>
     </>
 };
