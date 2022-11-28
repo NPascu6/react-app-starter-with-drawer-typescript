@@ -76,18 +76,20 @@ const SideBar = () => {
 
     return <Drawer variant="permanent"
                    open={drawerOpen}
-    sx={{ '& .MuiDrawer-paper': {
-            backgroundColor: theme.textColor,
-            color: theme.backgroundColor,
+                   sx={{
+                       '& .MuiDrawer-paper': {
+                           backgroundColor: theme.textColor,
+                           color: theme.backgroundColor,
 
-        }}}>
+                       }
+                   }}>
         <DrawerHeader>
             <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
                 {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
             </IconButton>
         </DrawerHeader>
         <Divider/>
-        <List sx={{marginTop:'1em'}}>
+        <List sx={{marginTop: '1em'}}>
             {routes?.map((route, index) => (
                 <ListItem key={route.key} disablePadding sx={{display: 'block'}}
                           onClick={() => navigate(`${route.url}`)}>
@@ -105,7 +107,8 @@ const SideBar = () => {
                                 justifyContent: 'center',
                             }}>
                             {
-                                index % 2 === 0 ? <Tooltip title={'Home'}><InboxIcon/></Tooltip> : <Tooltip title={"Short bio"}><MailIcon/></Tooltip>
+                                index % 2 === 0 ? <Tooltip title={'Home'}><InboxIcon/></Tooltip> :
+                                    <Tooltip title={"Short bio"}><MailIcon/></Tooltip>
                             }
                         </ListItemIcon>
                         <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>

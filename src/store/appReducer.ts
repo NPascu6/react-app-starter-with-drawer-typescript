@@ -15,7 +15,7 @@ const initialState: AppSliceState = {
     githubProfiles: [],
     githubProfile: null,
     theme: "lightTheme",
-    finhubMessages:[]
+    finhubMessages: []
 };
 
 const appSlice = createSlice({

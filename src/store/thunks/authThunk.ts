@@ -27,7 +27,7 @@ export const logoutFirebase = () => async (dispatch: any) => {
 export const sendFirebaseEmailVerification = () => async (dispatch: any) => {
     console.log('Fetching github user profile');
     const auth = getAuth();
-    if(auth.currentUser){
+    if (auth.currentUser) {
         let res = await sendEmailVerification(auth.currentUser)
         console.log(res)
     }

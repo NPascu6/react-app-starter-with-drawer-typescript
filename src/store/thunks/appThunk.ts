@@ -11,7 +11,7 @@ export const fetchGithubProfile = () => async (dispatch: any) => {
         promises.push(await service.getGithubProjectInfo(item));
     }
 
-    Promise.all(promises).then((res) =>  dispatch(setGithubProfiles(res)))
+    Promise.all(promises).then((res) => dispatch(setGithubProfiles(res)))
 };
 
 export const fetchGithubUserProfile = () => async (dispatch: any) => {

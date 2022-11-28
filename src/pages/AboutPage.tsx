@@ -45,14 +45,16 @@ const AboutPage = () => {
             </Typography>
             <Divider/>
             <Typography variant={"body2"}>
-                At 22 I decided to change my career path and study computer science. Before even starting university, a friend of mine
+                At 22 I decided to change my career path and study computer science. Before even starting university, a
+                friend of mine
                 in
                 my hometown helped me to get a job as tech support for a New York based
                 company. Did that for a year and a half then, I won an internship / competition, and got my first
                 job as
                 as Junior Web Developer at DVSE.ro(they manage online commerce portals
                 written in WPF and React(as well as some MVC stuff). Spent almost a year and a bit here, and then I
-                joined Bosch Automotive Solutions in Cluj-Napoca, as a Software Engineer,working in the R&D department.(Here I did a bunch of Angular 6-7 apps, mostly for internal use).
+                joined Bosch Automotive Solutions in Cluj-Napoca, as a Software Engineer,working in the R&D
+                department.(Here I did a bunch of Angular 6-7 apps, mostly for internal use).
                 After Bosch, I worked for a Cognizant Softvision, mostly as a Back end developer with a bit of front end
                 development using Vue.
             </Typography>

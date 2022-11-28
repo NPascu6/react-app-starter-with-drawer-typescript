@@ -57,7 +57,8 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
         }
     }
 
-    return <Grid container spacing={1} className={'Center'} sx={{flexDirection: 'column', display: 'contents', backgroundColor: theme.backgroundColor}}>
+    return <Grid container spacing={1} className={'Center'}
+                 sx={{flexDirection: 'column', display: 'contents', backgroundColor: theme.backgroundColor}}>
         {type === 'register' ? <Grid item xs={12}>
             <TextField label={'Name'}
                        sx={{

@@ -45,23 +45,26 @@ function SimpleDialog(props: SimpleDialogProps) {
                 width: '20em',
                 padding: '0.2em'
             }}>
-                {user && <ListItem sx={{color: user.emailVerified ? 'green' : 'red', pointerEvents: 'none', padding: '0.2em'}}>
+                {user &&
+                <ListItem sx={{color: user.emailVerified ? 'green' : 'red', pointerEvents: 'none', padding: '0.2em'}}>
                     Email Verified: <Checkbox
                     checked={user.emailVerified}
                     inputProps={{'aria-label': 'controlled'}}/>
                 </ListItem>}
-                {(!props.firebaseUser && formType === 'login') ? <ListItem autoFocus button onClick={() => handleClose()}>
-                    <Typography variant={"h5"}>Don't have an account? Register here:</Typography>
-                </ListItem> : <ListItem autoFocus button onClick={() => handleClose()}>
-                    <Typography variant={"body2"}>You are registering to a demo(personal) firebase database, you can also verify your email(check spam folder):</Typography>
-                </ListItem>}
+                {(!props.firebaseUser && formType === 'login') ?
+                    <ListItem autoFocus button onClick={() => handleClose()}>
+                        <Typography variant={"h5"}>Don't have an account? Register here:</Typography>
+                    </ListItem> : <ListItem autoFocus button onClick={() => handleClose()}>
+                        <Typography variant={"body2"}>You are registering to a demo(personal) firebase database, you can
+                            also verify your email(check spam folder):</Typography>
+                    </ListItem>}
                 {!props.firebaseUser && <ListItem autoFocus button
                                                   onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
                     <LocalFireDepartmentIcon/>
                     {formType === 'login' ? "Register with firebase..." : "Back to login form..."}
                 </ListItem>}
                 {props.firebaseUser ? <ListItem button onClick={() => dispatch(logoutFirebase())}>
-                    <Button sx={{      borderRadius: 0}}>Logout</Button>
+                    <Button sx={{borderRadius: 0}}>Logout</Button>
                 </ListItem> : formType === 'login' ? <LoginForm/> : <RegisterForm/>}
                 <ListItem autoFocus button onClick={() => handleClose()}>
                     <Button sx={{borderRadius: 0, color: theme.textColor}}>Close</Button>

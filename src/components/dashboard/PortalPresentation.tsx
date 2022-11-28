@@ -10,10 +10,10 @@ import CustomCarousel from "../shared/CustomCarousel";
 const PortalPresentation = () => {
     const theme = useTheme()
     const images = [
-        {original: img1, thumbnail: img1, thumbnailHeight : 60},
-        {original: img2, thumbnail: img2, thumbnailHeight : 60},
-        {original: img3, thumbnail: img3, thumbnailHeight : 60},
-        {original: img4, thumbnail: img4, thumbnailHeight : 60}
+        {original: img1, thumbnail: img1, thumbnailHeight: 60},
+        {original: img2, thumbnail: img2, thumbnailHeight: 60},
+        {original: img3, thumbnail: img3, thumbnailHeight: 60},
+        {original: img4, thumbnail: img4, thumbnailHeight: 60}
     ]
 
     return <Paper sx={{

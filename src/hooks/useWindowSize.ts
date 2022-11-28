@@ -5,7 +5,7 @@ export interface WindowInterface {
     innerHeight: number
 }
 
-const useWindowSize =(): WindowInterface => {
+const useWindowSize = (): WindowInterface => {
     const [windowSize, setWindowSize] = useState<WindowInterface>(getWindowSize());
 
     function getWindowSize() {

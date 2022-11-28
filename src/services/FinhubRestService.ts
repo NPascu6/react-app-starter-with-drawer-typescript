@@ -2,7 +2,7 @@ const finnHub = require('finnhub');
 const {REACT_APP_FINHUB_API_KEY} = process.env
 
 const api_key = finnHub.ApiClient.instance.authentications['api_key'];
-api_key.apiKey =`${REACT_APP_FINHUB_API_KEY}` // Replace this
+api_key.apiKey = `${REACT_APP_FINHUB_API_KEY}` // Replace this
 export const finnHubClient = new finnHub.DefaultApi()
 
 // finhub.cryptoSymbols('BINANCE', (error: any, data: any, response: any) => {

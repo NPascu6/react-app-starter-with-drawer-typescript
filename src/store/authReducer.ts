@@ -20,11 +20,11 @@ const authSlice = createSlice({
             state.firebaseUser = action.payload;
             console.log('Set firebaseUser:', action.payload)
         },
-        setFirebaseLoading(state, action: PayloadAction<any>){
+        setFirebaseLoading(state, action: PayloadAction<any>) {
             state.firebaseLoading = action.payload
             console.log('Set firebaseLoading:', action.payload)
         },
-        setFirebaseError(state, action: PayloadAction<any>){
+        setFirebaseError(state, action: PayloadAction<any>) {
             state.firebaseError = action.payload
             console.log('Set firebaseError:', action.payload)
         }
