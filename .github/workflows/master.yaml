@@ -16,16 +16,6 @@ jobs:
           npm install
           npm run build
 
-      - name: 📂 Sync files
-        uses: SamKirkland/FTP-Deploy-Action@4.3.2
-        with:
-          server: 160.153.133.159
-          username: ${{ secrets.ftp_username }}
-          password: ${{ secrets.ftp_password }}
-          port: 21
-          local-dir: ./build/
-          server-dir: /public_html/
-
       - name: 📂 Sync files pascu.io
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
         with:
