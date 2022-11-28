@@ -4,7 +4,7 @@ import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material/styles";
 import ReactPlayer from "react-player/lazy";
 
-const YoutubeVideoLink1 = () => {
+const YoutubeVideoLink6 = () => {
     const theme = useTheme()
     const [, setWindowSize] = useState(getWindowSize());
 
@@ -36,10 +36,10 @@ const YoutubeVideoLink1 = () => {
         <ReactPlayer
             controls={true}
             loop={true}
-            playing={true}
-            url={'https://youtu.be/isTUIKnZl_0'}/>
+            playing={false}
+            url={"https://youtu.be/6xQWed-Y9YA"}/>
 
     </Paper>
 }
 
-export default YoutubeVideoLink1
+export default YoutubeVideoLink6

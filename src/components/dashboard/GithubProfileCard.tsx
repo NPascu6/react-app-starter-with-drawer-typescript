@@ -58,7 +58,7 @@ const GithubProfileCard = () => {
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
-                <Link sx={{cursor: 'pointer'}} href={githubProfile?.html_url} target={"_blank"}
+                <Link sx={{cursor: 'pointer', color: theme.textColor}} href={githubProfile?.html_url} target={"_blank"}
                       rel={"noopener noreferrer"}>{githubProfile?.html_url}</Link>
             </Grid>
             <Divider/>
@@ -78,14 +78,14 @@ const GithubProfileCard = () => {
             </Grid>
             <Divider/>
             <Divider/>
-            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
+            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center', }}>
                 <Link href={"https://www.facebook.com/norbi.pascu"} target={"_blank"}
                       rel={"noopener noreferrer"}>
-                    <FacebookOutlined/>
+                    <FacebookOutlined sx={{color: theme.textColor}}/>
                 </Link>
                 <Link href={"https://www.instagram.com/norbipascu/?hl=en"} target={"_blank"}
                       rel={"noopener noreferrer"}>
-                    <Instagram/>
+                    <Instagram sx={{color: theme.textColor}}/>
                 </Link>
             </Grid>
         </Grid>

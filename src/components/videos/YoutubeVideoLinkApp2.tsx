@@ -37,7 +37,7 @@ const YoutubeVideoLink2 = () => {
             controls={true}
             loop={true}
             playing={false}
-            url={"https://www.youtube.com/watch?v=jGah_U_GBuI"}/>
+            url={"https://youtu.be/jGah_U_GBuI"}/>
 
     </Paper>
 }
