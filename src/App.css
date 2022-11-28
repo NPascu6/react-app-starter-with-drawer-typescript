@@ -2,8 +2,7 @@
     flex: 1;
     display: flex;
     margin-top: 4em;
-    font-family: SansSerif;
-    height: calc(100vh - 4em);
+    height: calc(100vh - 10em);
 }
 
 .App-logo {

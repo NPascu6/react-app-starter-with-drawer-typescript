@@ -10,23 +10,24 @@ import AppFooter from "../components/app-bar/AppFooter";
 const MainPage = () => {
     const theme = useTheme();
 
-    return <div className={'App'}
-                style={{
-                    overflow: 'auto',
-                    height: `calc('100%' - '4em')`,
-                    backgroundImage: `url(${background})`,
-                    backgroundColor: theme.backgroundColor,
-                    color: theme.textColor,
-                }}>
-        <CssBaseline/>
-        <div>
-            <AppBarComponent/>
-            <SideBar/>
+    return <>
+        <div className={'App'}
+             style={{
+                 overflow: 'auto',
+                 height: `calc('100% - '5.5em')`,
+                 backgroundImage: `url(${background})`,
+                 backgroundColor: theme.backgroundColor,
+                 color: theme.textColor,
+             }}>
+            <CssBaseline/>
+            <div>
+                <AppBarComponent/>
+                <SideBar/>
+            </div>
+            <RoutesSwitch/>
         </div>
-        <RoutesSwitch/>
         <AppFooter/>
-    </div>;
-
+    </>
 };
 
 export default MainPage;

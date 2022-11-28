@@ -5,7 +5,9 @@ const AppFooter = () => {
     const theme = useTheme();
 
     return <Grid container className={'Center'} sx={{
-        position: "absolute",
+        marginTop: '0.2em',
+        height:'5.8em',
+        position: "relative",
         bottom: 0,
         color: theme.backgroundColor,
         backgroundColor: theme.textColor
