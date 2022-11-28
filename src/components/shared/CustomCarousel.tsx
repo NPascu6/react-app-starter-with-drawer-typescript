@@ -19,13 +19,13 @@ const CustomCarousel = ({images, description, type}: Props) => {
 
     return <Grid className={'Center'} container sx={{
         width: windowSize.innerWidth < 600 ? '100%' : '90%',
-        minWidth: windowSize.innerWidth < 600 ? '18em' : '29em',
+        minWidth: windowSize.innerWidth < 600 ? '15em' : '25em',
         '& .image-gallery-thumbnails-container': {
-            height: '4em',
-            width: windowSize.innerWidth < 600 ? '18em' : '29em',
+            height: '3em',
+            width: windowSize.innerWidth < 600 ? '15em' : '25em',
         },
         '& .image-gallery-svg': {
-            height: '30px',
+            height: '25px',
             width: '20px'
         },
         '& .image-gallery-content.fullscreen': {
@@ -33,7 +33,7 @@ const CustomCarousel = ({images, description, type}: Props) => {
         }
     }}>
         <ImageGallery items={images}
-                      style={{width: '29em'}}
+                      style={{width: '25.2em'}}
                       useBrowserFullscreen={false}
                       onScreenChange={() => setFullScreen(!fullScreen)}
                       renderItem={(item: any) => <Paper className={'Center'}

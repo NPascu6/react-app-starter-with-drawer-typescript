@@ -23,7 +23,7 @@ const OtherComponentsPresentation = () => {
         flex: 1,
         justifyContent: 'center',
         padding: '0.1em',
-        height: '17em',
+        height: '15em',
     }}>
         <CustomCarousel images={images}
                         type={'image'}

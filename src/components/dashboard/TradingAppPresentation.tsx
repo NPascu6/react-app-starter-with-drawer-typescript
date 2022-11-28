@@ -28,11 +28,11 @@ const TradingAppPresentation = () => {
         flex: 1,
         justifyContent: 'center',
         padding: '0.1em',
-        height: '17em',
+        height: '15em'
     }}>
         <CustomCarousel images={images}
                         type={'image'}
-                        description={'Created with Openfin api(Electron container) and React 18 using SignalR.'}/>
+                        description={'Openfin, React 18, SignalR.'}/>
 
     </Paper>
 }

@@ -26,7 +26,7 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '19em' : '30em',
+                width: windowSize.innerWidth < 500 ? '15em' : '25.2em',
             }}>
                 <TradingAppPresentation/>
                 <WindowPresentation/>
@@ -36,7 +36,7 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '19em' : '30em',
+                width: windowSize.innerWidth < 500 ? '15em' : '25.2em',
             }}>
                 <PortalPresentation/>
                 <OtherComponentsPresentation/>
