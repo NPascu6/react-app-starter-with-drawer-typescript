@@ -5,18 +5,10 @@ import {RoutesSwitch} from '../router/Routes';
 import React from 'react';
 import {useTheme} from '@mui/material/styles';
 import background from "../assets/images/background.jpg";
-import {handleDrawerChange} from "../store/appReducer";
-import {useAppDispatch} from "../store/store";
-import {useSelector} from "react-redux";
-import {RootState} from "../store/rootReducer";
 import AppFooter from "../components/app-bar/AppFooter";
 
 const MainPage = () => {
     const theme = useTheme();
-    const dispatch = useAppDispatch();
-    const {
-        drawerOpen,
-    } = useSelector((state: RootState) => state.app);
 
     return <div className={'App'}
                 style={{
@@ -27,7 +19,7 @@ const MainPage = () => {
                     color: theme.textColor,
                 }}>
         <CssBaseline/>
-        <div onBlur={() => drawerOpen ? dispatch(handleDrawerChange(!drawerOpen)) : null}>
+        <div>
             <AppBarComponent/>
             <SideBar/>
         </div>

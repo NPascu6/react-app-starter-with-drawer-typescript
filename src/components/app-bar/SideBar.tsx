@@ -3,7 +3,7 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
-import {Grid, ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
+import {Grid, ListItem, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import React from 'react';
@@ -77,25 +77,31 @@ const SideBar = () => {
     const location = useLocation();
 
     const renderIcon = (routeKey: string, route: string) => {
-        debugger
-        console.log(location.pathname)
         switch (routeKey) {
-
             case 'Home' : {
                 return <Tooltip title={"Home"}>
-                    <InboxIcon sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}
+                    <InboxIcon sx={{
+                        color: location.pathname === route ? theme.textColor : theme.backgroundColor,
+                        '&:hover': {color: location.pathname === route ? theme.textColor : theme.backgroundColor,}
+                    }}
                     />
                 </Tooltip>;
             }
             case 'About' : {
                 return <Tooltip title={"Short bio"}>
-                    <MailIcon sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}/>
+                    <MailIcon sx={{
+                        color: location.pathname === route ? theme.textColor : theme.backgroundColor,
+                        '&:hover': {color: location.pathname === route ? theme.textColor : theme.backgroundColor,}
+                    }}/>
                 </Tooltip>;
             }
             case 'Videos' : {
                 return <Tooltip title={"Videos"}>
                     <OndemandVideoIcon
-                        sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}/>
+                        sx={{
+                            color: location.pathname === route ? theme.textColor : theme.backgroundColor,
+                            '&:hover': {color: location.pathname === route ? theme.textColor : theme.backgroundColor,}
+                        }}/>
                 </Tooltip>;
             }
         }
@@ -107,7 +113,6 @@ const SideBar = () => {
                        '& .MuiDrawer-paper': {
                            backgroundColor: theme.textColor,
                            color: theme.backgroundColor,
-
                        }
                    }}>
         <DrawerHeader>
@@ -116,30 +121,29 @@ const SideBar = () => {
             </IconButton>
         </DrawerHeader>
         <Divider/>
-        <List sx={{marginTop: '1em'}}>
+        <List>
             {routes?.map((route, index) => (
-                <ListItem key={route.key} disablePadding sx={{display: 'block'}}
+                <ListItem key={route.key} className={'Center'} disablePadding sx={{
+                    display: 'flex',
+                    marginLeft: '0.1em',
+                    color: location.pathname === route.url ? theme.textColor : theme.backgroundColor,
+                    backgroundColor: location.pathname === route.url ? theme.backgroundColor : theme.textColor,
+                    borderRadius: 2
+                }}
                           onClick={() => navigate(`${route.url}`)}>
-                    <ListItemButton
+                    {drawerOpen && <ListItemText primary={route.key}/>}
+                    <ListItemIcon
+                        className={'Center'}
                         sx={{
                             color: location.pathname === route.url ? theme.textColor : theme.backgroundColor,
                             backgroundColor: location.pathname === route.url ? theme.backgroundColor : theme.textColor,
-                            minHeight: 48,
-                            justifyContent: drawerOpen ? 'initial' : 'center',
-                            px: 2.5,
+                            minHeight: 38,
+                            justifyContent: 'center', borderRadius: 2
                         }}>
-                        <ListItemIcon
-                            sx={{
-                                minWidth: 0,
-                                mr: drawerOpen ? 3 : 'auto',
-                                justifyContent: 'center',
-                            }}>
-                            <Grid container>
-                                {renderIcon(route.key, route.url)}
-                            </Grid>
-                        </ListItemIcon>
-                        <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
-                    </ListItemButton>
+                        <Grid container className={'Center'}>
+                            {renderIcon(route.key, route.url)}
+                        </Grid>
+                    </ListItemIcon>
                 </ListItem>
             ))}
         </List>
