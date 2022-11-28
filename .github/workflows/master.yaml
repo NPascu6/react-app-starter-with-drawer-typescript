@@ -25,3 +25,5 @@ jobs:
           port: 21
           local-dir: ./build/
           server-dir: /public_html/
+          timeout_minutes: 1
+          max_attempts: 3
