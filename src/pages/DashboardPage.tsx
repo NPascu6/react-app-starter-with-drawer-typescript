@@ -6,6 +6,7 @@ import PortalPresentation from "../components/dashboard/PortalPresentation";
 import WindowPresentation from "../components/dashboard/WindowPresentation";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
+import OtherComponentsPresentation from "../components/dashboard/OtherComponentsPresentation";
 
 export default function DashboardPage() {
     const theme = useTheme()
@@ -33,6 +34,7 @@ export default function DashboardPage() {
                 width: windowSize.innerWidth < 500 ? '19em' : '30em',
             }}>
                 <PortalPresentation/>
+                <OtherComponentsPresentation/>
             </Paper>
         </Grid>
     );

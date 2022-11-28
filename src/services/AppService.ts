@@ -1,12 +1,14 @@
 import {RestService} from './RestService';
 
+const REACT_APP_SECRET = process.env.REACT_APP_SECRET
+
 export class AppService extends RestService {
     private _baseUrl = 'https://api.github.com';
 
     public async getGithubProjectInfo(projectName: string): Promise<any[]> {
         return this.fetchData(this._baseUrl + '/repos/NPascu6/' + projectName, {
             headers: {
-                Authorization: `token `,
+                Authorization: `token ${REACT_APP_SECRET}`,
             }
         }).then((res) => {
             return res.data;

@@ -5,12 +5,11 @@ import * as React from "react";
 import {useSelector} from "react-redux";
 import {RootState} from "../../store/rootReducer";
 import {useTheme} from "@mui/material/styles";
-import LoaderPage from "../../pages/LoaderPage";
 import {FacebookOutlined, Instagram} from "@mui/icons-material";
 import DownloadIcon from '@mui/icons-material/Download';
 
 const GithubProfileCard = () => {
-    const {githubProfiles, githubProfile} = useSelector((state: RootState) => state.app);
+    const {githubProfile} = useSelector((state: RootState) => state.app);
     const theme = useTheme();
 
     const onDownload = () => {
@@ -78,15 +77,6 @@ const GithubProfileCard = () => {
                 </Grid>
             </Grid>
             <Divider/>
-            <Grid container className={'Flex-Container-Center'}>
-                <Grid item xs={12}>
-                    <Typography variant={"h6"}>Some Github repo links:</Typography>
-                </Grid>
-                <Divider/>
-                {githubProfiles ? githubProfiles.map(repo => <div key={repo?.id}> | <Link
-                    href={repo?.html_url} target={"_blank"}
-                    rel={"noopener noreferrer"}>{repo?.name}</Link> | </div>) : <LoaderPage/>}
-            </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
                 <Link href={"https://www.facebook.com/norbi.pascu"} target={"_blank"}
