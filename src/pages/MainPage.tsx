@@ -9,6 +9,7 @@ import {handleDrawerChange} from "../store/appReducer";
 import {useAppDispatch} from "../store/store";
 import {useSelector} from "react-redux";
 import {RootState} from "../store/rootReducer";
+import AppFooter from "../components/app-bar/AppFooter";
 
 const MainPage = () => {
     const theme = useTheme();
@@ -31,6 +32,7 @@ const MainPage = () => {
             <SideBar/>
         </div>
         <RoutesSwitch/>
+        <AppFooter/>
     </div>;
 
 };

@@ -3,21 +3,22 @@ import ChevronRightIcon from '@mui/icons-material/ChevronRight';
 import ChevronLeftIcon from '@mui/icons-material/ChevronLeft';
 import Divider from '@mui/material/Divider';
 import List from '@mui/material/List';
-import {ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
+import {Grid, ListItem, ListItemButton, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
 import React from 'react';
 import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
-import {useNavigate} from 'react-router-dom';
+import {useLocation, useNavigate} from 'react-router-dom';
 import {_defaultDrawerWidth} from '../../_constant';
 import {useAppDispatch} from '../../store/store';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/rootReducer';
 import {handleDrawerChange} from '../../store/appReducer';
+import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 
 const routes = [{key: 'Home', url: '/'},
-    {key: 'About', url: '/about'}];
+    {key: 'About', url: '/about'}, {key: 'Videos', url: '/videos'}];
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: _defaultDrawerWidth,
@@ -73,6 +74,32 @@ const SideBar = () => {
     const {
         drawerOpen,
     } = useSelector((state: RootState) => state.app);
+    const location = useLocation();
+
+    const renderIcon = (routeKey: string, route: string) => {
+        debugger
+        console.log(location.pathname)
+        switch (routeKey) {
+
+            case 'Home' : {
+                return <Tooltip title={"Home"}>
+                    <InboxIcon sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}
+                    />
+                </Tooltip>;
+            }
+            case 'About' : {
+                return <Tooltip title={"Short bio"}>
+                    <MailIcon sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}/>
+                </Tooltip>;
+            }
+            case 'Videos' : {
+                return <Tooltip title={"Videos"}>
+                    <OndemandVideoIcon
+                        sx={{color: location.pathname === route ? theme.textColor : theme.backgroundColor}}/>
+                </Tooltip>;
+            }
+        }
+    }
 
     return <Drawer variant="permanent"
                    open={drawerOpen}
@@ -95,21 +122,21 @@ const SideBar = () => {
                           onClick={() => navigate(`${route.url}`)}>
                     <ListItemButton
                         sx={{
+                            color: location.pathname === route.url ? theme.textColor : theme.backgroundColor,
+                            backgroundColor: location.pathname === route.url ? theme.backgroundColor : theme.textColor,
                             minHeight: 48,
                             justifyContent: drawerOpen ? 'initial' : 'center',
                             px: 2.5,
                         }}>
                         <ListItemIcon
                             sx={{
-                                color: theme.backgroundColor,
                                 minWidth: 0,
                                 mr: drawerOpen ? 3 : 'auto',
                                 justifyContent: 'center',
                             }}>
-                            {
-                                index % 2 === 0 ? <Tooltip title={'Home'}><InboxIcon/></Tooltip> :
-                                    <Tooltip title={"Short bio"}><MailIcon/></Tooltip>
-                            }
+                            <Grid container>
+                                {renderIcon(route.key, route.url)}
+                            </Grid>
                         </ListItemIcon>
                         <ListItemText primary={route.key} sx={{opacity: drawerOpen ? 1 : 0}}/>
                     </ListItemButton>
