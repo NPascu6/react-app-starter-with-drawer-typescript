@@ -7,6 +7,7 @@ import {RootState} from "../../store/rootReducer";
 import {useTheme} from "@mui/material/styles";
 import LoaderPage from "../../pages/LoaderPage";
 import {FacebookOutlined, Instagram} from "@mui/icons-material";
+import DownloadIcon from '@mui/icons-material/Download';
 
 const GithubProfileCard = () => {
     const {githubProfiles, githubProfile} = useSelector((state: RootState) => state.app);
@@ -27,17 +28,21 @@ const GithubProfileCard = () => {
         width: '20em',
         padding: '1em'
     }}>
-        <Grid container sx={{display: 'flex', flexDirection: 'column',
-            color: theme.textColor}}>
+        <Grid container sx={{
+            display: 'flex', flexDirection: 'column',
+            color: theme.textColor
+        }}>
             <Grid container className={'Flex-Container-Center'}>
                 <Avatar alt={'Profile'} src={_githubAvatarUrl}
                         sx={{width: theme.spacing(12), height: theme.spacing(12)}}/>
             </Grid>
             <Button sx={{
                 borderRadius: 0,
-                color: theme.textColor,
-                '&:hover': {backgroundColor: theme.textColor, color: theme.backgroundColor}
-            }} onClick={onDownload}>Download CV
+                backgroundColor: theme.textColor,
+                color: theme.backgroundColor,
+                '&:hover': {backgroundColor: theme.backgroundColor, color: theme.textColor}
+            }} onClick={onDownload}><Typography variant={"h6"}>Download CV </Typography>
+                <DownloadIcon/>
             </Button>
             <Divider/>
             <Grid container className={'Flex-Container-Center'}>
@@ -47,7 +52,8 @@ const GithubProfileCard = () => {
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
-                <Link sx={{cursor: 'pointer', color: theme.textColor}} href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
+                <Link sx={{cursor: 'pointer', color: theme.textColor}}
+                      href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
                       target={"_blank"}
                       rel={"noopener noreferrer"}> https://www.linkedin.com/in/norbert-pascu-5b1857116/</Link>
             </Grid>
