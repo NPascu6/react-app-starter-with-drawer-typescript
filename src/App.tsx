@@ -42,6 +42,7 @@ function App() {
         dispatch(setFirebaseError(error))
     }, [user, loading, error, dispatch])
 
+
     useEffect(() => {
         if (githubProfiles.length !== 0) return
         dispatch(fetchGithubProfile());
