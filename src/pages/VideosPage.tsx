@@ -20,7 +20,7 @@ export default function DashboardPage() {
               ref={ref}
               sx={{justifyContent: 'space-evenly', '& .widget.g-background-default.g-shadow-inset': {display: 'none'}}}>
             <Paper elevation={3} sx={{
-                backgroundColor: theme.palette.primary.main,
+                backgroundColor: theme.backgroundColor,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
@@ -30,7 +30,7 @@ export default function DashboardPage() {
                 <YoutubeVideoLink2/>
             </Paper>
             <Paper elevation={3} sx={{
-                backgroundColor: theme.palette.primary.main,
+                backgroundColor: theme.backgroundColor,
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',

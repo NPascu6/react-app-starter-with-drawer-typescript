@@ -1,29 +1,11 @@
 import {Paper} from "@mui/material";
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material/styles";
-import ReactPlayer from "react-player/lazy";
+import useWindowSize from "../../hooks/useWindowSize";
 
 const YoutubeVideoLink4 = () => {
     const theme = useTheme()
-    const [, setWindowSize] = useState(getWindowSize());
-
-    function getWindowSize() {
-        const {innerWidth, innerHeight} = window;
-        return {innerWidth, innerHeight};
-    }
-
-    useEffect(() => {
-        function handleWindowResize() {
-            setWindowSize(getWindowSize());
-        }
-
-        window.addEventListener('resize', handleWindowResize);
-
-        return () => {
-            window.removeEventListener('resize', handleWindowResize);
-        };
-    }, []);
+    const windowSize = useWindowSize()
 
     return <Paper sx={{
         border: '1px solid',
@@ -33,11 +15,15 @@ const YoutubeVideoLink4 = () => {
         justifyContent: 'center',
         padding: '1em'
     }}>
-        <ReactPlayer
-            controls={true}
-            loop={true}
-            playing={false}
-            url={"https://youtu.be/--opZa6s0Ws"}/>
+        <iframe
+            title={'Youtube4'}
+            style={{
+                minWidth: windowSize.innerWidth < 500 ? '18em' : '20em'
+            }}
+            width="100%" height="250"
+            src="https://www.youtube.com/embed/--opZa6s0Ws"
+            frameBorder="0"
+            allowFullScreen/>
 
     </Paper>
 }
