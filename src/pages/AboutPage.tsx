@@ -3,6 +3,8 @@ import {useTheme} from "@mui/material/styles";
 import * as React from "react";
 import YoutubeVideoLink from "../components/about/YoutubeVideoLink";
 import useWindowSize from "../hooks/useWindowSize";
+import {useRef} from "react";
+import useWindowFocus from "../hooks/useFocusHook";
 
 interface UserInfoFriend {
     name: string,
@@ -20,8 +22,10 @@ export interface UserInfo {
 const AboutPage = () => {
     const theme = useTheme()
     const windowSize = useWindowSize()
+    const ref = useRef(null);
+    useWindowFocus(ref)
 
-    return <Grid container className={'Center'}>
+    return <Grid container className={'Center'}     ref={ref}>
         <Paper
             className={'Center'}
             sx={{

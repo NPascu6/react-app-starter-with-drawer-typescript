@@ -1,10 +1,10 @@
 import {useTheme} from "@mui/material/styles";
-import {Grid, Typography} from "@mui/material";
+import {Grid, Link, Typography} from "@mui/material";
 
 const AppFooter = () => {
     const theme = useTheme();
 
-    return <Grid container className={'Center'} style={{
+    return <Grid container className={'Center'} sx={{
         position: "absolute",
         bottom: 0,
         color: theme.backgroundColor,
@@ -12,7 +12,10 @@ const AppFooter = () => {
     }}>
         <Typography variant={"body2"} sx={{paddingLeft: '4em'}}>
             Created by N. Pascu, using React 18 and MUI 6. Last update 11/28/2022 - 5:29.
-            The code is available on my github.
+            The code is available on my github: <Link href={'https://github.com/NPascu6/react-app-starter-with-drawer-typescript'} sx={{
+            cursor: 'pointer',
+            ':hover': {color: theme.backgroundColor, backgroundColor: theme.textColor}
+        }}>https://github.com/NPascu6/react-app-starter-with-drawer-typescript.</Link>
         </Typography>
     </Grid>
 }

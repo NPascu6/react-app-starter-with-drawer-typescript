@@ -1,4 +1,5 @@
 import * as React from 'react';
+import {useRef} from 'react';
 import {Grid, Paper} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
@@ -6,13 +7,17 @@ import YoutubeVideoLink1 from "../components/videos/YoutubeVideoLinkApp1";
 import YoutubeVideoLink2 from "../components/videos/YoutubeVideoLinkApp2";
 import YoutubeVideoLink3 from "../components/videos/YoutubeVideoLinkApp3";
 import YoutubeVideoLink4 from "../components/videos/YoutubeVideoLinkApp4";
+import useWindowFocus from "../hooks/useFocusHook";
 
 export default function DashboardPage() {
     const theme = useTheme()
     const windowSize = useWindowSize()
+    const ref = useRef(null);
+    useWindowFocus(ref)
 
     return (
         <Grid container className={'Center'}
+              ref={ref}
               sx={{justifyContent: 'space-evenly', '& .widget.g-background-default.g-shadow-inset': {display: 'none'}}}>
             <Paper elevation={3} sx={{
                 backgroundColor: theme.palette.primary.main,

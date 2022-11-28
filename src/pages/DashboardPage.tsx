@@ -7,13 +7,18 @@ import WindowPresentation from "../components/dashboard/WindowPresentation";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
 import OtherComponentsPresentation from "../components/dashboard/OtherComponentsPresentation";
+import useWindowFocus from "../hooks/useFocusHook";
+import {useRef} from "react";
 
 export default function DashboardPage() {
     const theme = useTheme()
     const windowSize = useWindowSize()
+    const ref = useRef(null);
+    useWindowFocus(ref)
 
     return (
         <Grid container className={'Center'}
+              ref={ref}
               sx={{justifyContent: 'space-evenly', '& .widget.g-background-default.g-shadow-inset': {display: 'none'}}}>
             <GithubProfileCard/>
             <Paper elevation={3} sx={{
