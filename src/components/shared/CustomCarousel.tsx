@@ -4,6 +4,7 @@ import {Grid, Paper, Typography} from "@mui/material";
 import useWindowSize from "../../hooks/useWindowSize";
 import ImageGallery from 'react-image-gallery';
 import ReactPlayer from 'react-player/lazy'
+import {useTheme} from "@mui/material/styles";
 
 interface Props {
     images: any
@@ -14,6 +15,7 @@ interface Props {
 const CustomCarousel = ({images, description, type}: Props) => {
     const windowSize = useWindowSize()
     const [fullScreen, setFullScreen] = useState<boolean>(false)
+    const theme = useTheme()
 
     return <Grid className={'Center'} container sx={{
         width: windowSize.innerWidth < 600 ? '100%' : '90%',
@@ -58,7 +60,7 @@ const CustomCarousel = ({images, description, type}: Props) => {
                                            url={item.original}/>
                           </div>}
                       </Paper>}/>
-        <Typography variant={"body2"}>{description}</Typography>
+        <Typography sx={{color: theme.textColor}} variant={"body2"}>{description}</Typography>
     </Grid>
 }
 

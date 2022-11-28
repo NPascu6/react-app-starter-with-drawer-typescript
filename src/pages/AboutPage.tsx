@@ -28,7 +28,7 @@ const AboutPage = () => {
             <Paper
                 className={'Center'}
                 sx={{
-                    backgroundColor: theme.palette.background.default,
+                    backgroundColor: theme.backgroundColor,
                     color: theme.textColor,
                     flexDirection: 'column',
                     flex: 1,

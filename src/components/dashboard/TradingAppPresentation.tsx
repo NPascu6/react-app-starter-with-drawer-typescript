@@ -23,7 +23,7 @@ const TradingAppPresentation = () => {
 
     return <Paper sx={{
         border: '1px solid',
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.backgroundColor,
         display: 'flex',
         flex: 1,
         justifyContent: 'center',

@@ -75,7 +75,7 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
                        size={"small"}
                        onChange={(v) => handleChangeUserInfo(v.target.value, 'name')}/>
         </Grid> : <Grid item xs={12} sx={{display: 'flex'}} className={'Center'}>
-            <IconButton sx={{borderRadius: 0}} onClick={async (v) => await signInWithGoogle()}>
+            <IconButton sx={{borderRadius: 0, color: theme.textColor}} onClick={async (v) => await signInWithGoogle()}>
                 <span>
                     Sign in with google |
                 </span>

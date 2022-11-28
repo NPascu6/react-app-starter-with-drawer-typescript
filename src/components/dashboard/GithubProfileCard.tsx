@@ -21,22 +21,22 @@ const GithubProfileCard = () => {
 
     return <Paper elevation={3} sx={{
         border: '1px solid',
-        backgroundColor: theme.palette.secondary.main,
+        backgroundColor: theme.backgroundColor,
         display: 'flex',
         justifyContent: 'center',
         width: '20em',
         padding: '1em'
     }}>
-        <Grid container sx={{display: 'flex', flexDirection: 'column'}}>
+        <Grid container sx={{display: 'flex', flexDirection: 'column',
+            color: theme.textColor}}>
             <Grid container className={'Flex-Container-Center'}>
                 <Avatar alt={'Profile'} src={_githubAvatarUrl}
                         sx={{width: theme.spacing(12), height: theme.spacing(12)}}/>
             </Grid>
             <Button sx={{
                 borderRadius: 0,
-                backgroundColor: theme.palette.background.paper,
-                color: theme.backgroundColor,
-                '&:hover': {backgroundColor: theme.backgroundColor, color: theme.palette.background.paper}
+                color: theme.textColor,
+                '&:hover': {backgroundColor: theme.textColor, color: theme.backgroundColor}
             }} onClick={onDownload}>Download CV
             </Button>
             <Divider/>
@@ -47,7 +47,7 @@ const GithubProfileCard = () => {
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
-                <Link sx={{cursor: 'pointer'}} href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
+                <Link sx={{cursor: 'pointer', color: theme.textColor}} href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
                       target={"_blank"}
                       rel={"noopener noreferrer"}> https://www.linkedin.com/in/norbert-pascu-5b1857116/</Link>
             </Grid>

@@ -99,7 +99,7 @@ const SideBar = () => {
                         }}>
                         <ListItemIcon
                             sx={{
-                                color: theme.palette.secondary.main,
+                                color: theme.backgroundColor,
                                 minWidth: 0,
                                 mr: drawerOpen ? 3 : 'auto',
                                 justifyContent: 'center',

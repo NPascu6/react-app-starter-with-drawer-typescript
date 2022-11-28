@@ -64,7 +64,7 @@ function SimpleDialog(props: SimpleDialogProps) {
                     <Button sx={{      borderRadius: 0}}>Logout</Button>
                 </ListItem> : formType === 'login' ? <LoginForm/> : <RegisterForm/>}
                 <ListItem autoFocus button onClick={() => handleClose()}>
-                    <Button sx={{borderRadius: 0}}>Close</Button>
+                    <Button sx={{borderRadius: 0, color: theme.textColor}}>Close</Button>
                 </ListItem>
             </List>
         </Dialog>
