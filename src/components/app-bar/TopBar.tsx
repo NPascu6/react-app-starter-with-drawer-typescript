@@ -6,15 +6,14 @@ import IconButton from '@mui/material/IconButton';
 import React from 'react';
 import {_defaultDrawerWidth} from '../../_constant';
 import {useAppDispatch} from '../../store/store';
-import {handleDrawerChange} from '../../store/appReducer';
+import {handleDrawerChange, handleThemeChange} from '../../store/appReducer';
 import {useSelector} from 'react-redux';
 import {RootState} from '../../store/rootReducer';
-import {Grid} from '@mui/material';
+import {Grid, Switch} from '@mui/material';
 import LoginDialog from "./AccountDialog";
 import useWindowSize from "../../hooks/useWindowSize";
 import ChevronRightIcon from "@mui/icons-material/ChevronRight";
 import ChevronLeftIcon from "@mui/icons-material/ChevronLeft";
-import ThemeMenuList from "./ThemeMenuList";
 
 interface AppBarProps extends MuiAppBarProps {
     open?: boolean;
@@ -43,6 +42,7 @@ const AppBarComponent = () => {
     const dispatch = useAppDispatch();
     const {
         drawerOpen,
+        isDarkTheme
     } = useSelector((state: RootState) => state.app);
     const windowSize = useWindowSize()
 
@@ -75,7 +75,7 @@ const AppBarComponent = () => {
                     <IconButton>
                         <LoginDialog/>
                     </IconButton>
-                    <ThemeMenuList/>
+                    <Switch onClick={() => dispatch(handleThemeChange(!isDarkTheme))}/>
                 </Grid>
             </Grid>
         </Toolbar>

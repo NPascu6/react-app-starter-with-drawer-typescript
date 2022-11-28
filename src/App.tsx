@@ -11,39 +11,21 @@ import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "./firebase/firebase";
 import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
 import {sendFirebaseEmailVerification} from "./store/thunks/authThunk";
-import LoaderPage from "./pages/LoaderPage";
 import "react-image-gallery/styles/css/image-gallery.css";
 
 function App() {
-    const {githubProfiles, githubProfile, theme} = useSelector((state: RootState) => state.app);
+    const {githubProfiles, githubProfile, isDarkTheme} = useSelector((state: RootState) => state.app);
     const dispatch = useAppDispatch();
     const [user, loading, error] = useAuthState(auth);
     const [localTheme, setLocalTheme] = useState(lightTheme)
 
     useEffect(() => {
-        switch (theme) {
-            case 'lightTheme':
-                setLocalTheme(lightTheme)
-                break
-            case 'darkTheme':
-                setLocalTheme(darkTheme)
-                break
-            /*            case 'pinkLightTheme':
-                            setLocalTheme(pinkLightTheme)
-                            break
-                        case 'pinkDarkTheme':
-                            setLocalTheme(pinkDarkTheme)
-                            break
-                        case 'businessDarkTheme':
-                            setLocalTheme(businessDarkTheme)
-                            break
-                        case 'businessLightTheme':
-                            setLocalTheme(businessLightTheme)
-                            break*/
-            default:
-                return
+        if (isDarkTheme) {
+            setLocalTheme(darkTheme)
+        } else {
+            setLocalTheme(lightTheme)
         }
-    }, [theme])
+    }, [isDarkTheme])
 
 
     useEffect(() => {
@@ -71,13 +53,9 @@ function App() {
     }, [dispatch, githubProfile]);
 
     return (
-        theme !== "" ?
-            <>
-                <ThemeProvider theme={localTheme}>
-                    <MainPage/>
-                </ThemeProvider>
-            </>
-            : <LoaderPage/>
+        <ThemeProvider theme={localTheme}>
+            <MainPage/>
+        </ThemeProvider>
     );
 }
 
