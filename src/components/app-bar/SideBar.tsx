@@ -121,7 +121,7 @@ const SideBar = () => {
             </IconButton>
         </DrawerHeader>
         <Divider/>
-        <List>
+        <List sx={{':hover':{cursor: 'pointer'}}}>
             {routes?.map((route, index) => (
                 <ListItem key={route.key} className={'Center'} disablePadding sx={{
                     display: 'flex',
