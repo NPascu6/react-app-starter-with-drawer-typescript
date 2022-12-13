@@ -1,9 +1,9 @@
 import React, {Suspense} from 'react';
 import {Route, Routes} from 'react-router-dom';
 import LoaderPage from '../pages/LoaderPage';
-import DashboardPage from '../pages/DashboardPage';
-import VideosPage from '../pages/VideosPage';
-import AboutPage from "../pages/AboutPage";
+const DashboardPage =React.lazy(() => import('../pages/DashboardPage'));
+const VideosPage =React.lazy(() => import('../pages/VideosPage'));
+const AboutPage =React.lazy(() => import('../pages/AboutPage'));
 
 export const RoutesSwitch = () => {
     return (

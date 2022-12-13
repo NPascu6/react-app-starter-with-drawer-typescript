@@ -1,13 +1,15 @@
 import * as React from 'react';
-import {useRef} from 'react';
+import {Suspense, useRef} from 'react';
 import {Grid, Paper} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
-import YoutubeVideoLink1 from "../components/videos/YoutubeVideoLinkApp1";
-import YoutubeVideoLink2 from "../components/videos/YoutubeVideoLinkApp2";
-import YoutubeVideoLink3 from "../components/videos/YoutubeVideoLinkApp3";
-import YoutubeVideoLink4 from "../components/videos/YoutubeVideoLinkApp4";
 import useWindowFocus from "../hooks/useFocusHook";
+import LoaderPage from "./LoaderPage";
+
+const YoutubeVideoLink1 = React.lazy(() => import('../components/videos/YoutubeVideoLinkApp1'));
+const YoutubeVideoLink2 = React.lazy(() => import('../components/videos/YoutubeVideoLinkApp2'));
+const YoutubeVideoLink3 = React.lazy(() => import('../components/videos/YoutubeVideoLinkApp3'));
+const YoutubeVideoLink4 = React.lazy(() => import('../components/videos/YoutubeVideoLinkApp4'));
 
 export default function DashboardPage() {
     const theme = useTheme()
@@ -26,8 +28,10 @@ export default function DashboardPage() {
                 justifyContent: 'center',
                 width: windowSize.innerWidth < 500 ? '19em' : '30em',
             }}>
-                <YoutubeVideoLink1/>
-                <YoutubeVideoLink2/>
+                <Suspense fallback={<LoaderPage/>}>
+                    <YoutubeVideoLink1/>
+                    <YoutubeVideoLink2/>
+                </Suspense>
             </Paper>
             <Paper elevation={3} sx={{
                 backgroundColor: theme.backgroundColor,
@@ -36,8 +40,10 @@ export default function DashboardPage() {
                 justifyContent: 'center',
                 width: windowSize.innerWidth < 500 ? '19em' : '30em',
             }}>
-                <YoutubeVideoLink3/>
-                <YoutubeVideoLink4/>
+                <Suspense fallback={<LoaderPage/>}>
+                    <YoutubeVideoLink3/>
+                    <YoutubeVideoLink4/>
+                </Suspense>
             </Paper>
         </Grid>
     );

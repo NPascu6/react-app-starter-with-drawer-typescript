@@ -1,10 +1,13 @@
 import {Divider, Grid, Paper, Typography} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import * as React from "react";
-import {useRef} from "react";
-import YoutubeVideoLink from "../components/about/YoutubeVideoLink";
+import {Suspense, useRef} from "react";
+
 import useWindowSize from "../hooks/useWindowSize";
 import useWindowFocus from "../hooks/useFocusHook";
+import LoaderPage from "./LoaderPage";
+
+const YoutubeVideoLink = React.lazy(() => import('../components/about/YoutubeVideoLink'));
 
 interface UserInfoFriend {
     name: string,
@@ -103,7 +106,9 @@ const AboutPage = () => {
                 system architecture(mostly learning).</Typography>
             <Divider/>
             <Typography variant={'h6'}>I also do this:</Typography>
-            <YoutubeVideoLink/>
+            <Suspense fallback={<LoaderPage/>}>
+                <YoutubeVideoLink/>
+            </Suspense>
         </Paper>
     </Grid>
 };
