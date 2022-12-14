@@ -27,4 +27,4 @@ const TestAPIPage = () => {
     </>
 }
 
-export  default  TestAPIPage;
+export default TestAPIPage;

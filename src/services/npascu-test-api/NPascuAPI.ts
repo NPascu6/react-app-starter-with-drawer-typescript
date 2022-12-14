@@ -3,6 +3,7 @@ import {User} from "./models";
 
 export class NPascuAPIService extends RestService {
     private _baseUrl = 'https://aspcorebasicnet6api20221214201717.azurewebsites.net';
+
     //private _baseUrl = 'https://localhost:7282'
 
     public async getAllTestUsers(token: any): Promise<User[]> {

@@ -4,15 +4,15 @@ import {User} from "../services/npascu-test-api/models";
 interface TestAPISliceState {
     allTestUsers: User[]
     allTestUserDetails: any[]
-    allTestUserRoles:any[]
+    allTestUserRoles: any[]
     allTestAssets: any[]
     allTestWallets: any[]
 }
 
 const initialState: TestAPISliceState = {
     allTestUsers: [],
-    allTestUserDetails:[],
-    allTestUserRoles:[],
+    allTestUserDetails: [],
+    allTestUserRoles: [],
     allTestAssets: [],
     allTestWallets: [],
 };

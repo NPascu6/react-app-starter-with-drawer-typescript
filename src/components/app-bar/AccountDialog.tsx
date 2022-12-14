@@ -53,9 +53,11 @@ function SimpleDialog(props: SimpleDialogProps) {
                     inputProps={{'aria-label': 'controlled'}}/>
                 </ListItem>}
                 {(!props.firebaseUser && formType === 'login') ?
-                    <ListItem autoFocus button onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
+                    <ListItem autoFocus button
+                              onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
                         <Typography variant={"h5"}>Don't have an account? Register here:</Typography>
-                    </ListItem> : <ListItem autoFocus button onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
+                    </ListItem> : <ListItem autoFocus button
+                                            onClick={() => formType === 'login' ? setFormType('register') : setFormType('login')}>
                         <Typography variant={"body2"}>You are registering to a demo(personal) firebase database, you can
                             also verify your email(check spam folder):</Typography>
                     </ListItem>}

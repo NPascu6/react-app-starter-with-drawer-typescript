@@ -25,10 +25,9 @@ function App() {
             dispatch(setupApp(token))
         }
 
-        if (user){
+        if (user) {
             dispatchSetupApp().then(() => console.log('App setup started.'))
-        }
-        else{
+        } else {
             console.log('Log in to access custom api test methods.')
         }
     }, [user, dispatch])

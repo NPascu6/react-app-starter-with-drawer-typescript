@@ -4,11 +4,11 @@ import AGGridComponent from "../shared/AGGridComponent";
 import {v4 as uuidv4} from 'uuid';
 import LoaderPage from "../../pages/LoaderPage";
 
-interface TestAPIUserDetailsProps{
+interface TestAPIUserDetailsProps {
     items: any
 }
 
-const TestAPIUsers =({ items} : TestAPIUserDetailsProps) => {
+const TestAPIUsers = ({items}: TestAPIUserDetailsProps) => {
     const [gridApi, setGridApi] = useState<GridApi>();
 
     const getId = () => {
@@ -54,8 +54,9 @@ const TestAPIUsers =({ items} : TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return items?.length > 0 ?  <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
-                            rowId={getId()}/> : <LoaderPage/>
+    return items?.length > 0 ?
+        <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
+                         rowId={getId()}/> : <LoaderPage/>
 }
 
 export default TestAPIUsers

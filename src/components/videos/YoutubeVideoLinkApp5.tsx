@@ -1,8 +1,6 @@
 import {Paper} from "@mui/material";
 import * as React from "react";
-import {useEffect, useState} from "react";
 import {useTheme} from "@mui/material/styles";
-import ReactPlayer from "react-player/lazy";
 import useWindowSize from "../../hooks/useWindowSize";
 
 const YoutubeVideoLink5 = () => {

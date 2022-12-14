@@ -12,16 +12,18 @@ const MainPage = () => {
     const theme = useTheme();
 
     return <>
-        <Grid sx={{  "&::-webkit-scrollbar": {
+        <Grid sx={{
+            "&::-webkit-scrollbar": {
                 width: 20,
-            },}} className={'App'}
-             style={{
-                 overflow: 'auto',
-                 height: `calc('100% - '5.5em')`,
-                 backgroundImage: `url(${background})`,
-                 backgroundColor: theme.backgroundColor,
-                 color: theme.textColor,
-             }}>
+            },
+        }} className={'App'}
+              style={{
+                  overflow: 'auto',
+                  height: `calc('100% - '5.5em')`,
+                  backgroundImage: `url(${background})`,
+                  backgroundColor: theme.backgroundColor,
+                  color: theme.textColor,
+              }}>
             <CssBaseline/>
             <div>
                 <AppBarComponent/>

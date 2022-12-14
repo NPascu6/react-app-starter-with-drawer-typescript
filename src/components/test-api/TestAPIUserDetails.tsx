@@ -4,11 +4,11 @@ import AGGridComponent from "../shared/AGGridComponent";
 import {v4 as uuidv4} from 'uuid';
 import LoaderPage from "../../pages/LoaderPage";
 
-interface TestAPIUserDetailsProps{
+interface TestAPIUserDetailsProps {
     items: any
 }
 
-const TestAPIUserDetails = ({items} : TestAPIUserDetailsProps) => {
+const TestAPIUserDetails = ({items}: TestAPIUserDetailsProps) => {
     const [gridApi, setGridApi] = useState<GridApi>();
 
     const getId = () => {
@@ -30,7 +30,7 @@ const TestAPIUserDetails = ({items} : TestAPIUserDetailsProps) => {
             {
                 headerName: 'Phone',
                 field: 'phoneNumber',
-                minWidth:120,
+                minWidth: 120,
                 editable: true,
                 sortable: true,
             },
@@ -55,7 +55,8 @@ const TestAPIUserDetails = ({items} : TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return items?.length > 0 ?  <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
-                                                 rowId={getId()}/> : <LoaderPage/>
+    return items?.length > 0 ?
+        <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
+                         rowId={getId()}/> : <LoaderPage/>
 }
-export  default  TestAPIUserDetails;
+export default TestAPIUserDetails;

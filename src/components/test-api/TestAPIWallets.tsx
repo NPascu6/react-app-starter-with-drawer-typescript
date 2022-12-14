@@ -3,11 +3,11 @@ import {ColDef, ColGroupDef, GridApi, GridReadyEvent} from "ag-grid-community";
 import AGGridComponent from "../shared/AGGridComponent";
 import {v4 as uuidv4} from 'uuid';
 
-interface TestAPIUserDetailsProps{
+interface TestAPIUserDetailsProps {
     items: any
 }
 
-const TestAPIWallets = ({ items}: TestAPIUserDetailsProps) => {
+const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
     const [gridApi, setGridApi] = useState<GridApi>();
 
     const getId = () => {
@@ -39,6 +39,7 @@ const TestAPIWallets = ({ items}: TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs} rowId={getId()}/>
+    return <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
+                            rowId={getId()}/>
 }
-export  default TestAPIWallets;
+export default TestAPIWallets;

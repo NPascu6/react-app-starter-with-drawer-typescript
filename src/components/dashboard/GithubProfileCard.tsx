@@ -78,7 +78,7 @@ const GithubProfileCard = () => {
             </Grid>
             <Divider/>
             <Divider/>
-            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center', }}>
+            <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center',}}>
                 <Link href={"https://www.facebook.com/norbi.pascu"} target={"_blank"}
                       rel={"noopener noreferrer"}>
                     <FacebookOutlined sx={{color: theme.textColor}}/>
