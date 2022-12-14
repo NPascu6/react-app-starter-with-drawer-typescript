@@ -26,14 +26,5 @@ export class AppService extends RestService {
             return [];
         });
     }
-
-    public async  getTestUsers(token: any): Promise<any[]> {
-        return this.fetchData("https://localhost:7282/GetAllUsers", {headers: {Authorization: "bearer " + token}}).then((res) => {
-            return res.data;
-        }).catch((err) => {
-            console.log(err);
-            return [];
-        });
-    }
 }
 

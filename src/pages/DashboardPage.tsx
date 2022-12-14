@@ -8,8 +8,8 @@ import useWindowSize from "../hooks/useWindowSize";
 import useWindowFocus from "../hooks/useFocusHook";
 import LoaderPage from "./LoaderPage";
 import {useAppDispatch} from "../store/store";
-import {fetchTestUsers} from "../store/thunks/appThunk";
 import useToken from "../hooks/useToken";
+import {setupApp} from "../store/thunks/appThunk";
 
 const OtherComponentsPresentation = React.lazy(() => import('../components/dashboard/TradingAppPresentation'));
 const TradingAppPresentation = React.lazy(() => import('../components/dashboard/PortalPresentation'));
@@ -26,9 +26,13 @@ export default function DashboardPage() {
     const dispatch = useAppDispatch()
 
     useEffect(() => {
-        if (token)
-            dispatch(fetchTestUsers(token))
-    }, [token])
+        if (token){
+            dispatch(setupApp(token))
+        }
+        else{
+            console.log('Log in to access custom api test methods.')
+        }
+    }, [token, dispatch])
 
     return (
         <Grid container className={'Center'}
