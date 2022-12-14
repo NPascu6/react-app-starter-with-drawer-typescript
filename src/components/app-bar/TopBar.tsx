@@ -46,7 +46,6 @@ const AppBarComponent = () => {
     } = useSelector((state: RootState) => state.app);
     const windowSize = useWindowSize()
 
-
     return <TopBar position="fixed" open={drawerOpen}
                    sx={{
                        width: windowSize.innerWidth <= 500 ? '100%' : '100%',

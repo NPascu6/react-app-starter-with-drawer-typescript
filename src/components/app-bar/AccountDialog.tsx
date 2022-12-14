@@ -17,6 +17,7 @@ import RegisterForm from "../about/RegisterForm";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../../firebase/firebase";
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
+import {useNavigate} from "react-router-dom";
 
 export interface SimpleDialogProps {
     open: boolean;
@@ -30,7 +31,7 @@ function SimpleDialog(props: SimpleDialogProps) {
     const dispatch = useAppDispatch()
     const [formType, setFormType] = useState<string>('login')
     const [user] = useAuthState(auth);
-
+    const navigate = useNavigate();
     const handleClose = () => {
         onClose();
     };
@@ -63,7 +64,10 @@ function SimpleDialog(props: SimpleDialogProps) {
                     <LocalFireDepartmentIcon/>
                     {formType === 'login' ? "Register with firebase..." : "Back to login form..."}
                 </ListItem>}
-                {props.firebaseUser ? <ListItem button onClick={() => dispatch(logoutFirebase())}>
+                {props.firebaseUser ? <ListItem button onClick={() => {
+                    navigate('/')
+                    dispatch(logoutFirebase())
+                }}>
                     <Button sx={{borderRadius: 0}}>Logout</Button>
                 </ListItem> : formType === 'login' ? <LoginForm/> : <RegisterForm/>}
                 <ListItem autoFocus button onClick={() => handleClose()}>

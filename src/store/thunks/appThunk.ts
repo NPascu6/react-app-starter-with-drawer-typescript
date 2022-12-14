@@ -7,7 +7,7 @@ import {
     fetchAllTestUsersDetails,
     fetchAllTestUserWallets,
     fetchTestUsers
-} from "./npascuAPIThunk";
+} from "./testAPIThunk";
 
 export const setupApp = (token: string) => async (dispatch: any) => {
     dispatch(fetchAllTestUsersDetails(token))

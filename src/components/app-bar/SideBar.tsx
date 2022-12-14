@@ -6,7 +6,7 @@ import List from '@mui/material/List';
 import {Grid, ListItem, ListItemIcon, ListItemText, Tooltip} from '@mui/material';
 import InboxIcon from '@mui/icons-material/Inbox';
 import MailIcon from '@mui/icons-material/Mail';
-import React from 'react';
+import React, {useEffect, useState} from 'react';
 import {CSSObject, styled, Theme, useTheme} from '@mui/material/styles';
 import MuiDrawer from '@mui/material/Drawer';
 import {useLocation, useNavigate} from 'react-router-dom';
@@ -16,9 +16,9 @@ import {useSelector} from 'react-redux';
 import {RootState} from '../../store/rootReducer';
 import {handleDrawerChange} from '../../store/appReducer';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
-
-const routes = [{key: 'Home', url: '/'},
-    {key: 'About', url: '/about'}, {key: 'Videos', url: '/videos'}];
+import ApiIcon from '@mui/icons-material/Api';
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../../firebase/firebase";
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: _defaultDrawerWidth,
@@ -71,10 +71,31 @@ const SideBar = () => {
     const theme = useTheme();
     const navigate = useNavigate();
     const dispatch = useAppDispatch();
+    const [user] = useAuthState(auth);
     const {
         drawerOpen,
     } = useSelector((state: RootState) => state.app);
     const location = useLocation();
+    const [routes, setRoutes] = useState<any>([
+        {key: 'Home', url: '/'},
+        {key: 'About', url: '/about'},
+        {key: 'Videos', url: '/videos'},
+        {key: 'TestAPI', url: '/testAPI'}])
+
+    useEffect(() => {
+        if (user) {
+            setRoutes([
+                {key: 'Home', url: '/'},
+                {key: 'About', url: '/about'},
+                {key: 'Videos', url: '/videos'},
+                {key: 'TestAPI', url: '/testAPI'}])
+        } else {
+            setRoutes([
+                {key: 'Home', url: '/'},
+                {key: 'About', url: '/about'},
+                {key: 'Videos', url: '/videos'}])
+        }
+    }, [user])
 
     const renderIcon = (routeKey: string, route: string) => {
         switch (routeKey) {
@@ -104,6 +125,17 @@ const SideBar = () => {
                         }}/>
                 </Tooltip>;
             }
+            case 'TestAPI' : {
+                return <Tooltip title={"TestAPI"}>
+                    <ApiIcon
+                        sx={{
+                            color: location.pathname === route ? theme.textColor : theme.backgroundColor,
+                            '&:hover': {color: location.pathname === route ? theme.textColor : theme.backgroundColor,}
+                        }}/>
+                </Tooltip>;
+            }
+            default:
+                return <></>;
         }
     }
 
@@ -121,7 +153,7 @@ const SideBar = () => {
             </IconButton>
         </DrawerHeader>
         <Divider/>
-        <List sx={{':hover':{cursor: 'pointer'}}}>
+        <List sx={{':hover': {cursor: 'pointer'}}}>
             {routes?.map((route, index) => (
                 <ListItem key={route.key} className={'Center'} disablePadding sx={{
                     display: 'flex',

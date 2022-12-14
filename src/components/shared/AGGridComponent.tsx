@@ -38,7 +38,7 @@ const AGGridComponent = (props: AGGridProps) => {
                 return props.rowId1 && props.rowId2 ? params.data[props.rowId] + params.data[props.rowId1] + params.data[props.rowId2] : params.data[props.rowId];
             }
         } else {
-            return params.data[props.rowId];
+            return props.rowId + Math.random();
         }
     }, [props]);
 
@@ -71,7 +71,6 @@ const AGGridComponent = (props: AGGridProps) => {
             onSelectionChanged={props.onRowSelected}
             onGridReady={props.onGridReady}
             animateRows={true}
-            enableRangeSelection={true}
             defaultColDef={DefaultColumnDef}
             sideBar={DefaultSideBarDef}
             statusBar={DefaultStatusPanelDef}

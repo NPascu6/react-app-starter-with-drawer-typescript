@@ -6,7 +6,7 @@ import {RootState} from './store/rootReducer';
 import {darkTheme, lightTheme} from './theme/theme';
 import MainPage from './pages/MainPage';
 import {useAppDispatch} from "./store/store";
-import {fetchGithubUserProfile} from "./store/thunks/appThunk";
+import {fetchGithubUserProfile, setupApp} from "./store/thunks/appThunk";
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "./firebase/firebase";
 import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
@@ -18,6 +18,20 @@ function App() {
     const dispatch = useAppDispatch();
     const [user, loading, error] = useAuthState(auth);
     const [localTheme, setLocalTheme] = useState(lightTheme)
+
+    useEffect(() => {
+        const dispatchSetupApp = async () => {
+            const token = await user.getIdToken()
+            dispatch(setupApp(token))
+        }
+
+        if (user){
+            dispatchSetupApp().then(() => console.log('App setup started.'))
+        }
+        else{
+            console.log('Log in to access custom api test methods.')
+        }
+    }, [user, dispatch])
 
     useEffect(() => {
         if (isDarkTheme) {
