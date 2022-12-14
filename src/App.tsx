@@ -27,7 +27,6 @@ function App() {
         }
     }, [isDarkTheme])
 
-
     useEffect(() => {
         if (user?.emailVerified || !user) return
         dispatch(sendFirebaseEmailVerification())

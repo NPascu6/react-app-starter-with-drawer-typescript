@@ -19,7 +19,6 @@ const googleProvider = new GoogleAuthProvider();
 export const handleSubmit = async (e: any, value: UserInfo) => {
     e.preventDefault()
     try {
-        debugger
         let res = await addDoc(collection(db, 'users'), {
             title: value.title,
             comments: value.comments,
@@ -28,7 +27,6 @@ export const handleSubmit = async (e: any, value: UserInfo) => {
             completed: value.completed,
             created: Timestamp.now()
         })
-        debugger
         console.log(res)
     } catch (err) {
         alert(err)

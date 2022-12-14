@@ -20,3 +20,9 @@ export const fetchGithubUserProfile = () => async (dispatch: any) => {
     const res = await service.getGithubUserInfo()
     dispatch(setGithubProfile(res))
 };
+
+export const fetchTestUsers = (token: any) => async (dispatch: any) => {
+    const service = new AppService();
+    const res = await service.getTestUsers(token)
+    console.log(res)
+};

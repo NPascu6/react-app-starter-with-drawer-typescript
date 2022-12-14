@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {Suspense, useRef} from 'react';
+import {Suspense, useEffect, useRef} from 'react';
 import {Grid, Paper} from "@mui/material";
 
 import {useTheme} from "@mui/material/styles";
@@ -7,6 +7,9 @@ import useWindowSize from "../hooks/useWindowSize";
 
 import useWindowFocus from "../hooks/useFocusHook";
 import LoaderPage from "./LoaderPage";
+import {useAppDispatch} from "../store/store";
+import {fetchTestUsers} from "../store/thunks/appThunk";
+import useToken from "../hooks/useToken";
 
 const OtherComponentsPresentation = React.lazy(() => import('../components/dashboard/TradingAppPresentation'));
 const TradingAppPresentation = React.lazy(() => import('../components/dashboard/PortalPresentation'));
@@ -18,7 +21,14 @@ export default function DashboardPage() {
     const theme = useTheme()
     const windowSize = useWindowSize()
     const ref = useRef(null);
+    const token: any = useToken()
     useWindowFocus(ref)
+    const dispatch = useAppDispatch()
+
+    useEffect(() => {
+        if (token)
+            dispatch(fetchTestUsers(token))
+    }, [token])
 
     return (
         <Grid container className={'Center'}
