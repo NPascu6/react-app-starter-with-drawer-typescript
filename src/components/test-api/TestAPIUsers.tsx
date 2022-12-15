@@ -31,7 +31,7 @@ const TestAPIUsers = ({items}: TestAPIUserDetailsProps) => {
             },
             {
                 headerName: 'Last Name',
-                field: 'firstName',
+                field: 'lastName',
                 minWidth: 80,
                 editable: true,
                 sortable: true,
