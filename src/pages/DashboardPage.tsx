@@ -32,10 +32,19 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '15em' : '25.2em',
+                width: windowSize.innerWidth < 500 ? '20em' : '25.2em',
             }}>
                 <Suspense fallback={<LoaderPage/>}>
                     <TradingAppPresentation/>
+                </Suspense></Paper>
+            <Paper elevation={3} sx={{
+                backgroundColor: theme.palette.primary.main,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                width: windowSize.innerWidth < 500 ? '20em' : '25.2em',
+            }}>
+                <Suspense fallback={<LoaderPage/>}>
                     <WindowPresentation/>
                 </Suspense>
             </Paper>
@@ -44,10 +53,20 @@ export default function DashboardPage() {
                 display: 'flex',
                 flexDirection: 'column',
                 justifyContent: 'center',
-                width: windowSize.innerWidth < 500 ? '15em' : '25.2em',
+                width: windowSize.innerWidth < 500 ? '20em' : '25.2em',
             }}>
                 <Suspense fallback={<LoaderPage/>}>
                     <PortalPresentation/>
+                </Suspense>
+            </Paper>
+            <Paper elevation={3} sx={{
+                backgroundColor: theme.palette.primary.main,
+                display: 'flex',
+                flexDirection: 'column',
+                justifyContent: 'center',
+                width: windowSize.innerWidth < 500 ? '20em' : '25.2em',
+            }}>
+                <Suspense fallback={<LoaderPage/>}>
                     <OtherComponentsPresentation/>
                 </Suspense>
             </Paper>

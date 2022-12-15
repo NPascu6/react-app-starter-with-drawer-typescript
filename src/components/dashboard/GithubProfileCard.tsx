@@ -44,10 +44,21 @@ const GithubProfileCard = () => {
                 <DownloadIcon/>
             </Button>
             <Divider/>
-            <Grid container className={'Flex-Container-Center'}>
-                <Typography variant={"h4"}>{githubProfile?.name}</Typography>
-                <Typography variant={"h6"}>[{githubProfile?.login}]</Typography>
-                <Typography variant={"body2"}>{githubProfile?.bio}{githubProfile?.location}</Typography>
+            <Grid container className={'Flex-Container-Center'} sx={{flexDirection: 'column'}}>
+                <Typography  variant={"h5"}>{githubProfile?.name}</Typography>
+                <Typography variant={"body2"}>[{githubProfile?.login}]</Typography>
+                <Typography sx={{width: '100%'}} variant={"h6"}>{`${githubProfile?.bio}Zurich`}</Typography>
+            </Grid>
+            <Divider/>
+            <Grid container className={'Flex-Container-Center'} sx={{flexDirection: 'column'}}>
+                <Typography variant={"body2"}>
+                    <Link sx={{color: theme.textColor, fontWeight: 'bold'}}
+                          href={'mailto:norbipascu92@gmail.com'}>norbipascu92@gmail.com</Link>
+                </Typography>
+                <Typography variant={"body2"}>
+                    <Link sx={{color: theme.textColor, fontWeight: 'bold'}}
+                          href={'tel:+41765951562'}>+41765951562</Link>
+                </Typography>
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
@@ -67,13 +78,28 @@ const GithubProfileCard = () => {
                     <Typography variant={"body2"}>Public repos: {githubProfile?.public_repos}</Typography>
                 </Grid>
                 <Grid item xs={12}>
-                    <Typography variant={"body2"}>Private repos: {githubProfile?.total_private_repos}</Typography>
-                </Grid>
-                <Grid item xs={12}>
                     <Typography variant={"body2"}>Followers: {githubProfile?.followers}</Typography>
                 </Grid>
                 <Grid item xs={12}>
                     <Typography variant={"body2"}>Following: {githubProfile?.following}</Typography>
+                </Grid>
+                <Grid item xs={12} sx={{width: '15em', flexDirection: 'column'}} className={'Flex-Container-Center'}>
+                    <Typography variant={"body2"} sx={{fontWeight: 'bold'}}>Highlighted
+                        repos</Typography>
+                    <Divider/>
+                </Grid>
+
+                <Grid item xs={12} sx={{width: '15em', flexDirection: 'column', borderTop: '1px solid'}}
+                      className={'Flex-Container-Center'}>
+                    <Typography variant={"body2"}> <Link sx={{color: theme.textColor, fontWeight: 'bold'}}
+                                                         href={'https://github.com/NPascu6/react-app-starter-with-drawer-typescript'}>This
+                        web app.</Link></Typography>
+
+                    <Typography variant={"body2"}><Link sx={{color: theme.textColor, fontWeight: 'bold'}}
+                                                        href={'https://github.com/NPascu6/ASP_.NET_Starter_API'}>.NET
+                        Core 6 API</Link></Typography>
+                </Grid>
+                <Grid item xs={12}>
                 </Grid>
             </Grid>
             <Divider/>

@@ -12,8 +12,8 @@ const AppFooter = () => {
         color: theme.backgroundColor,
         backgroundColor: theme.textColor
     }}>
-        <Typography variant={"body2"} sx={{paddingLeft: '4em'}}>
-            Created by N. Pascu, using React 18 and MUI 6. Last update 11/28/2022 - 5:29.
+        <Typography variant={"body2"} sx={{paddingLeft: '6em'}}>
+            Created by N. Pascu, using React 18 and MUI 6.
             The code is available on my github: <Link
             href={'https://github.com/NPascu6/react-app-starter-with-drawer-typescript'} sx={{
             cursor: 'pointer',

@@ -5,7 +5,12 @@ const LoaderPage = () => {
     const theme = useTheme()
 
     return (
-        <div style={{display: 'flex', flex: 1, backgroundColor: theme.backgroundColor, color: theme.textColor}}
+        <div style={{display: 'flex',
+            flex: 1,
+            backgroundColor: theme.backgroundColor,
+            color: theme.textColor,
+            minHeight: '15em',
+        }}
              className={'Center'}>
             <Typography variant="h6" gutterBottom>
                 Loading ...

@@ -14,7 +14,7 @@ export const loginWithFirebase = (userInfo: UserLoginModel) => async (dispatch: 
     console.log('Fetching github user profile');
     const res = await logInWithEmailAndPassword(userInfo.email, userInfo.password)
     console.log(res)
-    dispatch(setFirebaseUser(res))
+    dispatch(setFirebaseUser(res.user.email))
 };
 
 

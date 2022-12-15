@@ -2,6 +2,8 @@ import {Grid, IconButton, TextField} from "@mui/material";
 import React, {useState} from "react";
 import {Theme, useTheme} from "@mui/material/styles";
 import AddIcon from '@mui/icons-material/Add';
+import RestartAltIcon from '@mui/icons-material/RestartAlt';
+
 
 interface GridToolbarProps {
     gridApi: any
@@ -35,8 +37,11 @@ const GridToolbar = ({gridApi}: GridToolbarProps) => {
                 onChange={e => onFilterTextBoxChanged(e)}/>
         </Grid>
         <Grid item xs={2} className={'Center'} sx={{backgroundColor: theme.backgroundColor}}>
-            <IconButton>
-                <AddIcon/>
+            <IconButton sx={{color: theme.textColor, height: '1em', width: '1em'}}>
+                <AddIcon sx={{height: '0.7em', width: '0.7em'}}/>
+            </IconButton>
+            <IconButton sx={{color: theme.textColor, height: '1em', width: '1em'}}>
+                <RestartAltIcon sx={{height: '0.7em', width: '0.7em'}}/>
             </IconButton>
         </Grid>
     </Grid>

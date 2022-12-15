@@ -27,7 +27,7 @@ const PortalPresentation = () => {
     }}>
         <CustomCarousel images={images}
                         type={'image'}
-                        description={'AG Grid used for tables and rendering updates on dynamic data.'}/>
+                        description={'AG Grid used for rendering updates on dynamic data.'}/>
     </Paper>
 }
 

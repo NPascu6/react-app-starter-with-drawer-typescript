@@ -82,25 +82,7 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
                 </span>
                 <GoogleIcon/>
             </IconButton>
-        </Grid>
-
-        }
-        <Grid item xs={12}>
-            <TextField label={'Password'}
-                       sx={{
-                           width: '14em',
-                           '& .MuiFormLabel-root': {
-                               color: theme.textColor
-                           },
-                           '& .MuiInputBase-root': {
-                               color: theme.textColor
-                           }
-                       }}
-                       type={"password"}
-                       value={userInfo.password}
-                       size={"small"}
-                       onChange={(v) => handleChangeUserInfo(v.target.value, 'password')}/>
-        </Grid>
+        </Grid>}
         <Grid item xs={12}>
             <TextField label={'Email'}
                        error={!validEmail && userInfo.email !== ""}
@@ -117,6 +99,22 @@ const UserInfoGrid = ({user, setUser, type}: Props) => {
                        value={userInfo.email}
                        size={"small"}
                        onChange={(v) => handleChangeUserInfo(v.target.value, 'email')}/>
+        </Grid>
+        <Grid item xs={12}>
+            <TextField label={'Password'}
+                       sx={{
+                           width: '14em',
+                           '& .MuiFormLabel-root': {
+                               color: theme.textColor
+                           },
+                           '& .MuiInputBase-root': {
+                               color: theme.textColor
+                           }
+                       }}
+                       type={"password"}
+                       value={userInfo.password}
+                       size={"small"}
+                       onChange={(v) => handleChangeUserInfo(v.target.value, 'password')}/>
         </Grid>
     </Grid>
 }

@@ -8,7 +8,7 @@ export abstract class RestService {
      * @param params
      * @protected
      */
-    protected async fetchData(subPath: string, params: any = undefined): Promise<AxiosResponse> {
+    protected async fetchData(subPath: string, params: any = undefined): Promise<AxiosResponse | string> {
         const path = `${subPath}`;
         try {
             return await axios.get(path, params);

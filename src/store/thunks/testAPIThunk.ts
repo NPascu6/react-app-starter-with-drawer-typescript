@@ -17,9 +17,12 @@ export const fetchTestUsers = (token: any) => async (dispatch: any) => {
 
 export const fetchAllTestUsersDetails = (token: any) => async (dispatch: any) => {
     const service = new NPascuAPIService();
-    const res: User[] = await service.getAllTestUserDetails(token)
+    const res: User[] | string = await service.getAllTestUserDetails(token)
     console.log(res)
-    dispatch(setAllTestUserDetails(res))
+    if (res.includes('401')) {
+        dispatch(setAllTestUserDetails(res))
+    } else
+        dispatch(setAllTestUserDetails(res))
 };
 
 export const fetchAllTestUserRoles = (token: any) => async (dispatch: any) => {

@@ -59,7 +59,7 @@ export const darkTheme = createTheme({
                     },
                 },
             },
-        },
+        }
     }
 });
 
@@ -111,7 +111,7 @@ export const lightTheme = createTheme({
                     },
                 },
             },
-        },
+        }
     }
 });
 

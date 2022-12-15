@@ -27,7 +27,7 @@ const OtherComponentsPresentation = () => {
     }}>
         <CustomCarousel images={images}
                         type={'image'}
-                        description={'AG Grid used for tables and rendering updates on dynamic data.'}/>
+                        description={'AG Grid used for tables.'}/>
     </Paper>
 }
 

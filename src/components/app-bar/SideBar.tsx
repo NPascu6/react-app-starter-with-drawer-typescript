@@ -147,9 +147,9 @@ const SideBar = () => {
                            color: theme.backgroundColor,
                        }
                    }}>
-        <DrawerHeader>
-            <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+        <DrawerHeader sx={{color: theme.textColor}}>
+            <IconButton  onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
+                {theme.direction === 'rtl' ? <ChevronRightIcon sx={{color: theme.textColor}}/> : <ChevronLeftIcon sx={{color: theme.textColor}}/>}
             </IconButton>
         </DrawerHeader>
         <Divider/>

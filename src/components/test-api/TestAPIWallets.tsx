@@ -3,6 +3,7 @@ import {ColDef, ColGroupDef, GridApi, GridReadyEvent} from "ag-grid-community";
 import AGGridComponent from "../shared/AGGridComponent";
 import GridToolbar from "./GridToolbar";
 import LoaderPage from "../../pages/LoaderPage";
+import {ForbiddenPage} from "../../pages/errors";
 
 interface TestAPIUserDetailsProps {
     items: any
@@ -35,7 +36,7 @@ const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return items?.length > 0 ? <>
+    return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> :<>
         <GridToolbar gridApi={gridApi}/>
         <AGGridComponent
             gridApi={gridApi}

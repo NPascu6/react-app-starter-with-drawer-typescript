@@ -53,7 +53,7 @@ const TestAPIPage = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    width: windowSize.innerWidth < 500 ? '15em' : '40em',
+                    width: windowSize.innerWidth < 500 ? '20em' : '40em',
                 }}>
                     <Suspense fallback={<LoaderPage/>}>
                         <TestAPIUsers items={allTestUsers}/>
@@ -65,7 +65,7 @@ const TestAPIPage = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    width: windowSize.innerWidth < 500 ? '15em' : '40em',
+                    width: windowSize.innerWidth < 500 ? '20em' : '40em',
                 }}>
                     <Suspense fallback={<LoaderPage/>}>
                         <TestAPIUserDetails items={allTestUserDetails}/>
@@ -77,7 +77,7 @@ const TestAPIPage = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    width: windowSize.innerWidth < 500 ? '15em' : '20em',
+                    width: windowSize.innerWidth < 500 ? '20em' : '20em',
                 }}>
                     <Suspense fallback={<LoaderPage/>}>
                         <TestAPIUserRoles items={allTestUserRoles}/>
@@ -90,7 +90,7 @@ const TestAPIPage = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    width: windowSize.innerWidth < 500 ? '15em' : '30em',
+                    width: windowSize.innerWidth < 500 ? '20em' : '30em',
                 }}>
                     <Suspense fallback={<LoaderPage/>}>
                         <TestAPIAssets items={allTestAssets}/>
@@ -102,7 +102,7 @@ const TestAPIPage = () => {
                     display: 'flex',
                     flexDirection: 'column',
                     justifyContent: 'center',
-                    width: windowSize.innerWidth < 500 ? '15em' : '30em',
+                    width: windowSize.innerWidth < 500 ? '20em' : '30em',
                 }}>
                     <Suspense fallback={<LoaderPage/>}>
                         <TestAPIWallets items={allTestWallets}/>

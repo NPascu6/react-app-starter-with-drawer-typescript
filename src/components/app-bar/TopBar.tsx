@@ -67,14 +67,25 @@ const AppBarComponent = () => {
                             ...(drawerOpen && {display: 'inherit'}),
                         }}
                     >
-                        {!drawerOpen ? <ChevronRightIcon/> : <ChevronLeftIcon/>}
+                        {!drawerOpen ? <ChevronRightIcon sx={{color: theme.textColor}}/> :
+                            <ChevronLeftIcon sx={{color: theme.textColor}}/>}
                     </IconButton>
                 </Grid>
                 <Grid item xs={2} sx={{display: 'flex'}} className={'Center'}>
                     <IconButton>
                         <LoginDialog/>
                     </IconButton>
-                    <Switch onClick={() => dispatch(handleThemeChange(!isDarkTheme))}/>
+                    <Switch sx={{
+                        "& .MuiSwitch-switchBase.Mui-checked": {
+                            color: theme.textColor
+                        },
+                        "& .MuiSwitch-switchBase.Mui-checked+.MuiSwitch-track": {
+                            backgroundColor: theme.textColor
+                        },
+                        "& .MuiSwitch-switchBase": {
+                            color: theme.textColor
+                        },
+                    }} onClick={() => dispatch(handleThemeChange(!isDarkTheme))}/>
                 </Grid>
             </Grid>
         </Toolbar>

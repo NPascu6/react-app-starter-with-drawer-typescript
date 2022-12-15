@@ -11,20 +11,20 @@ export class AppService extends RestService {
                 Authorization: `token ${REACT_APP_SECRET}`,
             }
         }).then((res) => {
-            return res.data;
-        }).catch((err) => {
-            console.log(err);
-            return [];
-        });
+            if (typeof (res) === 'string') {
+                return res
+            } else
+                return res.data;
+        })
     }
 
     public async getGithubUserInfo(): Promise<any[]> {
         return this.fetchData(this._baseUrl + "/users/NPascu6", {}).then((res) => {
-            return res.data;
-        }).catch((err) => {
-            console.log(err);
-            return [];
-        });
+            if (typeof (res) === 'string') {
+                return res
+            } else
+                return res.data;
+        })
     }
 }
 
