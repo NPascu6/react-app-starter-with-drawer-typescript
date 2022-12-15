@@ -1,8 +1,8 @@
 import {useCallback, useMemo, useState} from "react";
 import {ColDef, ColGroupDef, GridApi, GridReadyEvent} from "ag-grid-community";
 import AGGridComponent from "../shared/AGGridComponent";
-import {v4 as uuidv4} from 'uuid';
 import LoaderPage from "../../pages/LoaderPage";
+import GridToolbar from "./GridToolbar";
 
 interface TestAPIUserDetailsProps {
     items: any
@@ -10,12 +10,6 @@ interface TestAPIUserDetailsProps {
 
 const TestAPIUserDetails = ({items}: TestAPIUserDetailsProps) => {
     const [gridApi, setGridApi] = useState<GridApi>();
-
-    const getId = () => {
-        let id = uuidv4()
-        debugger
-        return id
-    }
 
     const getUserColumnDefs = useMemo((): (ColDef | ColGroupDef)[] => {
         return [
@@ -56,7 +50,11 @@ const TestAPIUserDetails = ({items}: TestAPIUserDetailsProps) => {
     }, []);
 
     return items?.length > 0 ?
-        <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
-                         rowId={getId()}/> : <LoaderPage/>
+        <>
+            <GridToolbar gridApi={gridApi}/>
+            <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
+                             rowId={'userDetailsId'}/>
+        </>
+        : <LoaderPage/>
 }
 export default TestAPIUserDetails;

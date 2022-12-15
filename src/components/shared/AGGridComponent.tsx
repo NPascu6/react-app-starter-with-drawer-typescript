@@ -1,6 +1,6 @@
 import {AgGridReact} from 'ag-grid-react';
 import {DefaultColumnDef, DefaultSideBarDef, DefaultStatusPanelDef} from '../../helpers/agGrid';
-import React, {useCallback, useMemo} from 'react';
+import React, {useCallback, useState} from 'react';
 import {ColDef, ColGroupDef, FirstDataRenderedEvent, GetRowIdParams, GridApi} from 'ag-grid-community';
 import {Theme, useTheme} from '@mui/material/styles';
 import clsx from 'clsx';
@@ -23,8 +23,11 @@ interface AGGridProps {
 
 const AGGridComponent = (props: AGGridProps) => {
     const theme: Theme = useTheme();
-    const getRowStyle = useMemo(() => ({background: theme.backgroundColor, color: theme.textColor}), [theme]);
     const gridTheme: string = useAgGridThemeHook();
+    const [rowStyle,] = useState<any>({
+        backgroundColor: theme.backgroundColor,
+        color: theme.textColor
+    })
     useAgGridResizeHook(props.gridApi);
     /**
      * Sets row id to each row in the ag grid
@@ -38,9 +41,10 @@ const AGGridComponent = (props: AGGridProps) => {
                 return props.rowId1 && props.rowId2 ? params.data[props.rowId] + params.data[props.rowId1] + params.data[props.rowId2] : params.data[props.rowId];
             }
         } else {
-            return props.rowId + Math.random();
+            return params.data[props.rowId]
         }
     }, [props]);
+
 
     /**
      * Sets colum to fit on start
@@ -52,19 +56,14 @@ const AGGridComponent = (props: AGGridProps) => {
 
     return <div className={clsx(gridTheme)} style={{height: '20em'}}>
         <AgGridReact
-            rowStyle={getRowStyle}
+            rowStyle={{rowStyle}}
             onFirstDataRendered={onFirstDataRendered}
             rowData={props.items}
-            gridOptions={{
-                // eslint-disable-next-line @typescript-eslint/no-non-null-assertion
-                popupParent: document.querySelector('div')!
-            }}
-            singleClickEdit={true}
-            rowHeight={30}
+            rowHeight={20}
             pagination={true}
             paginationPageSize={20}
             cellFlashDelay={2000}
-            columnDefs={props.getColumnDefs ? props.getColumnDefs : []}
+            columnDefs={props.getColumnDefs}
             getRowId={getRowId}
             ensureDomOrder={true}
             rowSelection={'single'}

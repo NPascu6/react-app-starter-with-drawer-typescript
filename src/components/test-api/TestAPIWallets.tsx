@@ -1,7 +1,8 @@
 import {useCallback, useMemo, useState} from "react";
 import {ColDef, ColGroupDef, GridApi, GridReadyEvent} from "ag-grid-community";
 import AGGridComponent from "../shared/AGGridComponent";
-import {v4 as uuidv4} from 'uuid';
+import GridToolbar from "./GridToolbar";
+import LoaderPage from "../../pages/LoaderPage";
 
 interface TestAPIUserDetailsProps {
     items: any
@@ -9,11 +10,6 @@ interface TestAPIUserDetailsProps {
 
 const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
     const [gridApi, setGridApi] = useState<GridApi>();
-
-    const getId = () => {
-        let id = uuidv4()
-        return id
-    }
 
     const getUserColumnDefs = useMemo((): (ColDef | ColGroupDef)[] => {
         return [
@@ -26,7 +22,7 @@ const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
                 hide: true
             },
             {
-                headerName: 'walletName',
+                headerName: 'Wallet Name',
                 field: 'walletName',
                 minWidth: 80,
                 editable: true,
@@ -39,7 +35,14 @@ const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
-                            rowId={getId()}/>
+    return items?.length > 0 ? <>
+        <GridToolbar gridApi={gridApi}/>
+        <AGGridComponent
+            gridApi={gridApi}
+            items={items}
+            onGridReady={onGridReady}
+            getColumnDefs={getUserColumnDefs}
+            rowId={'walletId'}/>
+    </> : <LoaderPage/>
 }
 export default TestAPIWallets;

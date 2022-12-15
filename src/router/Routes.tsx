@@ -1,8 +1,7 @@
 import React, {Suspense} from 'react';
-import {Route, Routes} from 'react-router-dom';
+import {Navigate, Route, Routes} from 'react-router-dom';
 import LoaderPage from '../pages/LoaderPage';
 import useToken from "../hooks/useToken";
-import {ForbiddenPage} from "../pages/errors";
 
 const TestAPIPage = React.lazy(() => import('../pages/TestAPIPage'));
 const DashboardPage = React.lazy(() => import('../pages/DashboardPage'));
@@ -18,7 +17,8 @@ export const RoutesSwitch = () => {
                 <Route id={'/'} path={'/'} element={<DashboardPage/>}/>
                 <Route id={'/videos'} path={'/videos'} element={<VideosPage/>}/>
                 <Route id={'/about'} path={'/about'} element={<AboutPage/>}/>
-                {<Route id={'/testAPI'} path={'/testAPI'} element={token ? <TestAPIPage/> : <ForbiddenPage/>}/>}
+                {<Route id={'/testAPI'} path={'/testAPI'}
+                        element={token ? <TestAPIPage/> : <Navigate replace to={'/'}/>}/>}
             </Routes>
         </Suspense>
     );

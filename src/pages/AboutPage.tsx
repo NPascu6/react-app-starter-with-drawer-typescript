@@ -42,7 +42,7 @@ const AboutPage = () => {
                 color: theme.textColor,
                 flexDirection: 'column',
                 flex: 1,
-                maxWidth: windowSize.innerWidth >= 500 ? '30em' : '20em',
+                maxWidth: windowSize.innerWidth >= 500 ? '50em' : '20em',
                 padding: '1.5em',
             }}>
             <Typography variant={"h4"}>Norbert Pascu, 30'</Typography>
