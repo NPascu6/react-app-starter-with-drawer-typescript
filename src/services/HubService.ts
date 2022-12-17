@@ -3,7 +3,7 @@ const {REACT_APP_STAGE} = process.env;
 
 export abstract class HubService {
     protected constructor(user: any) {
-        this.registerUser(user);
+        this.registerUser(user).then(r => console.log('user registered'));
     }
 
     abstract get endPoint(): string;

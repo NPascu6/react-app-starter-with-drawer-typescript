@@ -19,6 +19,7 @@ import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import ApiIcon from '@mui/icons-material/Api';
 import {useAuthState} from "react-firebase-hooks/auth";
 import {auth} from "../../firebase/firebase";
+import TextsmsIcon from '@mui/icons-material/Textsms';
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: _defaultDrawerWidth,
@@ -80,6 +81,7 @@ const SideBar = () => {
         {key: 'Home', url: '/'},
         {key: 'About', url: '/about'},
         {key: 'Videos', url: '/videos'},
+        {key: 'Chat', url: '/chat'},
         {key: 'TestAPI', url: '/testAPI'}])
 
     useEffect(() => {
@@ -88,6 +90,7 @@ const SideBar = () => {
                 {key: 'Home', url: '/'},
                 {key: 'About', url: '/about'},
                 {key: 'Videos', url: '/videos'},
+                {key: 'Chat', url: '/chat'},
                 {key: 'TestAPI', url: '/testAPI'}])
         } else {
             setRoutes([
@@ -134,6 +137,15 @@ const SideBar = () => {
                         }}/>
                 </Tooltip>;
             }
+            case 'Chat' : {
+                return <Tooltip title={"Chat"}>
+                    <TextsmsIcon
+                        sx={{
+                            color: location.pathname === route ? theme.textColor : theme.backgroundColor,
+                            '&:hover': {color: location.pathname === route ? theme.textColor : theme.backgroundColor,}
+                        }}/>
+                </Tooltip>;
+            }
             default:
                 return <></>;
         }
@@ -148,8 +160,9 @@ const SideBar = () => {
                        }
                    }}>
         <DrawerHeader sx={{color: theme.textColor}}>
-            <IconButton  onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
-                {theme.direction === 'rtl' ? <ChevronRightIcon sx={{color: theme.textColor}}/> : <ChevronLeftIcon sx={{color: theme.textColor}}/>}
+            <IconButton onClick={() => dispatch(handleDrawerChange(!drawerOpen))}>
+                {theme.direction === 'rtl' ? <ChevronRightIcon sx={{color: theme.textColor}}/> :
+                    <ChevronLeftIcon sx={{color: theme.textColor}}/>}
             </IconButton>
         </DrawerHeader>
         <Divider/>

@@ -7,9 +7,13 @@ const {REACT_APP_STAGE} = process.env;
 export class ChatService extends HubService {
     private _methodNames = {
         SendMessage: 'SendMessage',
-        UnsubscribeAll: 'UnsubscribeAll',
-        ReceiveMessage: 'ReceiveMessage'
+        UnsubscribeAll: 'Unsubscribe',
+        ReceiveMessage: 'ReceiveMessage',
+        Error: 'error'
+
     };
+    private url: string = `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
+    //private url: string = `https://localhost:7282/chatHub`;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(user: any) {
@@ -17,11 +21,11 @@ export class ChatService extends HubService {
     }
 
     public get endPoint(): string {
-        return `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
+        return this.url
     }
 
     public async start(setMessage?: Dispatch<SetStateAction<any | undefined>> | null,
-                       setUserName?: Dispatch<SetStateAction<any | undefined>> | null): Promise<HubConnectionState> {
+                       setError?: Dispatch<SetStateAction<any | undefined>> | null): Promise<HubConnectionState> {
         try {
             await this.stop();
 
@@ -29,10 +33,10 @@ export class ChatService extends HubService {
                 if (REACT_APP_STAGE === 'development') {
                     console.log('Connection Id', connectionId);
                 }
-                this.configureListeners(setMessage, setUserName);
+                this.configureListeners(setMessage, setError);
             });
 
-            this.configureListeners(setMessage, setUserName);
+            this.configureListeners(setMessage, setError);
 
             if (this.isDisconnected)
                 await this.hubConnection.start();
@@ -55,16 +59,12 @@ export class ChatService extends HubService {
         await this.unsubscribe();
     }
 
-    private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setUserName?: Dispatch<SetStateAction<any | undefined>> | null,) {
+    private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setError?: Dispatch<SetStateAction<any | undefined>> | null,) {
         this.hubConnection.on(this._methodNames.ReceiveMessage, (message: string, user: any) => {
-            if (setMessage) {
-                debugger
-                setMessage(`${message}`);
-            }
-
-            if (setUserName) {
-                setUserName(user)
-            }
+            setMessage({
+                message,
+                user
+            })
         });
     }
 }

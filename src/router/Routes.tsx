@@ -7,6 +7,7 @@ const TestAPIPage = React.lazy(() => import('../pages/TestAPIPage'));
 const DashboardPage = React.lazy(() => import('../pages/DashboardPage'));
 const VideosPage = React.lazy(() => import('../pages/VideosPage'));
 const AboutPage = React.lazy(() => import('../pages/AboutPage'));
+const ChatPage = React.lazy(() => import('../pages/ChatPage'));
 
 export const RoutesSwitch = () => {
     const token = useToken()
@@ -19,6 +20,8 @@ export const RoutesSwitch = () => {
                 <Route id={'/about'} path={'/about'} element={<AboutPage/>}/>
                 {<Route id={'/testAPI'} path={'/testAPI'}
                         element={token ? <TestAPIPage/> : <Navigate replace to={'/'}/>}/>}
+                {<Route id={'/chat'} path={'/chat'}
+                        element={token ? <ChatPage/> : <Navigate replace to={'/'}/>}/>}
             </Routes>
         </Suspense>
     );
