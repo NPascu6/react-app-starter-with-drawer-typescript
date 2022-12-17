@@ -13,16 +13,16 @@ import {RootState} from "../store/rootReducer";
 import LoaderPage from "./LoaderPage";
 
 const ChatPage = () => {
-    const [service, setService] = useState<any>(null)
+    const [service, setService] = useState<ChatService | null>(null)
     const [message, setMessage] = useState<any>("")
     const [user] = useAuthState(auth);
     const theme = useTheme()
     const windowSize = useWindowSize()
     const dispatch = useAppDispatch()
-    const {messageList} = useSelector((state: RootState) => state.chat)
+    const {messageList, isConnected} = useSelector((state: RootState) => state.chat)
     const [incoming, setIncoming] = useState<any>({user: null, message: null})
-    const [error, setError] = useState<string>("")
     const bottomRef = useRef(null);
+    const [onlineUsers, setOnlineUsers] = useState<any>()
 
     const sendMessage = (message: string) => {
         service.sendMessage(user.email, message)
@@ -44,7 +44,7 @@ const ChatPage = () => {
     useEffect(() => {
         if (user && !service) {
             const service = new ChatService(user);
-            service.start(setIncoming, setError).then(() => {
+            service.start(setIncoming, setOnlineUsers).then(() => {
                 setService(service)
                 console.log(service)
             })
@@ -53,16 +53,7 @@ const ChatPage = () => {
         return () => {
             service?.stop()
         }
-    }, [user, service])
-
-    useEffect(() => {
-        if (error) {
-            console.log(error)
-            setTimeout(() => {
-                setError("")
-            }, 5000)
-        }
-    }, [error])
+    }, [user, service, dispatch, isConnected])
 
     return service?.isConnected === true ? <Grid container className={'Center'}>
         <Paper elevation={3} sx={{
@@ -74,6 +65,7 @@ const ChatPage = () => {
             height: '30em',
             width: windowSize.innerWidth < 500 ? '20em' : '40em',
         }}>
+            {onlineUsers?.map(u => u.isConnected && <Typography sx={{color: theme.backgroundColor}} variant={"body2"}>{u?.email}</Typography>)}
             <Grid container>
                 <Grid item xs={10}>
                     <TextField inputProps={{sx: {height: '0.5em', color: theme.backgroundColor}}} sx={{width: '100%'}}

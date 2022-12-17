@@ -9,8 +9,8 @@ export class ChatService extends HubService {
         SendMessage: 'SendMessage',
         UnsubscribeAll: 'Unsubscribe',
         ReceiveMessage: 'ReceiveMessage',
+        OnlineUsers: 'OnlineUsers',
         Error: 'error'
-
     };
     private url: string = `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
     //private url: string = `https://localhost:7282/chatHub`;
@@ -24,8 +24,12 @@ export class ChatService extends HubService {
         return this.url
     }
 
+    protected async beforeStop(): Promise<void> {
+        await this.unsubscribe();
+    }
+
     public async start(setMessage?: Dispatch<SetStateAction<any | undefined>> | null,
-                       setError?: Dispatch<SetStateAction<any | undefined>> | null): Promise<HubConnectionState> {
+                       setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null): Promise<HubConnectionState> {
         try {
             await this.stop();
 
@@ -33,10 +37,10 @@ export class ChatService extends HubService {
                 if (REACT_APP_STAGE === 'development') {
                     console.log('Connection Id', connectionId);
                 }
-                this.configureListeners(setMessage, setError);
+                this.configureListeners(setMessage, setOnlineUsers);
             });
 
-            this.configureListeners(setMessage, setError);
+            this.configureListeners(setMessage, setOnlineUsers);
 
             if (this.isDisconnected)
                 await this.hubConnection.start();
@@ -55,16 +59,17 @@ export class ChatService extends HubService {
         await this.hubConnection.invoke(this._methodNames.SendMessage, user, message);
     }
 
-    protected async beforeStop(): Promise<void> {
-        await this.unsubscribe();
-    }
-
-    private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setError?: Dispatch<SetStateAction<any | undefined>> | null,) {
+    private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null,) {
         this.hubConnection.on(this._methodNames.ReceiveMessage, (message: string, user: any) => {
             setMessage({
                 message,
                 user
             })
+        });
+
+        this.hubConnection.on(this._methodNames.OnlineUsers, (message) => {
+            debugger
+            setOnlineUsers(message)
         });
     }
 }
