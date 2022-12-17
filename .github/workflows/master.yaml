@@ -25,6 +25,4 @@ jobs:
           port: 21
           local-dir: ./build/
           server-dir: /public_html/
-          timeout: 36000
-          method: sftp
-          args: --verbose
+          timeout: 3600000
