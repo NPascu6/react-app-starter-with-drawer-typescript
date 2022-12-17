@@ -7,7 +7,7 @@ import {useTheme} from "@mui/material/styles";
 export const ForbiddenPage = () => {
     const [user] = useAuthState(auth);
     const theme = useTheme()
-    debugger
+
     return (
         <>
             <CssBaseline/>

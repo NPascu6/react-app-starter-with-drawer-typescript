@@ -68,7 +68,6 @@ export class ChatService extends HubService {
         });
 
         this.hubConnection.on(this._methodNames.OnlineUsers, (message) => {
-            debugger
             setOnlineUsers(message)
         });
     }
