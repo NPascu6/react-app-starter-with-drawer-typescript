@@ -17,7 +17,7 @@ export class ChatService extends HubService {
     }
 
     public get endPoint(): string {
-        return `https://localhost:7282/chatHub`;
+        return `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
     }
 
     public async start(setMessage?: Dispatch<SetStateAction<any | undefined>> | null,
