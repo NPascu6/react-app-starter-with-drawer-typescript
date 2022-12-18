@@ -6,6 +6,10 @@ import './App.css'
 import App from './App';
 import {Provider} from 'react-redux';
 import store from './store/store';
+import {PersistGate} from "redux-persist/integration/react";
+import {persistStore} from "redux-persist";
+
+const persists = persistStore(store);
 
 const root = ReactDOM.createRoot(
     // @ts-ignore
@@ -14,7 +18,10 @@ const root = ReactDOM.createRoot(
 root.render(
     <Provider store={store}>
         <HashRouter>
-            <App/>
+            <PersistGate persistor={persists}>
+                <App/>
+
+            </PersistGate>
         </HashRouter>
     </Provider>
 );
