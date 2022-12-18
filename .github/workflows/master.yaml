@@ -4,9 +4,22 @@ on:
       - main
 name: 🚀 Deploy website on push
 jobs:
+
+  create-env-file:
+    name: 🎉 Deploy
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Create ENV FILE
+        uses: SpicyPizza/create-envfile@v1
+        with:
+          envkey_REACT_APP_API_BASE_URI: ${{ secrets.NPASCU_API_URL }}
+          file_name: .env.production
+
   web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
+
     steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
@@ -18,7 +31,7 @@ jobs:
       - name: 🔨 Build Project
         run: |
           npm install
-          npm run build prod
+          npm run build production
 
       - name: 📂 Sync files pascu.io
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
