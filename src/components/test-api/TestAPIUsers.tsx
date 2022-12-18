@@ -28,7 +28,13 @@ const TestAPIUsers = ({items}: TestAPIUserDetailsProps) => {
                 minWidth: 80,
                 editable: true,
                 sortable: true,
-                hide: true
+            },
+            {
+                headerName: 'Connected',
+                field: 'isConnected',
+                minWidth: 80,
+                editable: true,
+                sortable: true,
             },
             {
                 headerName: 'User Name',
@@ -52,14 +58,14 @@ const TestAPIUsers = ({items}: TestAPIUserDetailsProps) => {
     }, []);
 
     return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> :
-        <>
-            <GridToolbar gridApi={gridApi}/>
-            <AGGridComponent gridApi={gridApi}
-                             items={items}
-                             onGridReady={onGridReady}
-                             getColumnDefs={getUserColumnDefs}
-                             rowId={'userId'}/>
-        </>
+            <>
+                <GridToolbar gridApi={gridApi}/>
+                <AGGridComponent gridApi={gridApi}
+                                 items={items}
+                                 onGridReady={onGridReady}
+                                 getColumnDefs={getUserColumnDefs}
+                                 rowId={'userId'}/>
+            </>
         : <LoaderPage/>
 }
 

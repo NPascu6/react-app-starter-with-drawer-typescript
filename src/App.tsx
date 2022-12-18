@@ -12,12 +12,17 @@ import {auth} from "./firebase/firebase";
 import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
 import {sendFirebaseEmailVerification} from "./store/thunks/authThunk";
 import "react-image-gallery/styles/css/image-gallery.css";
+import {ChatService} from "./services/SignalR/ChatService";
+import {addToMessageList, setOnlineUsersToStore} from "./store/chatReducer";
 
 function App() {
     const {githubProfile, isDarkTheme} = useSelector((state: RootState) => state.app);
     const dispatch = useAppDispatch();
     const [user, loading, error] = useAuthState(auth);
     const [localTheme, setLocalTheme] = useState(lightTheme)
+    const [incoming, setIncoming] = useState<any>({user: null, message: null})
+    const [onlineUsers, setOnlineUsers] = useState<any>([])
+    const [service,] = useState<ChatService | null>(null)
 
     useEffect(() => {
         const dispatchSetupApp = async () => {
@@ -58,6 +63,36 @@ function App() {
         if (githubProfile) return
         dispatch(fetchGithubUserProfile());
     }, [dispatch, githubProfile]);
+
+
+    useEffect(() => {
+        const createService = async (service: any) => {
+            await service.registerUser(user)
+            await service.start(setIncoming, setOnlineUsers).then((service) => {
+                console.log(service)
+                return service
+            })
+        }
+
+        if (user && !service) {
+            const service = ChatService.getInstance(user);
+            createService(service).then(createdService => console.log(createdService))
+        }
+    }, [user, service])
+
+    useEffect(() => {
+        if (incoming?.message) {
+            dispatch(addToMessageList(incoming))
+        }
+        // eslint-disable-next-line
+    }, [incoming])
+
+    useEffect(() => {
+        if (onlineUsers?.length > 0) {
+            dispatch(setOnlineUsersToStore(onlineUsers))
+        }
+        // eslint-disable-next-line
+    }, [onlineUsers])
 
     return (
         <ThemeProvider theme={localTheme}>

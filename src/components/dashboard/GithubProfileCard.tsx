@@ -45,7 +45,7 @@ const GithubProfileCard = () => {
             </Button>
             <Divider/>
             <Grid container className={'Flex-Container-Center'} sx={{flexDirection: 'column'}}>
-                <Typography  variant={"h5"}>{githubProfile?.name}</Typography>
+                <Typography variant={"h5"}>{githubProfile?.name}</Typography>
                 <Typography variant={"body2"}>[{githubProfile?.login}]</Typography>
                 <Typography sx={{width: '100%'}} variant={"h6"}>{`${githubProfile?.bio}Zurich`}</Typography>
             </Grid>

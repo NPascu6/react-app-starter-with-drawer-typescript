@@ -5,7 +5,8 @@ const LoaderPage = () => {
     const theme = useTheme()
 
     return (
-        <div style={{display: 'flex',
+        <div style={{
+            display: 'flex',
             flex: 1,
             backgroundColor: theme.backgroundColor,
             color: theme.textColor,

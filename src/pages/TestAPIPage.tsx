@@ -2,11 +2,15 @@ import {useSelector} from "react-redux";
 import {RootState} from "../store/rootReducer";
 import {Grid, Link, Paper, Typography} from "@mui/material";
 import * as React from "react";
-import {Suspense, useRef} from "react";
+import {Suspense, useEffect, useRef} from "react";
 import LoaderPage from "./LoaderPage";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
 import useWindowFocus from "../hooks/useFocusHook";
+import {useAppDispatch} from "../store/store";
+import {setupApp} from "../store/thunks/appThunk";
+import {useAuthState} from "react-firebase-hooks/auth";
+import {auth} from "../firebase/firebase";
 
 const TestAPIUsers = React.lazy(() => import('../components/test-api/TestAPIUsers'));
 const TestAPIUserDetails = React.lazy(() => import('../components/test-api/TestAPIUserDetails'));
@@ -26,6 +30,20 @@ const TestAPIPage = () => {
     const windowSize = useWindowSize()
     const ref = useRef(null);
     useWindowFocus(ref)
+    const dispatch = useAppDispatch()
+    const [user] = useAuthState(auth);
+
+
+    useEffect(() => {
+        const getToken = async (user: any) => {
+            const token = await user.getIdToken()
+            return token
+        }
+
+        if (user) {
+            getToken(user).then(token => dispatch(setupApp(token)))
+        }
+    }, [user, dispatch])
 
 
     return <>

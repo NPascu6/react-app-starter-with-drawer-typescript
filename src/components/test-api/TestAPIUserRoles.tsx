@@ -28,7 +28,7 @@ const TestAPIUserRoles = ({items}: TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> :<>
+    return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> : <>
         <GridToolbar gridApi={gridApi}/>
         <AGGridComponent gridApi={gridApi} items={items} onGridReady={onGridReady} getColumnDefs={getUserColumnDefs}
                          rowId={'userRoleId'}/>

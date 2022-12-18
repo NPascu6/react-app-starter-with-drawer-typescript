@@ -34,11 +34,12 @@ export const ForbiddenPage = () => {
                             textDecoration: 'underline',
                         }}
                     >
-                            support&#64; kidding... <Link sx={{color: theme.textColor}} href={'mailto:norbipascu92@gmail.com'}>norbipascu92@gmail.com</Link>
+                            support&#64; kidding... <Link sx={{color: theme.textColor}}
+                                                          href={'mailto:norbipascu92@gmail.com'}>norbipascu92@gmail.com</Link>
                         </span>
                 </Typography>
                 {user && (
-                    <Grid container className={'Center'} sx={{display:'flex'}}>
+                    <Grid container className={'Center'} sx={{display: 'flex'}}>
                         <Grid container item>
                             <Typography variant={"body2"}>Your account
                                 - <b>{user.email}</b>

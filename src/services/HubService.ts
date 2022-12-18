@@ -1,4 +1,5 @@
 import {HubConnection, HubConnectionBuilder, HubConnectionState, LogLevel} from "@microsoft/signalr";
+
 const {REACT_APP_STAGE} = process.env;
 
 export abstract class HubService {

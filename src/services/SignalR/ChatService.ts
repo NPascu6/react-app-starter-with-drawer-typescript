@@ -5,6 +5,9 @@ import {HubService} from "../HubService";
 const {REACT_APP_STAGE} = process.env;
 
 export class ChatService extends HubService {
+    private static instance: ChatService;
+    private static _user;
+
     private _methodNames = {
         SendMessage: 'SendMessage',
         UnsubscribeAll: 'Unsubscribe',
@@ -12,20 +15,26 @@ export class ChatService extends HubService {
         OnlineUsers: 'OnlineUsers',
         Error: 'error'
     };
-    private url: string = `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
-    //private url: string = `https://localhost:7282/chatHub`;
+
+    private _url: string = `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
+    //private _url: string = `https://localhost:7282/chatHub`;
 
     // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(user: any) {
         super(user);
+        ChatService._user = user
     }
 
     public get endPoint(): string {
-        return this.url
+        return this._url
     }
 
-    protected async beforeStop(): Promise<void> {
-        await this.unsubscribe();
+    public static getInstance(user): ChatService {
+        if (!ChatService.instance) {
+            this._user = user
+            ChatService.instance = new ChatService(this._user);
+        }
+        return ChatService.instance;
     }
 
     public async start(setMessage?: Dispatch<SetStateAction<any | undefined>> | null,
@@ -56,7 +65,11 @@ export class ChatService extends HubService {
     }
 
     public async sendMessage(message: string, user: any): Promise<void> {
-        await this.hubConnection.invoke(this._methodNames.SendMessage, user, message);
+        await this.hubConnection.invoke(this._methodNames.SendMessage, message, user);
+    }
+
+    protected async beforeStop(): Promise<void> {
+        await this.unsubscribe();
     }
 
     private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null,) {

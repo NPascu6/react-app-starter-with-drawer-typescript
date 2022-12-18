@@ -10,12 +10,14 @@ interface ChatSliceState {
     messageResponse: MessageResponse;
     messageList: MessageResponse[];
     isConnected: boolean;
+    onlineUsers: any[];
 }
 
 const initialState: ChatSliceState = {
     messageResponse: null,
     messageList: [],
-    isConnected: false
+    isConnected: false,
+    onlineUsers: []
 };
 
 const ChatSlice = createSlice({
@@ -26,19 +28,23 @@ const ChatSlice = createSlice({
             state.messageResponse = action.payload;
             console.log('Set message:', action.payload)
         },
-        addToMessageList(state, action: PayloadAction<MessageResponse>){
+        addToMessageList(state, action: PayloadAction<MessageResponse>) {
             state.messageList.push(action.payload)
         },
-        setIsConnected(state, action: PayloadAction<boolean>){
+        setIsConnected(state, action: PayloadAction<boolean>) {
             state.isConnected = action.payload
-        }
+        },
+        setOnlineUsersToStore(state, action: PayloadAction<any>) {
+            state.onlineUsers = action.payload
+        },
     }
 });
 
 export const {
     setMessageResponse,
     addToMessageList,
-    setIsConnected
+    setIsConnected,
+    setOnlineUsersToStore
 } = ChatSlice.actions;
 
 export default ChatSlice.reducer;

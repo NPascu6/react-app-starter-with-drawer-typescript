@@ -36,7 +36,7 @@ const TestAPIWallets = ({items}: TestAPIUserDetailsProps) => {
         setGridApi(params.api);
     }, []);
 
-    return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> :<>
+    return items?.length > 0 ? typeof (items[0]) === 'string' ? <ForbiddenPage/> : <>
         <GridToolbar gridApi={gridApi}/>
         <AGGridComponent
             gridApi={gridApi}
