@@ -13,6 +13,7 @@ jobs:
         uses: SpicyPizza/create-envfile@v1
         with:
           envkey_REACT_APP_API_BASE_URI: ${{ secrets.NPASCU_API_URL }}
+          envkey_REACT_APP_FIREBASE_API_BASE_URI: ${{ secrets.FIREBASE_API_BASE_URI }}
           file_name: .env.production
 
       - name: 🚚 Get latest code

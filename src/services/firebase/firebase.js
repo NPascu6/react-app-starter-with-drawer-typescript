@@ -2,8 +2,10 @@ import {initializeApp} from "firebase/app"
 import {getFirestore} from "firebase/firestore"
 import {getAuth} from "firebase/auth";
 
+const {REACT_APP_API_URI_FIREBASE} = process.env;
+
 const firebaseConfig = {
-    apiKey: "AIzaSyCUyArxwXXzQUZnwUIM5RLxrJ02HXD5cQg",
+    apiKey: REACT_APP_API_URI_FIREBASE,
     authDomain: "norbifirestore.firebaseapp.com",
     projectId: "norbifirestore",
     storageBucket: "norbifirestore.appspot.com",
