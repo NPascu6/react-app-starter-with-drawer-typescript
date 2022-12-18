@@ -4,8 +4,7 @@ on:
       - main
 name: 🚀 Deploy website on push
 jobs:
-
-  create-env-file:
+  web-deploy:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
 
@@ -16,17 +15,8 @@ jobs:
           envkey_REACT_APP_API_BASE_URI: ${{ secrets.NPASCU_API_URL }}
           file_name: .env.production
 
-  web-deploy:
-    name: 🎉 Deploy
-    runs-on: ubuntu-latest
-
-    steps:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
-
-      - name: Create .prod file
-        run: |
-          echo "${{ secrets.PROD }}" > .env
 
       - name: 🔨 Build Project
         run: |
