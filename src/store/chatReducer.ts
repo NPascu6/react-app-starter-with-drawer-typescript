@@ -31,6 +31,9 @@ const ChatSlice = createSlice({
         addToMessageList(state, action: PayloadAction<MessageResponse>) {
             state.messageList.push(action.payload)
         },
+        removeLastMessageFromMessageList(state) {
+            state.messageList.pop()
+        },
         setIsConnected(state, action: PayloadAction<boolean>) {
             state.isConnected = action.payload
         },
@@ -44,7 +47,8 @@ export const {
     setMessageResponse,
     addToMessageList,
     setIsConnected,
-    setOnlineUsersToStore
+    setOnlineUsersToStore,
+    removeLastMessageFromMessageList
 } = ChatSlice.actions;
 
 export default ChatSlice.reducer;

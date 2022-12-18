@@ -1,6 +1,7 @@
-import {Dispatch, SetStateAction} from 'react';
 import {HubConnectionState} from "@microsoft/signalr";
 import {HubService} from "../HubService";
+import {AppDispatch} from "../../store/store";
+import {addToMessageList, removeLastMessageFromMessageList, setOnlineUsersToStore} from "../../store/chatReducer";
 
 const {REACT_APP_API_URI_NPASCU} = process.env;
 
@@ -36,17 +37,16 @@ export class ChatService extends HubService {
         return ChatService.instance;
     }
 
-    public async start(setMessage?: Dispatch<SetStateAction<any | undefined>> | null,
-                       setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null): Promise<HubConnectionState> {
+    public async start(dispatch?: AppDispatch): Promise<HubConnectionState> {
         try {
             await this.stop();
 
             this.hubConnection.onreconnected(async (connectionId?: string) => {
                 console.log('Connection Id', connectionId);
-                this.configureListeners(setMessage, setOnlineUsers);
+                this.configureListeners(dispatch);
             });
 
-            this.configureListeners(setMessage, setOnlineUsers);
+            this.configureListeners(dispatch);
 
             if (this.isDisconnected)
                 await this.hubConnection.start();
@@ -82,16 +82,22 @@ export class ChatService extends HubService {
         }
     }
 
-    private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null,) {
+    private configureListeners(dispatch: AppDispatch) {
         this.hubConnection.on(this._methodNames.ReceiveMessage, (message: string, user: any) => {
-            setMessage({
+            if (message.includes('connected to the chat.') || message.includes('disconnected from the chat.')) {
+                setTimeout(() => {
+                    dispatch(removeLastMessageFromMessageList())
+                }, 1000)
+            }
+
+            dispatch(addToMessageList({
                 message,
                 user
-            })
+            }))
         });
 
         this.hubConnection.on(this._methodNames.OnlineUsers, (message) => {
-            setOnlineUsers(message)
+            dispatch(setOnlineUsersToStore(message))
         });
     }
 
