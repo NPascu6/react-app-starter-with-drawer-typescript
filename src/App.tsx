@@ -8,12 +8,12 @@ import MainPage from './pages/MainPage';
 import {useAppDispatch} from "./store/store";
 import {fetchGithubUserProfile, setupApp} from "./store/thunks/appThunk";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "./firebase/firebase";
 import {setFirebaseError, setFirebaseLoading, setFirebaseUser} from "./store/authReducer";
 import {sendFirebaseEmailVerification} from "./store/thunks/authThunk";
 import "react-image-gallery/styles/css/image-gallery.css";
 import {ChatService} from "./services/SignalR/ChatService";
 import {addToMessageList, setOnlineUsersToStore} from "./store/chatReducer";
+import {auth} from "./services/firebase/firebase";
 
 function App() {
     const {githubProfile, isDarkTheme} = useSelector((state: RootState) => state.app);

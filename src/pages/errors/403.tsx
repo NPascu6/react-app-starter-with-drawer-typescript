@@ -1,8 +1,8 @@
 import {CssBaseline, Grid, Link, Paper, Slide, Typography} from '@mui/material';
 import React from 'react';
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../../firebase/firebase";
 import {useTheme} from "@mui/material/styles";
+import {auth} from "../../services/firebase/firebase";
 
 export const ForbiddenPage = () => {
     const [user] = useAuthState(auth);

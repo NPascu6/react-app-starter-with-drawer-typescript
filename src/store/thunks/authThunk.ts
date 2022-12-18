@@ -1,8 +1,12 @@
-import {logInWithEmailAndPassword, logout, registerWithEmailAndPassword} from "../../firebase/firestore/firestore";
 import {UserRegisterModel} from "../../components/about/RegisterForm";
 import {UserLoginModel} from "../../components/about/LoginForm";
 import {setFirebaseUser} from "../authReducer";
 import {getAuth, sendEmailVerification} from "firebase/auth";
+import {
+    logInWithEmailAndPassword,
+    logout,
+    registerWithEmailAndPassword
+} from "../../services/firebase/firestore/firestore";
 
 export const registerWithFirebase = (userInfo: UserRegisterModel) => async (dispatch: any) => {
     console.log('Fetching github user profile');

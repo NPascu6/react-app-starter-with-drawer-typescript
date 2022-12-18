@@ -1,6 +1,5 @@
 import {auth, db} from '../firebase'
 import {addDoc, collection, getDocs, query, Timestamp, where} from 'firebase/firestore'
-import {UserInfo} from "../../pages/AboutPage";
 import {
     createUserWithEmailAndPassword,
     GoogleAuthProvider,
@@ -9,6 +8,7 @@ import {
     signInWithPopup,
     signOut,
 } from "firebase/auth";
+import { UserInfo } from '../../../pages/AboutPage';
 
 const googleProvider = new GoogleAuthProvider();
 

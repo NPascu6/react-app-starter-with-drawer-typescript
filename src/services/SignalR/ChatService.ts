@@ -2,7 +2,7 @@ import {Dispatch, SetStateAction} from 'react';
 import {HubConnectionState} from "@microsoft/signalr";
 import {HubService} from "../HubService";
 
-const {REACT_APP_STAGE} = process.env;
+const {REACT_APP_API_URI_NPASCU} = process.env;
 
 export class ChatService extends HubService {
     private static instance: ChatService;
@@ -16,10 +16,8 @@ export class ChatService extends HubService {
         Error: 'error'
     };
 
-    private _url: string = `https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub`;
-    //private _url: string = `https://localhost:7282/chatHub`;
+    private _url: string = `${REACT_APP_API_URI_NPASCU}/chatHub`;
 
-    // eslint-disable-next-line @typescript-eslint/no-useless-constructor
     constructor(user: any) {
         super(user);
         ChatService._user = user
@@ -29,6 +27,7 @@ export class ChatService extends HubService {
         return this._url
     }
 
+    //Get the instance for whole app
     public static getInstance(user): ChatService {
         if (!ChatService.instance) {
             this._user = user
@@ -43,9 +42,7 @@ export class ChatService extends HubService {
             await this.stop();
 
             this.hubConnection.onreconnected(async (connectionId?: string) => {
-                if (REACT_APP_STAGE === 'development') {
-                    console.log('Connection Id', connectionId);
-                }
+                console.log('Connection Id', connectionId);
                 this.configureListeners(setMessage, setOnlineUsers);
             });
 
@@ -60,16 +57,29 @@ export class ChatService extends HubService {
         return this.state;
     }
 
-    public async unsubscribe(): Promise<void> {
-        await this.hubConnection.invoke(this._methodNames.UnsubscribeAll);
+    public async unsubscribe(): Promise<void | string> {
+        try {
+            await this.hubConnection.invoke(this._methodNames.UnsubscribeAll);
+        } catch (err) {
+            return err.message
+        }
     }
 
     public async sendMessage(message: string, user: any): Promise<void> {
-        await this.hubConnection.invoke(this._methodNames.SendMessage, message, user);
+        try {
+            await this.hubConnection.invoke(this._methodNames.SendMessage, message, user);
+        } catch (err) {
+            return err.message
+        }
     }
 
     protected async beforeStop(): Promise<void> {
-        await this.unsubscribe();
+        try {
+            await this.unsubscribe();
+
+        } catch (err) {
+            return err.message
+        }
     }
 
     private configureListeners(setMessage?: Dispatch<SetStateAction<any | undefined>> | null, setOnlineUsers?: Dispatch<SetStateAction<any | undefined>> | null,) {
@@ -84,4 +94,5 @@ export class ChatService extends HubService {
             setOnlineUsers(message)
         });
     }
+
 }

@@ -5,8 +5,8 @@ import {UserRegisterModel} from "../about/RegisterForm";
 import {validateEmail} from "../../helpers/helpers";
 import {useTheme} from "@mui/material/styles";
 import {UserLoginModel} from "../about/LoginForm";
-import {signInWithGoogle} from "../../firebase/firestore/firestore";
 import GoogleIcon from '@mui/icons-material/Google';
+import {signInWithGoogle} from "../../services/firebase/firestore/firestore";
 
 interface Props {
     user: UserRegisterModel | UserLoginModel,

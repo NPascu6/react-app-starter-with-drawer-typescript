@@ -18,8 +18,8 @@ import {handleDrawerChange} from '../../store/appReducer';
 import OndemandVideoIcon from '@mui/icons-material/OndemandVideo';
 import ApiIcon from '@mui/icons-material/Api';
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../../firebase/firebase";
 import TextsmsIcon from '@mui/icons-material/Textsms';
+import {auth} from "../../services/firebase/firebase";
 
 const openedMixin = (theme: Theme): CSSObject => ({
     width: _defaultDrawerWidth,

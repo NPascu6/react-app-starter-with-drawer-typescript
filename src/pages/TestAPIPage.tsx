@@ -10,7 +10,7 @@ import useWindowFocus from "../hooks/useFocusHook";
 import {useAppDispatch} from "../store/store";
 import {setupApp} from "../store/thunks/appThunk";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../firebase/firebase";
+import {auth} from "../services/firebase/firebase";
 
 const TestAPIUsers = React.lazy(() => import('../components/test-api/TestAPIUsers'));
 const TestAPIUserDetails = React.lazy(() => import('../components/test-api/TestAPIUserDetails'));
@@ -32,7 +32,6 @@ const TestAPIPage = () => {
     useWindowFocus(ref)
     const dispatch = useAppDispatch()
     const [user] = useAuthState(auth);
-
 
     useEffect(() => {
         const getToken = async (user: any) => {

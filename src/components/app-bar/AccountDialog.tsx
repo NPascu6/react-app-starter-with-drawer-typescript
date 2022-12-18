@@ -15,9 +15,9 @@ import {useTheme} from "@mui/material/styles";
 import {Checkbox, Typography} from "@mui/material";
 import RegisterForm from "../about/RegisterForm";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../../firebase/firebase";
 import LocalFireDepartmentIcon from '@mui/icons-material/LocalFireDepartment';
 import {useNavigate} from "react-router-dom";
+import {auth} from "../../services/firebase/firebase";
 
 export interface SimpleDialogProps {
     open: boolean;

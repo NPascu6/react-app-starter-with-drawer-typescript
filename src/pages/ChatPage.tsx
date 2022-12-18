@@ -1,7 +1,6 @@
 import * as React from "react";
 import {useEffect, useRef, useState} from "react";
 import {useAuthState} from "react-firebase-hooks/auth";
-import {auth} from "../firebase/firebase";
 import {Button, Card, Divider, Grid, Paper, TextField, Typography} from "@mui/material";
 import {useTheme} from "@mui/material/styles";
 import useWindowSize from "../hooks/useWindowSize";
@@ -12,6 +11,7 @@ import {RootState} from "../store/rootReducer";
 import {ChatService} from "../services/SignalR/ChatService";
 import {sendChatMessage} from "../store/thunks/chaThunk";
 import {useAppDispatch} from "../store/store";
+import {auth} from "../services/firebase/firebase";
 
 const ChatPage = () => {
     const [message, setMessage] = useState<any>("")
