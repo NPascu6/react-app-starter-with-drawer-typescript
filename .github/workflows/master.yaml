@@ -8,14 +8,6 @@ jobs:
     name: 🎉 Deploy
     runs-on: ubuntu-latest
 
-    .cache: &cache
-      cache:
-        key:
-          files:
-            - yarn.lock
-        paths:
-          - node_modules
-
     steps:
       - name: Create ENV FILE
         uses: SpicyPizza/create-envfile@v1
@@ -27,15 +19,18 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
+      - uses: actions/checkout@v1
 
+      - uses: actions/cache@v2
+        with:
+          path: '**/node_modules'
+          key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
+
+      - name: Install packages
+        run: yarn install
 
       - name: 🔨 Build Project
-
-        <<: *cache
-        run: |
-          npm install
-          npm run build production
-
+        run: yarn run build production
 
       - name: 📂 Sync files pascu.io
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
