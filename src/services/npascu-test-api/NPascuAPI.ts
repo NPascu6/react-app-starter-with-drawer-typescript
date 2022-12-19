@@ -1,10 +1,10 @@
 import {RestService} from '../RestService';
 import {User} from "./models";
 
-const {REACT_APP_API_BASE_URI} = process.env;
+//const {REACT_APP_API_BASE_URI} = process.env;
 
 export class NPascuAPIService extends RestService {
-    private _baseUrl = REACT_APP_API_BASE_URI
+    private _baseUrl = "https://aspcorebasicnet6api20221214201717.azurewebsites.net"
 
     public async getAllTestUsers(token: any): Promise<User[]> {
         return this.fetchData(this._baseUrl + "/GetAllUsers", {headers: {Authorization: "bearer " + token}}).then((res) => {
