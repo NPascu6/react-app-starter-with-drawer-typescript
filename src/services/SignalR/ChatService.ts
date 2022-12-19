@@ -17,7 +17,7 @@ export class ChatService extends HubService {
         Error: 'error'
     };
 
-    private _url: string = `"https://aspcorebasicnet6api20221214201717.azurewebsites.net"/chatHub`;
+    private _url: string = "https://aspcorebasicnet6api20221214201717.azurewebsites.net/chatHub";
 
     constructor(user: any) {
         super(user);
