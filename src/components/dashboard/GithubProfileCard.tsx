@@ -7,6 +7,8 @@ import {RootState} from "../../store/rootReducer";
 import {useTheme} from "@mui/material/styles";
 import {FacebookOutlined, Instagram} from "@mui/icons-material";
 import DownloadIcon from '@mui/icons-material/Download';
+import GitHubIcon from '@mui/icons-material/GitHub';
+import LinkedInIcon from '@mui/icons-material/LinkedIn';
 
 const GithubProfileCard = () => {
     const {githubProfile} = useSelector((state: RootState) => state.app);
@@ -65,12 +67,12 @@ const GithubProfileCard = () => {
                 <Link sx={{cursor: 'pointer', color: theme.textColor}}
                       href={"https://www.linkedin.com/in/norbert-pascu-5b1857116/"}
                       target={"_blank"}
-                      rel={"noopener noreferrer"}> https://www.linkedin.com/in/norbert-pascu-5b1857116/</Link>
+                      rel={"noopener noreferrer"}><LinkedInIcon/>Linkedin</Link>
             </Grid>
             <Divider/>
             <Grid container sx={{height: '3em', alignItems: 'center', justifyContent: 'center'}}>
                 <Link sx={{cursor: 'pointer', color: theme.textColor}} href={githubProfile?.html_url} target={"_blank"}
-                      rel={"noopener noreferrer"}>{githubProfile?.html_url}</Link>
+                      rel={"noopener noreferrer"}><GitHubIcon/>GitHub</Link>
             </Grid>
             <Divider/>
             <Grid container className={'Flex-Container-Center'}>
