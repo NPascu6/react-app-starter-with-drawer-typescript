@@ -29,10 +29,6 @@ const useCreateChatConnectionHook = () => {
             const service = ChatService.getInstance(user);
             createService(service).then(createdService => console.log(createdService))
         }
-
-        return () => {
-            ChatService.getInstance(user).stop().then(() => console.log('stopped'))
-        }
     }, [user, service, dispatch])
 
 
