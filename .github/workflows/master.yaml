@@ -25,7 +25,8 @@ jobs:
           key: ${{ runner.os }}-modules-${{ hashFiles('**/yarn.lock') }}
 
       - name: Install packages
-        run: yarn install
+        run: yarn install | echo ${{ secrets.FIREBASE_API_BASE_URI }} | echo ${{.env.production}}
+
 
       - name: 🔨 Build Project
         run: yarn run build production
