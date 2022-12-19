@@ -3,7 +3,7 @@ import {HubService} from "../HubService";
 import {AppDispatch} from "../../store/store";
 import {addToMessageList, removeLastMessageFromMessageList, setOnlineUsersToStore} from "../../store/chatReducer";
 
-const {REACT_APP_API_URI_NPASCU} = process.env;
+const {REACT_APP_API_BASE_URI} = process.env;
 
 export class ChatService extends HubService {
     private static instance: ChatService;
@@ -17,7 +17,7 @@ export class ChatService extends HubService {
         Error: 'error'
     };
 
-    private _url: string = `${REACT_APP_API_URI_NPASCU}/chatHub`;
+    private _url: string = `${REACT_APP_API_BASE_URI}/chatHub`;
 
     constructor(user: any) {
         super(user);

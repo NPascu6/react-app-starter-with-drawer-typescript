@@ -1,10 +1,10 @@
 import {RestService} from '../RestService';
 import {User} from "./models";
 
-const {REACT_APP_API_URI_NPASCU} = process.env;
+const {REACT_APP_API_BASE_URI} = process.env;
 
 export class NPascuAPIService extends RestService {
-    private _baseUrl = REACT_APP_API_URI_NPASCU
+    private _baseUrl = REACT_APP_API_BASE_URI
 
     public async getAllTestUsers(token: any): Promise<User[]> {
         return this.fetchData(this._baseUrl + "/GetAllUsers", {headers: {Authorization: "bearer " + token}}).then((res) => {

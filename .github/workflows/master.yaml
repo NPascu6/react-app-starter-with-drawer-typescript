@@ -9,18 +9,8 @@ jobs:
     runs-on: ubuntu-latest
 
     steps:
-      - name: Create ENV FILE
-        uses: SpicyPizza/create-envfile@v1
-        with:
-          envkey_REACT_APP_API_BASE_URI: ${{ secrets.NPASCU_API_URL }}
-          file_name: .env.production
-
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
-
-      - run: echo "{{.env.production}}"
-      - run: echo "${{ secrets.FIREBASE_API_BASE_URI }}"
-      - run: echo "${{ secrets.NPASCU_API_URL }}"
 
       - uses: actions/cache@v2
         with:
@@ -31,7 +21,7 @@ jobs:
         run: yarn install
 
       - name: 🔨 Build Project
-        run: yarn run build production
+        run: yarn run build
 
       - name: 📂 Sync files pascu.io
         uses: SamKirkland/FTP-Deploy-Action@4.3.2
