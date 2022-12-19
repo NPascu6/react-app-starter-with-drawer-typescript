@@ -19,7 +19,7 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
-      - run: echo "${{.env.production}}"
+      - run: echo "{{.env.production}}"
       - run: echo "${{ secrets.FIREBASE_API_BASE_URI }}"
       - run: echo "${{ secrets.NPASCU_API_URL }}"
 
