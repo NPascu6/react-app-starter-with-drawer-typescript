@@ -19,6 +19,8 @@ jobs:
       - name: 🚚 Get latest code
         uses: actions/checkout@v2
 
+      - run: echo "{.env.production}"
+
       - uses: actions/cache@v2
         with:
           path: '**/node_modules'
